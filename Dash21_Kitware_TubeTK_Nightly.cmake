@@ -38,12 +38,12 @@ set( TUBETK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
-set( SITE_MAKE_COMMAND "make -j5" )
+set( SITE_MAKE_COMMAND "make -j7" )
 set( SITE_CMAKE_COMMAND
   "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/cmake" )
 set( SITE_QMAKE_COMMAND "/home/kitware/Dashboards/Support/qt-4.7.3/bin/qmake" )
 set( SITE_CTEST_COMMAND
-  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -j5" )
+  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -j7" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
