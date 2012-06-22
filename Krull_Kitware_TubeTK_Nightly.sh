@@ -3,6 +3,7 @@
 MachineName=Krull_Kitware
 
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
+  # Update itself
   echo "Updating"
   rm -rf /home/aylward/src/dashboards/TubeTK-Release
  
