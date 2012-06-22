@@ -1,15 +1,15 @@
-#! /bin/sh
+#!/bin/sh
 
 MachineName=Eternia_Kitware
 
-if [ $1 != NoUpdate ]; then
+if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   echo "Updating"
   rm -rf /home/aylward/src/dashboards/TubeTK-Release
-
+ 
   # Update Dashboard repository
   cd /home/aylward/src/dashboards/TubeTK_Dashboards
   git pull -f
-
+ 
   # Get new nightly script
   cp -f ${MachineName}_TubeTK_Nightly.sh ..
   cd ..

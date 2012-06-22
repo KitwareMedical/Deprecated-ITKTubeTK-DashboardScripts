@@ -2,7 +2,7 @@
 
 MachineName=Dash21_Kitware
 
-if [ $1 != NoUpdate ]; then
+if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   echo "Updating"
   rm -rf /home/kitware/Dashboards/TubeTK-Debug
 
