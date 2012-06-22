@@ -1,15 +1,15 @@
 #!/bin/sh
 
-MachineName=Dash21_Kitware
+MachineName=Krull_Kitware
 
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   echo "Updating"
-  rm -rf /home/kitware/Dashboards/TubeTK-Debug
-
+  rm -rf /home/aylward/src/dashboards/TubeTK-Release
+ 
   # Update Dashboard repository
-  cd /home/kitware/Dashboards/TubeTK_Dashboards
+  cd /home/aylward/src/dashboards/TubeTK_Dashboards
   git pull -f
-
+ 
   # Get new nightly script
   cp -f ${MachineName}_TubeTK_Nightly.sh ..
   cd ..
@@ -20,4 +20,4 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 fi
 
 # Run the nightly
-/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -D Nightly -V -VV -O ${MachineName}_TubeTK_Nightly.log
+/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -D Nightly -V -VV -O ${MachineName}_TubeTK_Nightly.log
