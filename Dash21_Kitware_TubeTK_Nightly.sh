@@ -1,13 +1,13 @@
 #! /bin/sh
 
-MachineName=Eternia_Kitware
+MachineName=Dash21_Kitware
 
 if [ $1 != NoUpdate ]; then
   echo "Updating"
-  rm -rf /home/aylward/src/dashboards/TubeTK-Release
+  rm -rf /home/kitware/Dashboards/TubeTK-Debug
 
   # Update Dashboard repository
-  cd /home/aylward/src/dashboards/TubeTK_Dashboards
+  cd /home/kitware/Dashboards/TubeTK_Dashboards
   git pull -f
 
   # Get new nightly script
