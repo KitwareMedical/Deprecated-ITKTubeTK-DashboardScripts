@@ -20,4 +20,4 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 fi
 
 # Run the nightly
-/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -D Nightly -V -VV -O ${MachineName}_TubeTK_Nightly.log
+/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
