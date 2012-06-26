@@ -26,54 +26,52 @@
 # Configure the following variables and move this file to the directory above
 #   the tubetk source directory.
 #
-set( SITE_NAME "Dash21.Kitware" )
-set( SITE_PLATFORM "Debian-5.3-64" )
-set( SITE_BUILD_TYPE "Debug" )
+set( SITE_NAME "Mojo.Kitware" )
+set( SITE_PLATFORM "Ubuntu-9.04-32" )
+set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "/home/kitware/Dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TUBETK_SOURCE_DIR "/home/aylward/src/TubeTK" )
+set( TUBETK_BINARY_DIR "/home/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j5" )
-set( SITE_CMAKE_COMMAND
-  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND
-  "/home/kitware/Dashboards/Support/qt-4.7.3/bin/qmake" )
-set( SITE_CTEST_COMMAND
-  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -j5" )
+set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
+set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.7.1/bin/qmake" )
+set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 
-set( SITE_GIT_COMMAND "/usr/local/bin/git" )
+set( SITE_GIT_COMMAND "/home/aylward/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
+set( SITE_CVS_COMMAND "/usr/bin/cvs" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
-set( SITE_EXPERIMENTAL_COVERAGE ON )
-set( SITE_EXPERIMENTAL_MEMORY ON )
-set( SITE_EXPERIMENTAL_PACKAGE ON )
-set( SITE_EXPERIMENTAL_UPLOAD ON )
-set( SITE_EXPERIMENTAL_STYLE ON )
+set( SITE_EXPERIMENTAL_COVERAGE OFF )
+set( SITE_EXPERIMENTAL_MEMORY OFF )
+set( SITE_EXPERIMENTAL_PACKAGE OFF )
+set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_STYLE OFF )
 
-set( SITE_CONTINUOUS_BUILD ON )
-set( SITE_CONTINUOUS_TEST ON )
+set( SITE_CONTINUOUS_BUILD ON ) # Must be ON for any Continuous to run
+set( SITE_CONTINUOUS_TEST ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
-set( SITE_CONTINUOUS_PACKAGE OFF )
-set( SITE_CONTINUOUS_UPLOAD OFF )
-set( SITE_CONTINUOUS_STYLE ON )
+set( SITE_CONTINUOUS_PACKAGE ON )
+set( SITE_CONTINUOUS_UPLOAD ON )
+set( SITE_CONTINUOUS_STYLE OFF )
 
-set( SITE_NIGHTLY_BUILD ON )
+set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_COVERAGE ON )
-set( SITE_NIGHTLY_MEMORY ON )
-set( SITE_NIGHTLY_PACKAGE ON )
+set( SITE_NIGHTLY_COVERAGE OFF )
+set( SITE_NIGHTLY_MEMORY OFF )
+set( SITE_NIGHTLY_PACKAGE OFF )
 set( SITE_NIGHTLY_UPLOAD ON )
 set( SITE_NIGHTLY_STYLE ON )
 ##############################################################################

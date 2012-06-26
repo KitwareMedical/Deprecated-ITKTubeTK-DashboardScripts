@@ -27,7 +27,7 @@
 #   the tubetk source directory.
 #
 set( SITE_NAME "Eternia.Kitware" )
-set( SITE_PLATFORM "Linux_64" )
+set( SITE_PLATFORM "Ubuntu-12.04-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )

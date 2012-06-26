@@ -27,7 +27,7 @@
 #   the tubetk source directory.
 #
 set( SITE_NAME "Dash21.Kitware" )
-set( SITE_PLATFORM "Linux_64" )
+set( SITE_PLATFORM "Debian-5.3-64" )
 set( SITE_BUILD_TYPE "Debug" )
 set( SITE_CTEST_MODE "Continuous" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
