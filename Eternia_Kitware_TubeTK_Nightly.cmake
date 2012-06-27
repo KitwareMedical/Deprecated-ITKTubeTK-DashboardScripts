@@ -38,10 +38,10 @@ set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" 
 
 set( ENV{DISPLAY} ":0" )
 
-set( SITE_MAKE_COMMAND "make -j5" )
+set( SITE_MAKE_COMMAND "make -j3" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
-set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
+set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
@@ -49,7 +49,6 @@ set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
-set( SITE_CVS_COMMAND "/usr/bin/cvs" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
