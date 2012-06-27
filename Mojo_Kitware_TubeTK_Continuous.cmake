@@ -63,15 +63,15 @@ set( SITE_CONTINUOUS_BUILD ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_TEST ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
-set( SITE_CONTINUOUS_PACKAGE ON )
-set( SITE_CONTINUOUS_UPLOAD ON )
+set( SITE_CONTINUOUS_PACKAGE OFF )
+set( SITE_CONTINUOUS_UPLOAD OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
 
 set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
-set( SITE_NIGHTLY_PACKAGE ON )
+set( SITE_NIGHTLY_PACKAGE OFF )
 set( SITE_NIGHTLY_UPLOAD ON )
 set( SITE_NIGHTLY_STYLE ON )
 ##############################################################################

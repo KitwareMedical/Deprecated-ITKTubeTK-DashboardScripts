@@ -22,3 +22,6 @@ fi
 
 # Run the nightly
 /usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+
+# Run the continuous
+/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Continuous.cmake -V -VV -O ${MachineName}_TubeTK_Continuous.log
