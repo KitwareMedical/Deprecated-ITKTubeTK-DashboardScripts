@@ -29,7 +29,7 @@
 set( SITE_NAME "Mojo.Kitware" )
 set( SITE_PLATFORM "Ubuntu-9.04-32" )
 set( SITE_BUILD_TYPE "Release" )
-set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+set( SITE_CTEST_MODE "Continuous" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
@@ -71,9 +71,9 @@ set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
-set( SITE_NIGHTLY_PACKAGE OFF )
+set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_STYLE ON )
+set( SITE_NIGHTLY_STYLE OFF )
 ##############################################################################
 
 ##############################################################################
