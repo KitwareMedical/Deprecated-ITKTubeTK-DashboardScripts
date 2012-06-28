@@ -110,7 +110,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
     function( TubeTK_Style )
       set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
       configure_file(
-        ${TUBETK_SOURCE_DIR}/CMake/DashboardScripts/InitCMakeCache.cmake.in
+        ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
         ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
       set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_start( "Nightly" )
@@ -123,7 +123,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
         WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
         )
       ctest_submit( PARTS configure build )
-    endif()
+    endfunction( TubeTK_Style )
 
     if( SITE_CONTINUOUS_STYLE )
       TubeTK_Style()
