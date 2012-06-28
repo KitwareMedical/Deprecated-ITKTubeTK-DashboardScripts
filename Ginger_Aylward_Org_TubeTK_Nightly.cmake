@@ -77,7 +77,7 @@ set( SITE_NIGHTLY_STYLE OFF )
 ###########################################################################
 # The following advanced variables should only be changed by experts
 #
-set( TUBETK_SCRIPT_DIR "${TUBETK_SOURCE_DIR}/CMake/DashboardScripts" )
+set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
@@ -115,7 +115,7 @@ set( SITE_SHARED_LINKER_FLAGS "" )
 
 set( SITE_MEMORYCHECK_COMMAND_OPTIONS "" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${CTEST_SCRIPT_DIRECTORY}/valgrind_suppressions.txt" )
+  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )

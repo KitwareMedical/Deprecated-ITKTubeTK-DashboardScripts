@@ -82,7 +82,7 @@ set( SITE_NIGHTLY_STYLE ON )
 #
 # The following advanced variables should only be changed by experts
 #
-set( TUBETK_SCRIPT_DIR "${TUBETK_SOURCE_DIR}/CMake/DashboardScripts" )
+set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
