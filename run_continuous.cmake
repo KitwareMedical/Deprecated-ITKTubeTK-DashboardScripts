@@ -21,15 +21,6 @@
 #
 ##############################################################################
 
-set( CTEST_CTEST_COMMAND ${SITE_CTEST_COMMAND} )
-set( CTEST_CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
-
-if( SITE_CONTINUOUS_BUILD )
-  ctest_empty_binary_directory( "${TUBETK_BINARY_DIR}" )
-endif()
-
-set( ENV{TUBETK_RUN_MODEL} "Continuous" )
-
 ###########################################################################
 # run some "inside-the-loop" continuous scripts for a while
 #
@@ -43,7 +34,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
     ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
 
-  ctest_start( "$ENV{TUBETK_RUN_MODEL}" )
+  ctest_start( "Continuous" )
 
   ctest_update( SOURCE "${CTEST_SOURCE_DIRECTORY}" RETURN_VALUE res )
 
@@ -56,10 +47,10 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
         OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
       ctest_build( BUILD "${TUBETK_BINARY_DIR}" )
-      ctest_submit( PARTS Update Configure Build )
+      ctest_submit( PARTS Notes Update Configure Build )
     else()
-      ctest_submit( PARTS Update )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
+      ctest_submit( PARTS Notes Update )
     endif()
 
     if( SITE_CONTINUOUS_TEST )
@@ -79,7 +70,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
     function( TubeTK_Package )
       execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package --config ${CTEST_BUILD_CONFIGURATION}
+        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package
         WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
         OUTPUT_STRIP_TRAILING_WHITESPACE
         OUTPUT_FILE CPackOutputFiles.txt
@@ -119,7 +110,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
         OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
       execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck --config ${CTEST_BUILD_CONFIGURATION}
+        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck
         WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
         )
       ctest_submit( PARTS configure build )

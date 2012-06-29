@@ -17,7 +17,10 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   
   # Run new nightly script without updating again
   ./${MachineName}_TubeTK_Nightly.sh NoUpdate
-fi
 
-# Run the nightly
-/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+else
+
+  # Run the nightly
+  /usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+
+fi

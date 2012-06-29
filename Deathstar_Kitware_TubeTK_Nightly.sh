@@ -4,6 +4,7 @@ MachineName=Deathstar_Kitware
 
 echo "Running TubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
+
   echo "Updating"
   rm -rf /home/matt/dashboards/TubeTK-RelWithDebInfo
  
@@ -19,8 +20,12 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   
   # Run new nightly script without updating again
   ./${MachineName}_TubeTK_Nightly.sh NoUpdate
+
 else
-# Run the nightly
+
+  # Run the nightly
   /usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+
 fi
+
 echo "Ending TubeTK Dashboard script"

@@ -3,6 +3,7 @@
 MachineName=Mojo_Kitware
 
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
+
   # Update itself
   echo "Updating"
   rm -rf /home/aylward/src/TubeTK-Release
@@ -18,10 +19,13 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
   
   # Run new nightly script without updating again
   ./${MachineName}_TubeTK_Nightly.sh NoUpdate
+
+else
+
+  # Run the nightly
+  /usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+
+  # Run the continuous
+  /usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Continuous.cmake -V -VV -O ${MachineName}_TubeTK_Continuous.log
+
 fi
-
-# Run the nightly
-/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Nightly.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
-
-# Run the continuous
-/usr/local/bin/ctest -S TubeTK_Dashboards/${MachineName}_TubeTK_Continuous.cmake -V -VV -O ${MachineName}_TubeTK_Continuous.log

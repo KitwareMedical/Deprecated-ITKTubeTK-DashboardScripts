@@ -30,16 +30,16 @@ set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
 ctest_start( "Nightly" )
 
 if( SITE_NIGHTLY_BUILD )
-  ctest_empty_binary_directory( "${TUBETK_BINARY_DIR}" )
   ctest_update( SOURCE "${TUBETK_SOURCE_DIR}" )
   ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
     SOURCE "${TUBETK_SOURCE_DIR}"
     OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
   ctest_build( BUILD "${TUBETK_BINARY_DIR}" )
-  ctest_submit( PARTS Update Configure Build )
+  ctest_submit( PARTS Notes Update Configure Build )
 else()
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
+  ctest_submit( PARTS Notes )
 endif()
 
 if( SITE_NIGHTLY_TEST )
@@ -59,7 +59,7 @@ endif()
 
 function( TubeTK_Package )
   execute_process(
-    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package --config ${CTEST_BUILD_CONFIGURATION}
+    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package
     WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
     OUTPUT_STRIP_TRAILING_WHITESPACE
     OUTPUT_FILE CPackOutputFiles.txt
@@ -99,7 +99,7 @@ function( TubeTK_Style )
     OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
   execute_process(
-    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck --config ${CTEST_BUILD_CONFIGURATION}
+    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck
     WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
     )
   ctest_submit( PARTS configure build )
