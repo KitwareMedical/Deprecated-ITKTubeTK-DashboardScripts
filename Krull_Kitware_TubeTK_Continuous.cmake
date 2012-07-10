@@ -27,12 +27,12 @@
 #   the tubetk source directory.
 #
 set( SITE_NAME "Krull.Kitware" )
-set( SITE_PLATFORM "Ubuntu-12.10-64" )
+set( SITE_PLATFORM "Ubuntu-12.04-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Continuous" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TUBETK_GIT_REPOSITORY "git@tubetk.org:TubeTK.git" )
+set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
 set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
