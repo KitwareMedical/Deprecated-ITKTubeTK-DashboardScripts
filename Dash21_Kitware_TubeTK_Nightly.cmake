@@ -42,7 +42,7 @@ set( SITE_MAKE_COMMAND "make -j5" )
 set( SITE_CMAKE_COMMAND
   "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/cmake" )
 set( SITE_QMAKE_COMMAND
-  "/home/kitware/Dashboards/Support/qt-4.7.3/bin/qmake" )
+  "/home/kitware/Dashboards/Support/qt-everywhere-opensource-build-4.7.4/bin/qmake" )
 set( SITE_CTEST_COMMAND
   "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -j5" )
 
@@ -59,7 +59,7 @@ set( SITE_EXPERIMENTAL_COVERAGE ON )
 set( SITE_EXPERIMENTAL_MEMORY ON )
 set( SITE_EXPERIMENTAL_PACKAGE ON )
 set( SITE_EXPERIMENTAL_UPLOAD ON )
-set( SITE_EXPERIMENTAL_STYLE ON )
+set( SITE_EXPERIMENTAL_STYLE OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
@@ -67,15 +67,15 @@ set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
 set( SITE_CONTINUOUS_UPLOAD OFF )
-set( SITE_CONTINUOUS_STYLE ON )
+set( SITE_CONTINUOUS_STYLE OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_COVERAGE OFF )
-set( SITE_NIGHTLY_MEMORY OFF )
+set( SITE_NIGHTLY_COVERAGE ON )
+set( SITE_NIGHTLY_MEMORY ON )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_STYLE ON )
+set( SITE_NIGHTLY_STYLE OFF )
 ##############################################################################
 
 ##############################################################################
