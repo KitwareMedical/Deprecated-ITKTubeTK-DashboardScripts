@@ -72,7 +72,7 @@ set( SITE_NIGHTLY_COVERAGE ON )
 set( SITE_NIGHTLY_MEMORY ON )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_STYLE ON )
+set( SITE_NIGHTLY_STYLE OFF )
 ##############################################################################
 
 ##############################################################################
