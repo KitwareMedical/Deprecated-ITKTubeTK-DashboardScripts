@@ -30,7 +30,7 @@ set( SITE_NAME "Ginger.Aylward.Org" )
 set( SITE_PLATFORM "Windows7-VS2010-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
-set( SITE_CMAKE_GENERATOR "Visual Studio 10" )
+set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
