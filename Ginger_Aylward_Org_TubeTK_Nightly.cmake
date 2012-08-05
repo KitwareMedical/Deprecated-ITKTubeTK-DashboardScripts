@@ -38,7 +38,7 @@ set( TUBETK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND "C:/Qt/4.8.2/bin/qmake" )
+set( SITE_QMAKE_COMMAND "C:/Qt/qt-everywhere-opensource-src-4.8.2/bin/qmake" )
 set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
 
 set( SITE_MEMORYCHECK_COMMAND "" )
