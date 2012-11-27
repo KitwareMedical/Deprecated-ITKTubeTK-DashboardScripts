@@ -40,7 +40,7 @@ set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j3" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
+set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.7.4/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
