@@ -22,8 +22,25 @@
 ##############################################################################
 
 set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-BuildTest-Nightly" )
+
+if( SITE_NIGHTLY_DOCUMENTATION )
+  set( BUILD_DOCUMENTATION ON )
+  set( TubeTK_USE_DOXYGEN ON )
+else()
+  set( BUILD_DOCUMENTATION OFF )
+  set( TubeTK_USE_DOXYGEN OFF )
+endif()
+
+set( TubeTK_USE_KWSTYLE OFF )
+
+if( SITE_NIGHTLY_CPPCHECK )
+  set( TubeTK_USE_CPPCHECK ON )
+else()
+  set( TubeTK_USE_CPPCHECK OFF )
+endif()
+
 configure_file(
-  ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+  ${TUBETK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
   ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
 set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
 
@@ -89,6 +106,7 @@ endif()
 
 function( TubeTK_Style )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
+  set( TubeTK_USE_KWSTYLE ON )
   configure_file(
     ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
     ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )

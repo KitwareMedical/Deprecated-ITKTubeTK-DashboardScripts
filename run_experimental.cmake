@@ -22,6 +22,23 @@
 ##############################################################################
 
 set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-BuildTest-Experimental" )
+
+if( SITE_EXPERIMENTAL_DOCUMENTATION )
+  set( BUILD_DOCUMENTATION ON )
+  set( TubeTK_USE_DOXYGEN ON )
+else()
+  set( BUILD_DOCUMENTATION OFF )
+  set( TubeTK_USE_DOXYGEN OFF )
+endif()
+
+set( TubeTK_USE_KWSTYLE OFF )
+
+if( SITE_EXPERIMENTAL_CPPCHECK )
+  set( TubeTK_USE_CPPCHECK ON )
+else()
+  set( TubeTK_USE_CPPCHECK OFF )
+endif()
+
 configure_file(
   ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
   ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
@@ -90,6 +107,7 @@ endif()
 
 function( TubeTK_Style )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Experimental" )
+  set( TubeTK_USE_KWSTYLE ON )
   configure_file(
     ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
     ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
