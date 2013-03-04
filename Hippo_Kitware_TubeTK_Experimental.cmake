@@ -29,7 +29,7 @@
 set( SITE_NAME "Hippo.Kitware" )
 set( SITE_PLATFORM "apple-darwin12.2.1-clang-x86_64" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
-set( SITE_CTEST_MODE "Nightly" )
+set( SITE_CTEST_MODE "Experimental" )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
