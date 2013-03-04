@@ -33,10 +33,17 @@ set( SITE_CTEST_MODE "Experimental" )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
+<<<<<<< HEAD
 set( TUBETK_ROOT_DIR "/Users/snape/Documents/Repositories/TubeTK" )
 set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/TubeTK-Dashboards" )
 set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK" )
 set( TUBETK_BINARY_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_BUILD_TYPE}" )
+=======
+set( TUBETK_ROOT_DIR "/Users/snape/Development/TubeTK" )
+set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/TubeTK-Dashboards" )
+set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
+set( TUBETK_BINARY_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
+>>>>>>> ENH: Experimental setup for Hippo.Kitware
 
 set( ENV{DISPLAY} ":0" )
 
