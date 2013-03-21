@@ -33,8 +33,8 @@ set( SITE_CTEST_MODE "Continuous" ) # one of Experimental, Continuous, Nightly
 set( SITE_CMAKE_GENERATOR "Visual Studio 10" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "C:/dashboard/dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "C:/dashboard/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TUBETK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
+set( TUBETK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
