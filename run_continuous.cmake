@@ -46,6 +46,12 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
     set( TubeTK_USE_CPPCHECK OFF )
   endif()
 
+  if( SITE_CONTINUOUS_BOOST )
+    set( TubeTK_USE_Boost ON )
+  else()
+    set( TubeTK_USE_Boost OFF )
+  endif()
+
   configure_file(
     ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
     ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
