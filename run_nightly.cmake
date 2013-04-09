@@ -39,6 +39,12 @@ else()
   set( TubeTK_USE_CPPCHECK OFF )
 endif()
 
+if( SITE_NIGHTLY_BOOST )
+  set( TubeTK_USE_Boost ON )
+else()
+  set( TubeTK_USE_Boost OFF )
+endif()
+
 configure_file(
   ${TUBETK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
   ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )

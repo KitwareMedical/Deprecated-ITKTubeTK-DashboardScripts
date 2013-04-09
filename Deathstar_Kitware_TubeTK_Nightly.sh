@@ -10,7 +10,7 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
  
   # Update Dashboard repository
   cd /home/matt/dashboards/TubeTK_Dashboards
-  git pull -f
+  git pull
  
   echo "Bootstrapping"
   # Get new nightly script
