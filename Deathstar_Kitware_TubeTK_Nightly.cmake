@@ -27,7 +27,7 @@
 #   the tubetk source directory.
 #
 set( SITE_NAME "Deathstar.Kitware" )
-set( SITE_PLATFORM "Debian-Stable-64" )
+set( SITE_PLATFORM "Debian-Stable-64-Boost" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
