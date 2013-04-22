@@ -38,7 +38,7 @@ set( TUBETK_BINARY_DIR "/home/matt/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
-set( SITE_MAKE_COMMAND "make -j2" )
+set( SITE_MAKE_COMMAND "make -j1" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_QMAKE_COMMAND "/home/matt/apps/QtSDK/Desktop/Qt/474/gcc/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
