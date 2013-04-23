@@ -33,16 +33,22 @@ endif()
 
 set( TubeTK_USE_KWSTYLE OFF )
 
+if( SITE_EXPERIMENTAL_BOOST )
+  set( TubeTK_USE_Boost ON )
+else()
+  set( TubeTK_USE_Boost OFF )
+endif()
+
 if( SITE_EXPERIMENTAL_CPPCHECK )
   set( TubeTK_USE_CPPCHECK ON )
 else()
   set( TubeTK_USE_CPPCHECK OFF )
 endif()
 
-if( SITE_EXPERIMENTAL_BOOST )
-  set( TubeTK_USE_Boost ON )
+if( SITE_EXPERIMENTAL_LIBSVM )
+  set( TubeTK_USE_LIBSVM ON )
 else()
-  set( TubeTK_USE_Boost OFF )
+  set( TubeTK_USE_LIBSVM OFF )
 endif()
 
 configure_file(
