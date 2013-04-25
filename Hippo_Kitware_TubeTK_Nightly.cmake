@@ -87,11 +87,11 @@ set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_DOCUMENTATION ON )
+set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
-set( SITE_NIGHTLY_BOOST ON )
+set( SITE_NIGHTLY_BOOST OFF )
 set( SITE_NIGHTLY_CPPCHECK ON )
-set( SITE_NIGHTLY_LIBSVM ON )
+set( SITE_NIGHTLY_LIBSVM OFF )
 
 ##############################################################################
 
@@ -127,8 +127,6 @@ set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
 set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
-
-set( CTEST_CUSTOM_WARNING_EXCEPTION "/usr/local/include/boost" ${CTEST_CUSTOM_WARNING_EXCEPTION} )
 
 set( SITE_C_FLAGS "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized" )
 set( SITE_CXX_FLAGS "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field" )
