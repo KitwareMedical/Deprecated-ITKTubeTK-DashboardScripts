@@ -24,9 +24,8 @@
 # This is a Valgrind suppression file that should be used when using Valgrind.
 # Python suppressions are taken in part from
 # 
-#       http://svn.python.org/projects/python/trunk/Misc/valgrind-python.supp
+#       http://hg.python.org/cpython/file/2d4189e9bbe8/Misc/valgrind-python.supp
 #
-# (revision 88,991).
 
 {
    TubeTK1
@@ -106,24 +105,6 @@
    Memcheck:Leak
    fun:calloc
    fun:TclpThreadExit
-}
-
-{
-   TubeTK13
-   Memcheck:Addr8
-   obj:/lib/ld-2.4.so
-   obj:/lib/ld-2.4.so
-   obj:/lib/ld-2.4.so
-   obj:/lib/ld-2.4.so
-}
-
-{
-   TubeTK14
-   Memcheck:Cond
-   obj:/lib/ld-2.3.4.so
-   obj:/lib/ld-2.3.4.so
-   obj:/lib/ld-2.3.4.so
-   obj:/lib/ld-2.3.4.so
 }
 
 {
@@ -238,30 +219,72 @@
 
 {
    PyTubeTK16
-   Memcheck:Cond
+   Memcheck:Addr8
    fun:PyObject_Free
 }
 
 {
    PyTubeTK17
+   Memcheck:Value8
+   fun:PyObject_Free
+}
+
+{
+   PyTubeTK18
+   Memcheck:Cond
+   fun:PyObject_Free
+}
+
+{
+   PyTubeTK19
    Memcheck:Addr4
    fun:PyObject_Realloc
 }
 
 {
-   PyTubeTK18
+   PyTubeTK20
    Memcheck:Value4
    fun:PyObject_Realloc
 }
 
 {
-   PyTubeTK19
+   PyTubeTK21
+   Memcheck:Addr8
+   fun:PyObject_Realloc
+}
+
+{
+   PyTubeTK22
+   Memcheck:Value8
+   fun:PyObject_Realloc
+}
+
+{
+   PyTubeTK23
    Memcheck:Cond
    fun:PyObject_Realloc
 }
 
 {
-   PyTubeTK20
+   PyTubeTK24
+   Memcheck:Addr8
+   obj:/lib/ld-2.4.so
+   obj:/lib/ld-2.4.so
+   obj:/lib/ld-2.4.so
+   obj:/lib/ld-2.4.so
+}
+
+{
+   PyTubeTK25
+   Memcheck:Cond
+   obj:/lib/ld-2.3.4.so
+   obj:/lib/ld-2.3.4.so
+   obj:/lib/ld-2.3.4.so
+   obj:/lib/ld-2.3.4.so
+}
+
+{
+   PyTubeTK26
    Memcheck:Param
    write(buf)
    fun:write
@@ -273,7 +296,7 @@
 }
 
 {
-   PyTubeTK21
+   PyTubeTK27
    Memcheck:Value8
    fun:memmove
    obj:/usr/lib/libdb1.so.2
@@ -285,7 +308,7 @@
 }
 
 {
-   PyTubeTK22
+   PyTubeTK28
    Memcheck:Cond
    obj:/usr/lib/libdb1.so.2
    obj:/usr/lib/libdb1.so.2
@@ -295,7 +318,7 @@
 }
 
 {
-   PyTubeTK23
+   PyTubeTK29
    Memcheck:Cond
    fun:memmove
    obj:/usr/lib/libdb1.so.2
@@ -307,7 +330,7 @@
 }
 
 {
-   PyTubeTK24
+   PyTubeTK30
    Memcheck:Param
    write(buf)
    fun:write
@@ -316,7 +339,7 @@
 }
 
 {
-   PyTubeTK25
+   PyTubeTK31
    Memcheck:Cond
    obj:/lib/libz.so.1.2.3
    obj:/lib/libz.so.1.2.3
@@ -324,13 +347,25 @@
 }
 
 {
-   PyTubeTK26
-   Memcheck:Leak
-   fun:malloc
-   fun:xmalloc
-   fun:sh_set_lines_and_columns
-   fun:_rl_get_screen_size
-   fun:_rl_init_terminal_io
-   obj:/lib/libreadline.so.4.3
-   fun:rl_initialize
+   PyTubeTK32
+   Memcheck:Addr4
+   fun:PyUnicodeUCS2_FSConverter
+}
+
+{
+   PyTubeTK33
+   Memcheck:Addr4
+   fun:PyUnicode_FSConverter
+}
+
+{
+   PyTubeTK34
+   Memcheck:Addr4
+   fun:PyUnicodeUCS2_FSConverter
+}
+
+{
+   PyTubeTK35
+   Memcheck:Addr4
+   fun:PyUnicode_FSConverter
 }
