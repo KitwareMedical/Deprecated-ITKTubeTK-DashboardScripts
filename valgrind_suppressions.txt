@@ -369,3 +369,52 @@
    Memcheck:Addr4
    fun:PyUnicode_FSConverter
 }
+
+{
+   PyTubeTK36
+   Memcheck:Leak
+   fun:malloc
+   fun:PyObject_Malloc
+}
+
+{
+   PyTubeTK37
+   Memcheck:Leak
+   fun:malloc
+   fun:PyType_GenericAlloc
+}
+
+{                                                                               
+   PyTubeTK38
+   Memcheck:Leak                                                                
+   fun:malloc                                                                   
+   fun:_PyObject_GC_Malloc                                                      
+}
+
+{
+   PyTubeTK39
+   Memcheck:Leak
+   fun:malloc
+   fun:_PyObject_GC_NewVar
+}
+
+{
+   PyTubeTK40
+   Memcheck:Leak
+   fun:realloc
+   fun:PyObject_Realloc
+}
+
+{
+   PyTubeTK41
+   Memcheck:Leak
+   fun:realloc
+   fun:_PyObject_GC_Resize
+}
+
+{
+   PyTubeTK42
+   Memcheck:Leak
+   fun:realloc
+   fun:_PyObject_GC_NewVar
+}
