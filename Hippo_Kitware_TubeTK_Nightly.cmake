@@ -27,7 +27,7 @@
 #   the TubeTK source directory.
 #
 set( SITE_NAME "Hippo.Kitware" )
-set( SITE_PLATFORM "apple-darwin12.3.0-clang-x86_64" )
+set( SITE_PLATFORM "apple-darwin12.4.0-clang-x86_64" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
 set( SITE_CTEST_MODE "Nightly" )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
