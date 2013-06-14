@@ -128,8 +128,8 @@ set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
-set( SITE_C_FLAGS "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized" )
-set( SITE_CXX_FLAGS "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field" )
+set( SITE_C_FLAGS "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
+set( SITE_CXX_FLAGS "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS}" )
 
