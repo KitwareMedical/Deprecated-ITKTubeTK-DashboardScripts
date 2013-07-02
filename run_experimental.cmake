@@ -37,19 +37,43 @@ if( SITE_EXPERIMENTAL_BOOST )
   set( TubeTK_USE_Boost ON )
 else()
   set( TubeTK_USE_Boost OFF )
-endif()
+endif( SITE_EXPERIMENTAL_BOOST )
 
 if( SITE_EXPERIMENTAL_CPPCHECK )
   set( TubeTK_USE_CPPCHECK ON )
 else()
   set( TubeTK_USE_CPPCHECK OFF )
-endif()
+endif( SITE_EXPERIMENTAL_CPPCHECK )
+
+if( SITE_EXPERIMENTAL_CTK )
+  set( TubeTK_USE_CTK ON )
+else()
+  set( TubeTK_USE_CTK OFF )
+endif( SITE_EXPERIMENTAL_CTK )
 
 if( SITE_EXPERIMENTAL_LIBSVM )
   set( TubeTK_USE_LIBSVM ON )
 else()
   set( TubeTK_USE_LIBSVM OFF )
-endif()
+endif( SITE_EXPERIMENTAL_LIBSVM )
+
+if( SITE_EXPERIMENTAL_QT )
+  set( TubeTK_USE_QT ON )
+else()
+  set( TubeTK_USE_QT OFF )
+endif( SITE_EXPERIMENTAL_QT )
+
+if( SITE_EXPERIMENTAL_SIMPLEITK )
+  set( TubeTK_USE_SimpleITK ON )
+else()
+  set( TubeTK_USE_SimpleITK OFF )
+endif( SITE_EXPERIMENTAL_SIMPLEITK )
+
+if( SITE_EXPERIMENTAL_VTK )
+  set( TubeTK_USE_VTK ON )
+else()
+  set( TubeTK_USE_VTK OFF )
+endif( SITE_EXPERIMENTAL_VTK )
 
 configure_file(
   ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in

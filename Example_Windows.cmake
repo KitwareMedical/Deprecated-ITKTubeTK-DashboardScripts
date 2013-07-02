@@ -26,7 +26,7 @@
 # Configure the following variables and move this file to the directory above
 #   the TubeTK source directory.
 #
-set( SITE_NAME "Ginger.Aylward.Org" )
+set( SITE_NAME "Example_Windows_Site_Name" )
 set( SITE_PLATFORM "Windows7-VS2010-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
@@ -36,14 +36,14 @@ set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
 set( TUBETK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
-set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND "C:/Qt/4.8.2/bin/qmake" )
 set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
+set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
+set( SITE_QMAKE_COMMAND "C:/Qt/4.8.2/bin/qmake" )
 
-set( SITE_MEMORYCHECK_COMMAND "" )
 set( SITE_COVERAGE_COMMAND "" )
 set( SITE_KWSTYLE_DIR "" )
+set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files (x86)/Git/bin/git" )
 set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin/svn" )
@@ -58,7 +58,11 @@ set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
 set( SITE_EXPERIMENTAL_BOOST OFF )
 set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_CTK OFF)
 set( SITE_EXPERIMENTAL_LIBSVM OFF )
+set( SITE_EXPERIMENTAL_QT OFF )
+set( SITE_EXPERIMENTAL_SIMPLEITK OFF )
+set( SITE_EXPERIMENTAL_VTK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
@@ -70,7 +74,11 @@ set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
 set( SITE_CONTINUOUS_BOOST OFF )
 set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_CTK OFF)
 set( SITE_CONTINUOUS_LIBSVM OFF )
+set( SITE_CONTINUOUS_QT OFF )
+set( SITE_CONTINUOUS_SIMPLEITK OFF )
+set( SITE_CONTINUOUS_VTK OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
@@ -82,7 +90,11 @@ set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
 set( SITE_NIGHTLY_BOOST OFF )
 set( SITE_NIGHTLY_CPPCHECK OFF )
+set( SITE_NIGHTLY_CTK OFF)
 set( SITE_NIGHTLY_LIBSVM OFF )
+set( SITE_NIGHTLY_QT OFF )
+set( SITE_NIGHTLY_SIMPLEITK OFF )
+set( SITE_NIGHTLY_VTK OFF )
 
 ##############################################################################
 

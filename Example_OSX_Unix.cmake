@@ -26,7 +26,7 @@
 # Configure the following variables and move this file to the directory above
 #   the tubetk source directory.
 #
-set( SITE_NAME "Eternia.Kitware" )
+set( SITE_NAME "Example_OSX_UNIX_Site_Name" )
 set( SITE_PLATFORM "Ubuntu-12.04-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
@@ -38,14 +38,14 @@ set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" 
 
 set( ENV{DISPLAY} ":0" )
 
-set( SITE_MAKE_COMMAND "make -j3" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
+set( SITE_MAKE_COMMAND "make -j3" )
+set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
-set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_KWSTYLE_DIR "/usr/local/bin" )
+set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
@@ -60,7 +60,11 @@ set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
 set( SITE_EXPERIMENTAL_BOOST OFF )
 set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_CTK OFF)
 set( SITE_EXPERIMENTAL_LIBSVM OFF )
+set( SITE_EXPERIMENTAL_QT OFF )
+set( SITE_EXPERIMENTAL_SIMPLEITK OFF )
+set( SITE_EXPERIMENTAL_VTK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
@@ -72,7 +76,11 @@ set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
 set( SITE_CONTINUOUS_BOOST OFF )
 set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_CTK OFF)
 set( SITE_CONTINUOUS_LIBSVM OFF )
+set( SITE_CONTINUOUS_QT OFF )
+set( SITE_CONTINUOUS_SIMPLEITK OFF )
+set( SITE_CONTINUOUS_VTK OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
@@ -84,7 +92,11 @@ set( SITE_NIGHTLY_DOCUMENTATION ON )
 set( SITE_NIGHTLY_STYLE ON )
 set( SITE_NIGHTLY_BOOST ON )
 set( SITE_NIGHTLY_CPPCHECK ON )
+set( SITE_NIGHTLY_CTK ON)
 set( SITE_NIGHTLY_LIBSVM ON )
+set( SITE_NIGHTLY_QT ON )
+set( SITE_NIGHTLY_SIMPLEITK ON )
+set( SITE_NIGHTLY_VTK ON )
 
 ##############################################################################
 
