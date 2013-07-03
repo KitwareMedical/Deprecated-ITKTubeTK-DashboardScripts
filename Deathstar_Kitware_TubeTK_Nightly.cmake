@@ -27,7 +27,7 @@
 #   the tubetk source directory.
 #
 set( SITE_NAME "Deathstar.Kitware" )
-set( SITE_PLATFORM "Debian-Stable-64" )
+set( SITE_PLATFORM "Debian-Stable-64-Boost" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
@@ -38,7 +38,7 @@ set( TUBETK_BINARY_DIR "/home/matt/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
-set( SITE_MAKE_COMMAND "make -j5" )
+set( SITE_MAKE_COMMAND "make -j1" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_QMAKE_COMMAND "/home/matt/apps/QtSDK/Desktop/Qt/474/gcc/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
@@ -57,7 +57,10 @@ set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK ON )
+set( SITE_EXPERIMENTAL_BOOST ON )
 
 set( SITE_CONTINUOUS_BUILD ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_TEST ON ) # Must be ON for any Continuous to run
@@ -65,15 +68,22 @@ set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
 set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
+set( SITE_CONTINUOUS_CPPCHECK ON )
+set( SITE_CONTINUOUS_BOOST ON )
 
 set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_COVERAGE OFF )
+set( SITE_NIGHTLY_COVERAGE ON )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
+set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
+set( SITE_NIGHTLY_CPPCHECK ON )
+set( SITE_NIGHTLY_BOOST ON )
+
 ##############################################################################
 
 ##############################################################################

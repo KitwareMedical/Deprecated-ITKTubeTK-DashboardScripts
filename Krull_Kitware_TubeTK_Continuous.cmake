@@ -40,8 +40,8 @@ set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j5" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
+set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.7.4/bin/qmake" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
@@ -56,7 +56,9 @@ set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
@@ -64,7 +66,9 @@ set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
 set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
 
 set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
@@ -72,7 +76,10 @@ set( SITE_NIGHTLY_COVERAGE ON )
 set( SITE_NIGHTLY_MEMORY ON )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
+set( SITE_NIGHTLY_DOCUMENTATION ON )
 set( SITE_NIGHTLY_STYLE ON )
+set( SITE_NIGHTLY_CPPCHECK ON )
+
 ##############################################################################
 
 ##############################################################################

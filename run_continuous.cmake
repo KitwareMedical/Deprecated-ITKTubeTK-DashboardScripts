@@ -21,17 +21,66 @@
 #
 ##############################################################################
 
-###########################################################################
-# run some "inside-the-loop" continuous scripts for a while
-#
+# Run some "inside-the-loop" continuous scripts for a while.
 while( ${CTEST_ELAPSED_TIME} LESS 68400 )
-
   set( START_TIME ${CTEST_ELAPSED_TIME} )
 
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-BuildTest-Continuous" )
-  configure_file(
-    ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-    ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
+
+  if( SITE_CONTINUOUS_DOCUMENTATION )
+    set( BUILD_DOCUMENTATION ON )
+    set( TubeTK_USE_DOXYGEN ON )
+  else( SITE_CONTINUOUS_DOCUMENTATION )
+    set( BUILD_DOCUMENTATION OFF )
+    set( TubeTK_USE_DOXYGEN OFF )
+  endif( SITE_CONTINUOUS_DOCUMENTATION )
+
+  set( TubeTK_USE_KWSTYLE OFF )
+
+  if( SITE_CONTINUOUS_BOOST )
+    set( TubeTK_USE_Boost ON )
+  else( SITE_CONTINUOUS_BOOST )
+    set( TubeTK_USE_Boost OFF )
+  endif( SITE_CONTINUOUS_BOOST )
+
+  if( SITE_CONTINUOUS_CPPCHECK )
+    set( TubeTK_USE_CPPCHECK ON )
+  else( SITE_CONTINUOUS_CPPCHECK )
+    set( TubeTK_USE_CPPCHECK OFF )
+  endif( SITE_CONTINUOUS_CPPCHECK )
+
+  if( SITE_CONTINUOUS_CTK )
+    set( TubeTK_USE_CTK ON )
+  else( SITE_CONTINUOUS_CTK )
+    set( TubeTK_USE_CTK OFF )
+  endif( SITE_CONTINUOUS_CTK )
+
+  if( SITE_CONTINUOUS_LIBSVM )
+    set( TubeTK_USE_LIBSVM ON )
+  else( SITE_CONTINUOUS_LIBSVM )
+    set( TubeTK_USE_LIBSVM OFF )
+  endif( SITE_CONTINUOUS_LIBSVM )
+
+  if( SITE_CONTINUOUS_QT )
+    set( TubeTK_USE_QT ON )
+  else( SITE_CONTINUOUS_QT )
+    set( TubeTK_USE_QT OFF )
+  endif( SITE_CONTINUOUS_QT )
+
+  if( SITE_CONTINUOUS_SIMPLEITK )
+    set( TubeTK_USE_SimpleITK ON )
+  else( SITE_CONTINUOUS_SIMPLEITK )
+    set( TubeTK_USE_SimpleITK OFF )
+  endif( SITE_CONTINUOUS_SIMPLEITK )
+
+  if( SITE_CONTINUOUS_VTK )
+    set( TubeTK_USE_VTK ON )
+  else( SITE_CONTINUOUS_VTK )
+    set( TubeTK_USE_VTK OFF )
+  endif( SITE_CONTINUOUS_VTK )
+
+  configure_file( ${TUBETK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
+                  ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
 
   ctest_start( "Continuous" )
@@ -39,8 +88,6 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
   ctest_update( SOURCE "${CTEST_SOURCE_DIRECTORY}" RETURN_VALUE res )
 
   if( res GREATER 0 OR res LESS 0 )
-
-
     if( SITE_CONTINUOUS_BUILD )
       ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
         SOURCE "${TUBETK_SOURCE_DIR}"
@@ -48,84 +95,81 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
       ctest_build( BUILD "${TUBETK_BINARY_DIR}" )
       ctest_submit( PARTS Notes Update Configure Build )
-    else()
+    else( SITE_CONTINUOUS_BUILD )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
       ctest_submit( PARTS Notes Update )
-    endif()
+    endif( SITE_CONTINUOUS_BUILD )
 
     if( SITE_CONTINUOUS_TEST )
-      ctest_test( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+      ctest_test( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
       ctest_submit( PARTS Test )
-    endif()
+    endif( SITE_CONTINUOUS_TEST )
 
     if( SITE_CONTINUOUS_COVERAGE )
-      ctest_coverage( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+      ctest_coverage( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
       ctest_submit( PARTS Coverage )
-    endif()
+    endif( SITE_CONTINUOUS_COVERAGE )
 
     if( SITE_CONTINUOUS_MEMORY )
-      ctest_memcheck( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+      ctest_memcheck( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
       ctest_submit( PARTS MemCheck )
-    endif()
+    endif( SITE_CONTINUOUS_MEMORY )
 
     function( TubeTK_Package )
-      execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package
-        WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
+      execute_process( COMMAND ${CMAKE_COMMAND}
+                         --build ${TUBETK_BINARY_DIR}/TubeTK-build
+                         --target package
+        WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build
         OUTPUT_STRIP_TRAILING_WHITESPACE
-        OUTPUT_FILE CPackOutputFiles.txt
-        )
+        OUTPUT_FILE CPackOutputFiles.txt )
     endfunction( TubeTK_Package )
 
     function( TubeTK_Upload )
-      set(package_list)
-      set(regexp ".*CPack: - package: (.*) generated\\.")
-      set(raw_package_list)
-      file(STRINGS ${TUBETK_BINARY_DIR}/TubeTK-Build/CPackOutputFiles.txt raw_package_list REGEX ${regexp})
-      foreach(package ${raw_package_list})
-        string(REGEX REPLACE ${regexp} "\\1" package_path "${package}" )
-        list(APPEND package_list ${package_path})
-      endforeach()
+      set( package_list )
+      set( regexp ".*CPack: - package: (.*) generated\\." )
+      set( raw_package_list )
+      file( STRINGS ${TUBETK_BINARY_DIR}/TubeTK-build/CPackOutputFiles.txt raw_package_list REGEX ${regexp} )
+      foreach( package ${raw_package_list} )
+        string( REGEX REPLACE ${regexp} "\\1" package_path "${package}" )
+        list( APPEND package_list ${package_path} )
+      endforeach( package ${raw_package_list} )
       ctest_upload( FILES ${package_list} )
       ctest_submit( PARTS Upload )
     endfunction( TubeTK_Upload )
 
     if( SITE_CONTINUOUS_PACKAGE )
       TubeTK_Package()
-    endif()
+    endif( SITE_CONTINUOUS_PACKAGE )
 
     if( SITE_CONTINUOUS_UPLOAD )
       TubeTK_Upload()
-    endif()
+    endif( SITE_CONTINUOUS_UPLOAD )
 
     function( TubeTK_Style )
       set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
-      configure_file(
-        ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-        ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
+      set( TubeTK_USE_KWSTYLE ON )
+      configure_file( ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+                      ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
       set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_start( "Nightly" )
       ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
         SOURCE "${TUBETK_SOURCE_DIR}"
         OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
-      execute_process(
-        COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck
-        WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
-        )
+      execute_process( COMMAND ${CMAKE_COMMAND}
+                         --build ${TUBETK_BINARY_DIR}/TubeTK-build
+                         --target StyleCheck
+        WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build )
       ctest_submit( PARTS configure build )
     endfunction( TubeTK_Style )
 
     if( SITE_CONTINUOUS_STYLE )
       TubeTK_Style()
-    endif()
+    endif( SITE_CONTINUOUS_STYLE )
+  endif( res GREATER 0 OR res LESS 0 )
 
-  endif()
-
-  # loop no faster than once every 2 minutes
+  # Loop no faster than once every 2 minutes.
   ctest_sleep( ${START_TIME} 120 ${CTEST_ELAPSED_TIME} )
+endwhile( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
-endwhile()
-
-# do not run this script as a dashboard
-set(CTEST_RUN_CURRENT_SCRIPT 0)
+set( CTEST_RUN_CURRENT_SCRIPT 0 )

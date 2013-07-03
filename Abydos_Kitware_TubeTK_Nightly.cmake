@@ -33,12 +33,12 @@ set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
 set( SITE_CMAKE_GENERATOR "Visual Studio 10" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "C:/dashboard/dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "C:/dashboard/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TUBETK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
+set( TUBETK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND "C:/Qt/4.7.1/bin/qmake" )
+set( SITE_QMAKE_COMMAND "C:/Qt/4.7.4/bin/qmake" )
 set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
 
 set( SITE_MEMORYCHECK_COMMAND "" )
@@ -54,7 +54,9 @@ set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
@@ -62,7 +64,9 @@ set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
 set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
@@ -70,7 +74,10 @@ set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
+set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
+set( SITE_NIGHTLY_CPPCHECK OFF )
+
 ##############################################################################
 
 ##############################################################################

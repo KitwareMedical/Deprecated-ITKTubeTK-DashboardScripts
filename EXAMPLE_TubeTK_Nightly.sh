@@ -12,7 +12,7 @@ rm -rf TubeTK-${BuildType}
  
 echo "Updating"
 cd TubeTK_Dashboards
-git pull -f
+git pull
 cd ..
  
 # Run the nightly

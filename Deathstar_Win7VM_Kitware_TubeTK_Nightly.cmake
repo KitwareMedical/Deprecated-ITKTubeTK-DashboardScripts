@@ -26,19 +26,19 @@
 # Configure the following variables and move this file to the directory above
 #   the TubeTK source directory.
 #
-set( SITE_NAME "Ginger.Aylward.Org" )
+set( SITE_NAME "deathstar.win7VM.kitware.com" )
 set( SITE_PLATFORM "Windows7-VS2010-64" )
 set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
 set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
-set( TUBETK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
+set( TUBETK_SOURCE_DIR "C:/Dashboards/TubeTK/TubeTK" )
+set( TUBETK_BINARY_DIR "C:/Dashboards/TubeTK/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND "C:/Qt/qt-everywhere-opensource-src-4.8.2/bin/qmake" )
+set( SITE_QMAKE_COMMAND "C:/Users/matt/Qt474/bin/qmake" )
 set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
 
 set( SITE_MEMORYCHECK_COMMAND "" )
@@ -46,7 +46,7 @@ set( SITE_COVERAGE_COMMAND "" )
 set( SITE_KWSTYLE_DIR "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files (x86)/Git/bin/git" )
-set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin/svn" )
+set( SITE_SVN_COMMAND "C:/Program Files (x86)/Subversion/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )

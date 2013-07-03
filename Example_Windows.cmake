@@ -24,31 +24,29 @@
 ##############################################################################
 #
 # Configure the following variables and move this file to the directory above
-#   the tubetk source directory.
+#   the TubeTK source directory.
 #
-set( SITE_NAME "Eternia.Kitware" )
-set( SITE_PLATFORM "Ubuntu-12.04-64" )
+set( SITE_NAME "Example_Windows_Site_Name" )
+set( SITE_PLATFORM "Windows7-VS2010-64" )
 set( SITE_BUILD_TYPE "Release" )
-set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
-set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
+set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
+set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
 
 set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TUBETK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
+set( TUBETK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
-set( ENV{DISPLAY} ":0" )
+set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
+set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
+set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
+set( SITE_QMAKE_COMMAND "C:/Qt/4.8.2/bin/qmake" )
 
-set( SITE_MAKE_COMMAND "make -j3" )
-set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
-set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
+set( SITE_COVERAGE_COMMAND "" )
+set( SITE_KWSTYLE_DIR "" )
+set( SITE_MEMORYCHECK_COMMAND "" )
 
-set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
-set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
-set( SITE_KWSTYLE_DIR "/usr/local/bin" )
-
-set( SITE_GIT_COMMAND "/usr/bin/git" )
-set( SITE_SVN_COMMAND "/usr/bin/svn" )
+set( SITE_GIT_COMMAND "C:/Program Files (x86)/Git/bin/git" )
+set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
@@ -56,27 +54,52 @@ set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
+set( SITE_EXPERIMENTAL_BOOST OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_CTK OFF)
+set( SITE_EXPERIMENTAL_LIBSVM OFF )
+set( SITE_EXPERIMENTAL_QT OFF )
+set( SITE_EXPERIMENTAL_SIMPLEITK OFF )
+set( SITE_EXPERIMENTAL_VTK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
-set( SITE_CONTINUOUS_PACKAGE ON )
-set( SITE_CONTINUOUS_UPLOAD ON )
+set( SITE_CONTINUOUS_PACKAGE OFF )
+set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
+set( SITE_CONTINUOUS_BOOST OFF )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_CTK OFF)
+set( SITE_CONTINUOUS_LIBSVM OFF )
+set( SITE_CONTINUOUS_QT OFF )
+set( SITE_CONTINUOUS_SIMPLEITK OFF )
+set( SITE_CONTINUOUS_VTK OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_COVERAGE ON )
-set( SITE_NIGHTLY_MEMORY ON )
+set( SITE_NIGHTLY_COVERAGE OFF )
+set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_STYLE ON )
+set( SITE_NIGHTLY_DOCUMENTATION OFF )
+set( SITE_NIGHTLY_STYLE OFF )
+set( SITE_NIGHTLY_BOOST OFF )
+set( SITE_NIGHTLY_CPPCHECK OFF )
+set( SITE_NIGHTLY_CTK OFF)
+set( SITE_NIGHTLY_LIBSVM OFF )
+set( SITE_NIGHTLY_QT OFF )
+set( SITE_NIGHTLY_SIMPLEITK OFF )
+set( SITE_NIGHTLY_VTK OFF )
+
 ##############################################################################
 
 ##############################################################################
-#
+###########################################################################
 # The following advanced variables should only be changed by experts
 #
 set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
@@ -107,39 +130,17 @@ set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE
   "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
-set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
+set( SITE_EXECUTABLE_DIRS "${TUBETK_BINARY_DIR}/ModuleDescriptionParser-Build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/GenerateCLP-Build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/Insight-Build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/VTK-Build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-Build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-Build/lib/TubeTK/Plugins/${SITE_BUILD_TYPE}" )
+set( ENV{PATH} "${SITE_EXECUTABLE_DIRS};$ENV{PATH}" )
 
-set( SITE_CXX_FLAGS
-  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
-set( SITE_C_FLAGS
-  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings" )
+set( SITE_CXX_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /GR /MP /EHsc" )
+set( SITE_C_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /MP" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "" )
 
-set( COVERAGE_FLAGS "-fprofile-arcs -ftest-coverage -lgcov" )
-if( SITE_NIGHTLY_COVERAGE
-    OR SITE_CONTINUOUS_COVERAGE
-    OR SITE_EXPERIMENTAL_COVERAGE )
-  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${COVERAGE_FLAGS}" )
-  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${COVERAGE_FLAGS}" )
-  set( SITE_EXE_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
-  set( SITE_SHARED_LINKER_FLAGS
-    "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
-endif()
-
-set( SITE_MEMORYCHECK_COMMAND_OPTIONS
-  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
+set( SITE_MEMORYCHECK_COMMAND_OPTIONS "" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
   "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
-
-set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
-if( SITE_NIGHTLY_MEMORY
-    OR SITE_CONTINUOUS_MEMORY
-    OR SITE_EXPERIMENTAL_MEMORY )
-  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${MEMORYCHECK_FLAGS}" )
-  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${MEMORYCHECK_FLAGS}" )
-endif()
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )
