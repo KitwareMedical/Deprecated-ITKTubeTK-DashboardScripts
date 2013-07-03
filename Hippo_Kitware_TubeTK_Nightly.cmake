@@ -43,7 +43,7 @@ set( ENV{DISPLAY} ":0" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest" )
 set( SITE_MAKE_COMMAND "/usr/bin/make" )
-set( SITE_QMAKE_COMMAND "" )
+set( SITE_QMAKE_COMMAND "/usr/local/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "" )
 set( SITE_KWSTYLE_DIR "" )

@@ -26,142 +26,140 @@ set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-BuildTest-Experimental" )
 if( SITE_EXPERIMENTAL_DOCUMENTATION )
   set( BUILD_DOCUMENTATION ON )
   set( TubeTK_USE_DOXYGEN ON )
-else()
+else( SITE_EXPERIMENTAL_DOCUMENTATION )
   set( BUILD_DOCUMENTATION OFF )
   set( TubeTK_USE_DOXYGEN OFF )
-endif()
+endif( SITE_EXPERIMENTAL_DOCUMENTATION )
 
 set( TubeTK_USE_KWSTYLE OFF )
 
 if( SITE_EXPERIMENTAL_BOOST )
   set( TubeTK_USE_Boost ON )
-else()
+else( SITE_EXPERIMENTAL_BOOST )
   set( TubeTK_USE_Boost OFF )
 endif( SITE_EXPERIMENTAL_BOOST )
 
 if( SITE_EXPERIMENTAL_CPPCHECK )
   set( TubeTK_USE_CPPCHECK ON )
-else()
+else( SITE_EXPERIMENTAL_CPPCHECK )
   set( TubeTK_USE_CPPCHECK OFF )
 endif( SITE_EXPERIMENTAL_CPPCHECK )
 
 if( SITE_EXPERIMENTAL_CTK )
   set( TubeTK_USE_CTK ON )
-else()
+else( SITE_EXPERIMENTAL_CTK )
   set( TubeTK_USE_CTK OFF )
 endif( SITE_EXPERIMENTAL_CTK )
 
 if( SITE_EXPERIMENTAL_LIBSVM )
   set( TubeTK_USE_LIBSVM ON )
-else()
+else( SITE_EXPERIMENTAL_LIBSVM )
   set( TubeTK_USE_LIBSVM OFF )
 endif( SITE_EXPERIMENTAL_LIBSVM )
 
 if( SITE_EXPERIMENTAL_QT )
   set( TubeTK_USE_QT ON )
-else()
+else( SITE_EXPERIMENTAL_QT )
   set( TubeTK_USE_QT OFF )
 endif( SITE_EXPERIMENTAL_QT )
 
 if( SITE_EXPERIMENTAL_SIMPLEITK )
   set( TubeTK_USE_SimpleITK ON )
-else()
+else( SITE_EXPERIMENTAL_SIMPLEITK )
   set( TubeTK_USE_SimpleITK OFF )
 endif( SITE_EXPERIMENTAL_SIMPLEITK )
 
 if( SITE_EXPERIMENTAL_VTK )
   set( TubeTK_USE_VTK ON )
-else()
+else( SITE_EXPERIMENTAL_VTK )
   set( TubeTK_USE_VTK OFF )
 endif( SITE_EXPERIMENTAL_VTK )
 
-configure_file(
-  ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-  ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
+configure_file( ${TUBETK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
+                ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
 set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
 
 ctest_start( "Experimental" )
 
 if( SITE_EXPERIMENTAL_BUILD )
-  #ctest_update( SOURCE "${TUBETK_SOURCE_DIR}" )
   ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
     SOURCE "${TUBETK_SOURCE_DIR}"
     OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
   ctest_build( BUILD "${TUBETK_BINARY_DIR}" )
-  #ctest_submit( PARTS Notes Update Configure Build )
   ctest_submit( PARTS Notes Configure Build )
-else()
+else( SITE_EXPERIMENTAL_BUILD )
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
   ctest_submit( PARTS Notes )
-endif()
+endif( SITE_EXPERIMENTAL_BUILD )
 
 if( SITE_EXPERIMENTAL_TEST )
-  ctest_test( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+  ctest_test( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
   ctest_submit( PARTS Test )
-endif()
+endif( SITE_EXPERIMENTAL_TEST )
 
 if( SITE_EXPERIMENTAL_COVERAGE )
-  ctest_coverage( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+  ctest_coverage( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
   ctest_submit( PARTS Coverage )
-endif()
+endif( SITE_EXPERIMENTAL_COVERAGE )
 
 if( SITE_EXPERIMENTAL_MEMORY )
-  ctest_memcheck( BUILD "${TUBETK_BINARY_DIR}/TubeTK-Build" )
+  ctest_memcheck( BUILD "${TUBETK_BINARY_DIR}/TubeTK-build" )
   ctest_submit( PARTS MemCheck )
-endif()
+endif( SITE_EXPERIMENTAL_COVERAGE )
 
 function( TubeTK_Package )
-  execute_process(
-    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target package --config ${CTEST_BUILD_CONFIGURATION}
-    WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
+  execute_process( COMMAND ${CMAKE_COMMAND}
+                     --build ${TUBETK_BINARY_DIR}/TubeTK-build
+                     --target package
+                     --config ${CTEST_BUILD_CONFIGURATION}
+    WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build
     OUTPUT_STRIP_TRAILING_WHITESPACE
-    OUTPUT_FILE CPackOutputFiles.txt
-    )
+    OUTPUT_FILE CPackOutputFiles.txt )
 endfunction( TubeTK_Package )
 
 function( TubeTK_Upload )
-  set(package_list)
-  set(regexp ".*CPack: - package: (.*) generated\\.")
-  set(raw_package_list)
-  file(STRINGS ${TUBETK_BINARY_DIR}/TubeTK-Build/CPackOutputFiles.txt raw_package_list REGEX ${regexp})
-  foreach(package ${raw_package_list})
-    string(REGEX REPLACE ${regexp} "\\1" package_path "${package}" )
-    list(APPEND package_list ${package_path})
-  endforeach()
+  set( package_list)
+  set( regexp ".*CPack: - package: (.*) generated\\." )
+  set( raw_package_list )
+  file( STRINGS ${TUBETK_BINARY_DIR}/TubeTK-build/CPackOutputFiles.txt raw_package_list REGEX ${regexp} )
+  foreach( package ${raw_package_list} )
+    string( REGEX REPLACE ${regexp} "\\1" package_path "${package}" )
+    list( APPEND package_list ${package_path} )
+  endforeach( package ${raw_package_list} )
   ctest_upload( FILES ${package_list} )
   ctest_submit( PARTS Upload )
 endfunction( TubeTK_Upload )
 
 if( SITE_EXPERIMENTAL_PACKAGE )
   TubeTK_Package()
-endif()
+endif( SITE_EXPERIMENTAL_PACKAGE )
 
 if( SITE_EXPERIMENTAL_UPLOAD )
   TubeTK_Upload()
-endif()
+endif( SITE_EXPERIMENTAL_UPLOAD )
 
 function( TubeTK_Style )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Experimental" )
   set( TubeTK_USE_KWSTYLE ON )
-  configure_file(
-    ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-    ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
+  configure_file( ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+                  ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_start( "Experimental" )
   ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
     SOURCE "${TUBETK_SOURCE_DIR}"
     OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
-  execute_process(
-    COMMAND ${CMAKE_COMMAND} --build ${TUBETK_BINARY_DIR}/TubeTK-Build --target StyleCheck --config ${CTEST_BUILD_CONFIGURATION}
-    WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-Build
-    )
+  execute_process( COMMAND ${CMAKE_COMMAND}
+                     --build ${TUBETK_BINARY_DIR}/TubeTK-build
+                     --target StyleCheck
+                     --config ${CTEST_BUILD_CONFIGURATION}
+    WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build )
   ctest_submit( PARTS configure build )
 endfunction( TubeTK_Style )
 
 if( SITE_EXPERIMENTAL_STYLE )
   TubeTK_Style()
-endif()
+endif( SITE_EXPERIMENTAL_STYLE )
 
-set(CTEST_RUN_CURRENT_SCRIPT 0)
+set( CTEST_RUN_CURRENT_SCRIPT 0 )
