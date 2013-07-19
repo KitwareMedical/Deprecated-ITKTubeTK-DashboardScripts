@@ -22,12 +22,12 @@
 ##############################################################################
 
 ##############################################################################
-#
 # Configure the following variables and move this file to the directory above
-#   the TubeTK source directory.
-#
+# the TubeTK source directory.
+##############################################################################
+
 set( SITE_NAME "Hippo.Kitware" )
-set( SITE_PLATFORM "apple-darwin12.4.0-clang-x86_64" )
+set( SITE_PLATFORM "apple-darwin12.4.0-clang-x86_64-boost-cppcheck-libsvm-vtk" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
 set( SITE_CTEST_MODE "Nightly" )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
@@ -36,7 +36,8 @@ set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
 set( TUBETK_ROOT_DIR "/Users/snape/Development/TubeTK" )
 set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/TubeTK-Dashboards" )
 set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
-set( TUBETK_BINARY_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
+set( TUBETK_BINARY_DIR
+  "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
@@ -92,20 +93,18 @@ set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
 set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
-set( SITE_NIGHTLY_BOOST OFF )
+set( SITE_NIGHTLY_BOOST ON )
 set( SITE_NIGHTLY_CPPCHECK ON )
 set( SITE_NIGHTLY_CTK OFF)
-set( SITE_NIGHTLY_LIBSVM OFF )
+set( SITE_NIGHTLY_LIBSVM ON )
 set( SITE_NIGHTLY_QT OFF )
 set( SITE_NIGHTLY_SIMPLEITK OFF )
 set( SITE_NIGHTLY_VTK ON )
 
 ##############################################################################
-
+# The following advanced variables should only be changed by experts.
 ##############################################################################
-#
-# The following advanced variables should only be changed by experts
-#
+
 set( TUBETK_SCRIPT_DIR "${TUBETK_SOURCE_DIR}/CMake" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
@@ -127,16 +126,25 @@ set( CTEST_CMAKE_COMMAND "${SITE_CMAKE_COMMAND}" )
 set( CTEST_CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 set( CTEST_UPDATE_COMMAND "${SITE_UPDATE_COMMAND}" )
 set( CTEST_COVERAGE_COMMAND "${SITE_COVERAGE_COMMAND}" )
+
+set( SITE_MEMORYCHECK_COMMAND_OPTIONS
+  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
+set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
+  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+
 set( CTEST_MEMORYCHECK_COMMAND "${SITE_MEMORYCHECK_COMMAND}" )
 set( CTEST_MEMORYCHECK_COMMAND_OPTIONS "${SITE_MEMORYCHECK_COMMAND_OPTIONS}" )
 set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
+
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
 set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
-set( SITE_C_FLAGS "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
-set( SITE_CXX_FLAGS "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
+set( SITE_C_FLAGS
+  "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
+set( SITE_CXX_FLAGS
+  "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS}" )
 
@@ -148,12 +156,11 @@ set( COVERAGE_SHARED_LINKER_FLAGS "${COVERAGE_EXE_LINKER_FLAGS}" )
 if( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
   set( SITE_C_FLAGS "${SITE_C_FLAGS} ${COVERAGE_C_FLAGS}" )
   set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${COVERAGE_CXX_FLAGS}" )
-  set( SITE_EXE_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS} ${COVERAGE_EXE_LINKER_FLAGS}" )
-  set( SITE_SHARED_LINKER_FLAGS "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_SHARED_LINKER_FLAGS}" )
+  set( SITE_EXE_LINKER_FLAGS
+    "${SITE_EXE_LINKER_FLAGS} ${COVERAGE_EXE_LINKER_FLAGS}" )
+  set( SITE_SHARED_LINKER_FLAGS
+    "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_SHARED_LINKER_FLAGS}" )
 endif( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
-
-set( SITE_MEMORYCHECK_COMMAND_OPTIONS "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
-set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( MEMORYCHECK_C_FLAGS "-g -O0 -ggdb" )
 set( MEMORYCHECK_CXX_FLAGS "${MEMORYCHECK_C_FLAGS}" )
@@ -165,8 +172,10 @@ endif( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )
-set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${SITE_EXE_LINKER_FLAGS}" )
-set( CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${SITE_SHARED_LINKER_FLAGS}" )
+set( CMAKE_EXE_LINKER_FLAGS
+  "${CMAKE_EXE_LINKER_FLAGS} ${SITE_EXE_LINKER_FLAGS}" )
+set( CMAKE_SHARED_LINKER_FLAGS
+  "${CMAKE_SHARED_LINKER_FLAGS} ${SITE_SHARED_LINKER_FLAGS}" )
 
 set( GITCOMMAND "${SITE_GIT_COMMAND}" )
 set( GIT_EXECUTABLE "${SITE_GIT_COMMAND}" )
