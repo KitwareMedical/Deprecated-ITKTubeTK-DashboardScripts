@@ -50,6 +50,9 @@ set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
+set( TUBETK_USE_VTK ON )
+set( TUBETK_USE_LIBSVM ON )
+
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
 set( SITE_EXPERIMENTAL_COVERAGE OFF )
