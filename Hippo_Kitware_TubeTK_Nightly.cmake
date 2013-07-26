@@ -34,7 +34,7 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_ROOT_DIR "/Users/snape/Development/TubeTK" )
-set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/TubeTK-Dashboards" )
+set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/DashboardScripts" )
 set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
 set( TUBETK_BINARY_DIR
   "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
