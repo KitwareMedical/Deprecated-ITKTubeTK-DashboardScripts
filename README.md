@@ -21,7 +21,7 @@ Get a copy of all the dashboard scripts from the Git repository, including some 
     $ git clone https://github.com/TubeTK/DashboardScripts.git TubeTK_Dashboards
 
 This is the script that will update and launch your dashboard client every night. Use the `.bat` file if you are doing this on Microsoft Windows.
-  
+
     $ cp TubeTK_Dashboards/EXAMPLE_TubeTK_Nightly.sh TubeTK_Nightly.sh
 
 Setup your machine's parameters as described in the file.
@@ -50,7 +50,7 @@ Make sure you have the latest copy of the `TubeTK_Dashboard` directory and then 
 Do this on Linux machines to setup a recurring nightly job.
 
     $ crontab -e
-   
+
 Add the following line, but please change the start minute (20) and the start hour (0) to different values to avoid simultaneous downloads from multiple machines.
 
     20 0 * * * /home/me/src/dashboards/TubeTK_Nightly.sh
