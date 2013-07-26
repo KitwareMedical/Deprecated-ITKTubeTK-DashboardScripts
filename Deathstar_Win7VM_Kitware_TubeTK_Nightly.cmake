@@ -32,7 +32,7 @@ set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
 set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
 
-set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
+set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "C:/Dashboards/TubeTK/TubeTK" )
 set( TUBETK_BINARY_DIR "C:/Dashboards/TubeTK/TubeTK-${SITE_BUILD_TYPE}" )
 
