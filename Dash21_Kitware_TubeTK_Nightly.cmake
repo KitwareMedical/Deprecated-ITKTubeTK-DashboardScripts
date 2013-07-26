@@ -32,7 +32,7 @@ set( SITE_BUILD_TYPE "Debug" )
 set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TUBETK_GIT_REPOSITORY "http://tubetk.org/TubeTK.git" )
+set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "/home/kitware/Dashboards/TubeTK" )
 set( TUBETK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 

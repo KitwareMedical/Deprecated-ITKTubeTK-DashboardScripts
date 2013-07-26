@@ -18,7 +18,7 @@ Go to the top level of your dashboard clients.
 
 Get a copy of all the dashboard scripts from the Git repository, including some example scripts.
 
-    $ git clone -b dashboard http://tubetk.org/TubeTK.git TubeTK_Dashboards
+    $ git clone https://github.com/TubeTK/DashboardScripts.git TubeTK_Dashboards
 
 This is the script that will update and launch your dashboard client every night. Use the `.bat` file if you are doing this on Microsoft Windows.
   
