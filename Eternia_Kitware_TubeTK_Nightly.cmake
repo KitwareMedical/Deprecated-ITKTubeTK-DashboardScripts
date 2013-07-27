@@ -36,6 +36,13 @@ set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
 set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
+set( TUBETK_USE_VTK ON )
+set( TUBETK_USE_QT OFF )
+set( TUBETK_USE_CTK OFF ) # requires TUBETK_USE_QT ON
+set( TUBETK_USE_BOOST ON )
+set( TUBETK_USE_LIBSVM ON )
+set( TUBETK_USE_SIMPLEITK OFF )
+
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j3" )
@@ -49,9 +56,6 @@ set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
-
-set( TUBETK_USE_VTK ON )
-set( TUBETK_USE_LIBSVM ON )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
