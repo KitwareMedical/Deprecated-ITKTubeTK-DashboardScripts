@@ -37,47 +37,11 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
   set( TubeTK_USE_KWSTYLE OFF )
 
-  if( SITE_CONTINUOUS_BOOST )
-    set( TubeTK_USE_Boost ON )
-  else( SITE_CONTINUOUS_BOOST )
-    set( TubeTK_USE_Boost OFF )
-  endif( SITE_CONTINUOUS_BOOST )
-
   if( SITE_CONTINUOUS_CPPCHECK )
     set( TubeTK_USE_CPPCHECK ON )
   else( SITE_CONTINUOUS_CPPCHECK )
     set( TubeTK_USE_CPPCHECK OFF )
   endif( SITE_CONTINUOUS_CPPCHECK )
-
-  if( SITE_CONTINUOUS_CTK )
-    set( TubeTK_USE_CTK ON )
-  else( SITE_CONTINUOUS_CTK )
-    set( TubeTK_USE_CTK OFF )
-  endif( SITE_CONTINUOUS_CTK )
-
-  if( SITE_CONTINUOUS_LIBSVM )
-    set( TubeTK_USE_LIBSVM ON )
-  else( SITE_CONTINUOUS_LIBSVM )
-    set( TubeTK_USE_LIBSVM OFF )
-  endif( SITE_CONTINUOUS_LIBSVM )
-
-  if( SITE_CONTINUOUS_QT )
-    set( TubeTK_USE_QT ON )
-  else( SITE_CONTINUOUS_QT )
-    set( TubeTK_USE_QT OFF )
-  endif( SITE_CONTINUOUS_QT )
-
-  if( SITE_CONTINUOUS_SIMPLEITK )
-    set( TubeTK_USE_SimpleITK ON )
-  else( SITE_CONTINUOUS_SIMPLEITK )
-    set( TubeTK_USE_SimpleITK OFF )
-  endif( SITE_CONTINUOUS_SIMPLEITK )
-
-  if( SITE_CONTINUOUS_VTK )
-    set( TubeTK_USE_VTK ON )
-  else( SITE_CONTINUOUS_VTK )
-    set( TubeTK_USE_VTK OFF )
-  endif( SITE_CONTINUOUS_VTK )
 
   configure_file( ${TUBETK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
                   ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
