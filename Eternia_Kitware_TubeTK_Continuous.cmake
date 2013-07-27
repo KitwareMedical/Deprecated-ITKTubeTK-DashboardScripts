@@ -37,8 +37,8 @@ set( TUBETK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
 set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( TUBETK_USE_VTK ON )
-set( TUBETK_USE_QT ON )
-set( TUBETK_USE_CTK ON ) # requires QT
+set( TUBETK_USE_QT OFF )
+set( TUBETK_USE_CTK OFF ) # requires QT
 set( TUBETK_USE_BOOST ON )
 set( TUBETK_USE_LIBSVM ON )
 set( TUBETK_USE_SIMPLEITK OFF )
