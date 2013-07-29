@@ -18,11 +18,11 @@ Go to the top level of your dashboard clients.
 
 Get a copy of all the dashboard scripts from the Git repository, including some example scripts.
 
-    $ git clone https://github.com/TubeTK/DashboardScripts.git TubeTK_Dashboards
+    $ git clone https://github.com/TubeTK/TubeTK-DashboardScripts.git
 
 This is the script that will update and launch your dashboard client every night. Use the `.bat` file if you are doing this on Microsoft Windows.
 
-    $ cp TubeTK_Dashboards/EXAMPLE_TubeTK_Nightly.sh TubeTK_Nightly.sh
+    $ cp TubeTK-DashboardScripts/EXAMPLE_TubeTK_Nightly.sh TubeTK_Nightly.sh
 
 Setup your machine's parameters as described in the file.
 
@@ -30,7 +30,7 @@ Setup your machine's parameters as described in the file.
 
 Create a specific set of parameters for your dashboard machine.
 
-    $ cd TubeTK_Dashboards
+    $ cd TubeTK-DashboardScripts
     $ cp EXAMPLE_Linux.cmake MyMachine_TubeTK_Nightly.cmake
 
 Setup the parameters as specified in that file.
