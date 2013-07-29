@@ -36,6 +36,13 @@ set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_SOURCE_DIR "/home/matt/dashboards/TubeTK" )
 set( TUBETK_BINARY_DIR "/home/matt/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
+set( TUBETK_USE_VTK ON )
+set( TUBETK_USE_QT OFF )
+set( TUBETK_USE_CTK OFF ) # requires TUBETK_USE_QT ON
+set( TUBETK_USE_BOOST OFF )
+set( TUBETK_USE_LIBSVM OFF )
+set( TUBETK_USE_SIMPLEITK OFF )
+
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j1" )
@@ -60,7 +67,6 @@ set( SITE_EXPERIMENTAL_UPLOAD OFF )
 set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
 set( SITE_EXPERIMENTAL_CPPCHECK ON )
-set( SITE_EXPERIMENTAL_BOOST ON )
 
 set( SITE_CONTINUOUS_BUILD ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_TEST ON ) # Must be ON for any Continuous to run
@@ -71,7 +77,6 @@ set( SITE_CONTINUOUS_UPLOAD OFF )
 set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
 set( SITE_CONTINUOUS_CPPCHECK ON )
-set( SITE_CONTINUOUS_BOOST ON )
 
 set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
@@ -82,7 +87,6 @@ set( SITE_NIGHTLY_UPLOAD ON )
 set( SITE_NIGHTLY_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_STYLE OFF )
 set( SITE_NIGHTLY_CPPCHECK ON )
-set( SITE_NIGHTLY_BOOST ON )
 
 ##############################################################################
 
