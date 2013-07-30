@@ -34,17 +34,17 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TUBETK_ROOT_DIR "/Users/snape/Development/TubeTK" )
-set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/DashboardScripts" )
+set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/TubeTK-DashboardScripts" )
 set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
 set( TUBETK_BINARY_DIR
   "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
 
-set( TUBETK_USE_VTK ON )
-set( TUBETK_USE_QT OFF )
-set( TUBETK_USE_CTK OFF ) # requires QT
-set( TUBETK_USE_BOOST OFF )
-set( TUBETK_USE_LIBSVM OFF )
-set( TUBETK_USE_SIMPLEITK OFF )
+set( TubeTK_USE_VTK ON )
+set( TubeTK_USE_QT OFF )
+set( TubeTK_USE_CTK OFF ) # requires QT
+set( TubeTK_USE_BOOST OFF )
+set( TubeTK_USE_LIBSVM OFF )
+set( TubeTK_USE_SIMPLEITK OFF )
 
 set( ENV{DISPLAY} ":0" )
 
@@ -54,7 +54,6 @@ set( SITE_MAKE_COMMAND "/usr/bin/make" )
 set( SITE_QMAKE_COMMAND "/usr/local/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "" )
-set( SITE_KWSTYLE_DIR "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
@@ -126,9 +125,6 @@ set( CTEST_MEMORYCHECK_COMMAND_OPTIONS "${SITE_MEMORYCHECK_COMMAND_OPTIONS}" )
 set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
-
-set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
 set( SITE_C_FLAGS
   "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )

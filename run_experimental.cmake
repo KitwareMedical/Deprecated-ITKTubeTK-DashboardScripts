@@ -31,8 +31,6 @@ else( SITE_EXPERIMENTAL_DOCUMENTATION )
   set( TubeTK_USE_DOXYGEN OFF )
 endif( SITE_EXPERIMENTAL_DOCUMENTATION )
 
-set( TubeTK_USE_KWSTYLE OFF )
-
 if( SITE_EXPERIMENTAL_CPPCHECK )
   set( TubeTK_USE_CPPCHECK ON )
 else( SITE_EXPERIMENTAL_CPPCHECK )
@@ -102,28 +100,5 @@ endif( SITE_EXPERIMENTAL_PACKAGE )
 if( SITE_EXPERIMENTAL_UPLOAD )
   TubeTK_Upload()
 endif( SITE_EXPERIMENTAL_UPLOAD )
-
-function( TubeTK_Style )
-  set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Experimental" )
-  set( TubeTK_USE_KWSTYLE ON )
-  configure_file( ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-                  ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
-  set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
-  ctest_start( "Experimental" )
-  ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
-    SOURCE "${TUBETK_SOURCE_DIR}"
-    OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
-  ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
-  execute_process( COMMAND ${CMAKE_COMMAND}
-                     --build ${TUBETK_BINARY_DIR}/TubeTK-build
-                     --target StyleCheck
-                     --config ${CTEST_BUILD_CONFIGURATION}
-    WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build )
-  ctest_submit( PARTS configure build )
-endfunction( TubeTK_Style )
-
-if( SITE_EXPERIMENTAL_STYLE )
-  TubeTK_Style()
-endif( SITE_EXPERIMENTAL_STYLE )
 
 set( CTEST_RUN_CURRENT_SCRIPT 0 )
