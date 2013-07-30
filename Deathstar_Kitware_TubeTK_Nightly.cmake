@@ -22,10 +22,10 @@
 ##############################################################################
 
 ##############################################################################
-#
 # Configure the following variables and move this file to the directory above
-#   the tubetk source directory.
-#
+# the TubeTK source directory.
+##############################################################################
+
 set( SITE_NAME "Deathstar.Kitware" )
 set( SITE_PLATFORM "Debian-Stable-64-Boost" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
@@ -52,7 +52,6 @@ set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
-set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
@@ -89,11 +88,9 @@ set( SITE_NIGHTLY_STYLE OFF )
 set( SITE_NIGHTLY_CPPCHECK ON )
 
 ##############################################################################
-
+# The following advanced variables should only be changed by experts.
 ##############################################################################
-#
-# The following advanced variables should only be changed by experts
-#
+
 set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
@@ -121,9 +118,6 @@ set( CTEST_MEMORYCHECK_COMMAND_OPTIONS
 set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE
   "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
-
-set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
 set( SITE_CXX_FLAGS
   "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )

@@ -22,10 +22,10 @@
 ##############################################################################
 
 ##############################################################################
-#
 # Configure the following variables and move this file to the directory above
-#   the TubeTK source directory.
-#
+# the TubeTK source directory.
+##############################################################################
+
 set( SITE_NAME "Example_Windows_Site_Name" )
 set( SITE_PLATFORM "Windows7-VS2010-64" )
 set( SITE_BUILD_TYPE "Release" )
@@ -49,7 +49,6 @@ set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_QMAKE_COMMAND "C:/Qt/4.8.2/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "" )
-set( SITE_KWSTYLE_DIR "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files (x86)/Git/bin/git" )
@@ -86,11 +85,9 @@ set( SITE_NIGHTLY_STYLE OFF )
 set( SITE_NIGHTLY_CPPCHECK OFF )
 
 ##############################################################################
-
+# The following advanced variables should only be changed by experts.
 ##############################################################################
-###########################################################################
-# The following advanced variables should only be changed by experts
-#
+
 set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
@@ -119,7 +116,7 @@ set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE
   "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
-set( SITE_EXECUTABLE_DIRS "${TUBETK_BINARY_DIR}/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/GenerateCLP-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/Insight-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/lib/TubeTK/Plugins/${SITE_BUILD_TYPE}" )
+set( SITE_EXECUTABLE_DIRS "${TUBETK_BINARY_DIR}/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/GenerateCLP-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/ITK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/lib/TubeTK/Plugins/${SITE_BUILD_TYPE}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS};$ENV{PATH}" )
 
 set( SITE_CXX_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /GR /MP /EHsc" )

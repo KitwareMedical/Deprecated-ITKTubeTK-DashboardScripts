@@ -35,8 +35,6 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
     set( TubeTK_USE_DOXYGEN OFF )
   endif( SITE_CONTINUOUS_DOCUMENTATION )
 
-  set( TubeTK_USE_KWSTYLE OFF )
-
   if( SITE_CONTINUOUS_CPPCHECK )
     set( TubeTK_USE_CPPCHECK ON )
   else( SITE_CONTINUOUS_CPPCHECK )
@@ -108,28 +106,6 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
     if( SITE_CONTINUOUS_UPLOAD )
       TubeTK_Upload()
     endif( SITE_CONTINUOUS_UPLOAD )
-
-    function( TubeTK_Style )
-      set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
-      set( TubeTK_USE_KWSTYLE ON )
-      configure_file( ${TUBETK_SCRIPT_DIR}/InitCMakeCache.cmake.in
-                      ${TUBETK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
-      set( CTEST_NOTES_FILES "${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
-      ctest_start( "Nightly" )
-      ctest_configure( BUILD "${TUBETK_BINARY_DIR}"
-        SOURCE "${TUBETK_SOURCE_DIR}"
-        OPTIONS "-C${TUBETK_BINARY_DIR}/InitCMakeCache.cmake" )
-      ctest_read_custom_files( "${TUBETK_BINARY_DIR}" )
-      execute_process( COMMAND ${CMAKE_COMMAND}
-                         --build ${TUBETK_BINARY_DIR}/TubeTK-build
-                         --target StyleCheck
-        WORKING_DIRECTORY ${TUBETK_BINARY_DIR}/TubeTK-build )
-      ctest_submit( PARTS configure build )
-    endfunction( TubeTK_Style )
-
-    if( SITE_CONTINUOUS_STYLE )
-      TubeTK_Style()
-    endif( SITE_CONTINUOUS_STYLE )
   endif( res GREATER 0 OR res LESS 0 )
 
   # Loop no faster than once every 2 minutes.
