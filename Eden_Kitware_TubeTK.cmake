@@ -26,33 +26,38 @@
 # Configure the following variables and move this file to the directory above
 #   the tubetk source directory.
 #
-set( SITE_NAME "Eternia.Kitware" )
-set( SITE_PLATFORM "Ubuntu-12.04-64" )
+set( SITE_NAME "Eden.Kitware" )
+set( SITE_PLATFORM "MacOS" )
 set( SITE_BUILD_TYPE "Debug" )
-set( SITE_CTEST_MODE "Continuous" ) # Experimental, Continuous, or Nightly
+if( NOT SITE_CTEST_MODE )
+  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/TubeTK" )
+set( TubeTK_BINARY_DIR "/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
-set( TUBETK_USE_VTK ON )
-set( TUBETK_USE_QT OFF )
-set( TUBETK_USE_CTK OFF ) # requires QT
-set( TUBETK_USE_BOOST ON )
-set( TUBETK_USE_LIBSVM ON )
-set( TUBETK_USE_SIMPLEITK OFF )
+set( TubeTK_USE_VTK ON )
+set( TubeTK_USE_QT ON )
+set( TubeTK_USE_CTK ON ) # requires TubeTK_USE_QT ON
+set( TubeTK_USE_BOOST ON )
+set( BOOST_ROOT /Users/aylward/src/boost_1_54_0 )
+set( TubeTK_USE_LIBSVM OFF )
+set( LIBSVM_DIR /Users/aylward/src/libsvm-3.17 )
+set( TubeTK_USE_SIMPLEITK OFF )
+set( TubeTK_USE_SLICER OFF )
 
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j3" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.7.4/bin/qmake" )
+set( SITE_QMAKE_COMMAND "/Users/aylward/QtSDK/Desktop/Qt/474/gcc/bin/qmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
 
-set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
+set( SITE_MEMORYCHECK_COMMAND "" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
-set( SITE_KWSTYLE_DIR "/usr/local/bin" )
+set( SITE_KWSTYLE_DIR "" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
@@ -65,17 +70,17 @@ set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
 set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
 set( SITE_EXPERIMENTAL_STYLE OFF )
-set( SITE_EXPERIMENTAL_CPPCHECK ON )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
-set( SITE_CONTINUOUS_PACKAGE OFF )
-set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_PACKAGE ON )
+set( SITE_CONTINUOUS_UPLOAD ON )
 set( SITE_CONTINUOUS_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_STYLE OFF )
-set( SITE_CONTINUOUS_CPPCHECK ON )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
@@ -93,7 +98,7 @@ set( SITE_NIGHTLY_CPPCHECK ON )
 #
 # The following advanced variables should only be changed by experts
 #
-set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
+set( TubeTK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
@@ -104,8 +109,8 @@ set( CTEST_SITE "${SITE_NAME}" )
 set( CTEST_BUILD_CONFIGURATION "${SITE_BUILD_TYPE}" )
 set( CTEST_BUILD_COMMAND "${SITE_MAKE_COMMAND}" )
 
-set( CTEST_SOURCE_DIRECTORY "${TUBETK_SOURCE_DIR}" )
-set( CTEST_BINARY_DIRECTORY "${TUBETK_BINARY_DIR}/TubeTK-build" )
+set( CTEST_SOURCE_DIRECTORY "${TubeTK_SOURCE_DIR}" )
+set( CTEST_BINARY_DIRECTORY "${TubeTK_BINARY_DIR}/TubeTK-build" )
 
 set( CTEST_CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
 set( CTEST_TEST_TIMEOUT 1500 )
@@ -145,7 +150,7 @@ endif()
 set( SITE_MEMORYCHECK_COMMAND_OPTIONS
   "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+  "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
 if( SITE_NIGHTLY_MEMORY
@@ -168,17 +173,17 @@ set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
 
-if( NOT EXISTS "${TUBETK_SOURCE_DIR}/CMakeLists.txt" )
+if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
   execute_process( COMMAND
     "${SITE_GIT_COMMAND}"
-    clone "${TUBETK_GIT_REPOSITORY}" "${TUBETK_SOURCE_DIR}" )
+    clone "${TubeTK_GIT_REPOSITORY}" "${TubeTK_SOURCE_DIR}" )
   ctest_run_script()
 endif()
 
 if( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
-  include( "${TUBETK_SCRIPT_DIR}/run_experimental.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_experimental.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Continuous" )
-  include( "${TUBETK_SCRIPT_DIR}/run_continuous.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_continuous.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Nightly" )
-  include( "${TUBETK_SCRIPT_DIR}/run_nightly.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_nightly.cmake" )
 endif()

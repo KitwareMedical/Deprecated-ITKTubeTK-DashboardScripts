@@ -32,19 +32,19 @@ set( SITE_BUILD_TYPE "RelWithDebInfo" )
 set( SITE_CTEST_MODE "Nightly" )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TUBETK_ROOT_DIR "/Users/snape/Development/TubeTK" )
-set( TUBETK_DASHBOARDS_DIR "${TUBETK_ROOT_DIR}/DashboardScripts" )
-set( TUBETK_SOURCE_DIR "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
-set( TUBETK_BINARY_DIR
-  "${TUBETK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
+set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
+set( TubeTK_ROOT_DIR "/Users/snape/Development/TubeTK" )
+set( TubeTK_DASHBOARDS_DIR "${TubeTK_ROOT_DIR}/DashboardScripts" )
+set( TubeTK_SOURCE_DIR "${TubeTK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
+set( TubeTK_BINARY_DIR
+  "${TubeTK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
 
-set( TUBETK_USE_VTK ON )
-set( TUBETK_USE_QT OFF )
-set( TUBETK_USE_CTK OFF ) # requires QT
-set( TUBETK_USE_BOOST OFF )
-set( TUBETK_USE_LIBSVM OFF )
-set( TUBETK_USE_SIMPLEITK OFF )
+set( TubeTK_USE_VTK ON )
+set( TubeTK_USE_QT OFF )
+set( TubeTK_USE_CTK OFF ) # requires QT
+set( TubeTK_USE_BOOST OFF )
+set( TubeTK_USE_LIBSVM OFF )
+set( TubeTK_USE_SIMPLEITK OFF )
 
 set( ENV{DISPLAY} ":0" )
 
@@ -94,7 +94,7 @@ set( SITE_NIGHTLY_CPPCHECK ON )
 # The following advanced variables should only be changed by experts.
 ##############################################################################
 
-set( TUBETK_SCRIPT_DIR "${TUBETK_SOURCE_DIR}/CMake" )
+set( TubeTK_SCRIPT_DIR "${TubeTK_SOURCE_DIR}/CMake" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
@@ -105,8 +105,8 @@ set( CTEST_SITE "${SITE_NAME}" )
 set( CTEST_BUILD_CONFIGURATION "${SITE_BUILD_TYPE}" )
 set( CTEST_BUILD_COMMAND "${SITE_MAKE_COMMAND}" )
 
-set( CTEST_SOURCE_DIRECTORY "${TUBETK_SOURCE_DIR}" )
-set( CTEST_BINARY_DIRECTORY "${TUBETK_BINARY_DIR}/TubeTK-build" )
+set( CTEST_SOURCE_DIRECTORY "${TubeTK_SOURCE_DIR}" )
+set( CTEST_BINARY_DIRECTORY "${TubeTK_BINARY_DIR}/TubeTK-build" )
 
 set( CTEST_CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
 set( CTEST_TEST_TIMEOUT 1500 )
@@ -119,7 +119,7 @@ set( CTEST_COVERAGE_COMMAND "${SITE_COVERAGE_COMMAND}" )
 set( SITE_MEMORYCHECK_COMMAND_OPTIONS
   "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+  "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( CTEST_MEMORYCHECK_COMMAND "${SITE_MEMORYCHECK_COMMAND}" )
 set( CTEST_MEMORYCHECK_COMMAND_OPTIONS "${SITE_MEMORYCHECK_COMMAND_OPTIONS}" )
@@ -172,15 +172,15 @@ set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
 
-if( NOT EXISTS "${TUBETK_SOURCE_DIR}/CMakeLists.txt" )
-  execute_process( COMMAND "${SITE_GIT_COMMAND}" clone "${TUBETK_GIT_REPOSITORY}" "${TUBETK_SOURCE_DIR}" )
+if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
+  execute_process( COMMAND "${SITE_GIT_COMMAND}" clone "${TubeTK_GIT_REPOSITORY}" "${TubeTK_SOURCE_DIR}" )
   ctest_run_script()
-endif( NOT EXISTS "${TUBETK_SOURCE_DIR}/CMakeLists.txt" )
+endif( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
 
 if( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
-  include( "${TUBETK_DASHBOARDS_DIR}/run_experimental.cmake" )
+  include( "${TubeTK_DASHBOARDS_DIR}/run_experimental.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Continuous" )
-  include( "${TUBETK_DASHBOARDS_DIR}/run_continuous.cmake" )
+  include( "${TubeTK_DASHBOARDS_DIR}/run_continuous.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Nightly" )
-  include( "${TUBETK_DASHBOARDS_DIR}/run_nightly.cmake" )
+  include( "${TubeTK_DASHBOARDS_DIR}/run_nightly.cmake" )
 endif()

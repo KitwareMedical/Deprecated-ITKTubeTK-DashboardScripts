@@ -32,9 +32,9 @@ set( SITE_BUILD_TYPE "Debug" )
 set( SITE_CTEST_MODE "Continuous" ) # Experimental, Continuous, or Nightly
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "/home/kitware/Dashboards/TubeTK" )
-set( TUBETK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
+set( TubeTK_SOURCE_DIR "/home/kitware/Dashboards/TubeTK" )
+set( TubeTK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( ENV{DISPLAY} ":0" )
 
@@ -89,7 +89,7 @@ set( SITE_NIGHTLY_CPPCHECK ON )
 #
 # The following advanced variables should only be changed by experts
 #
-set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
+set( TubeTK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
@@ -100,8 +100,8 @@ set( CTEST_SITE "${SITE_NAME}" )
 set( CTEST_BUILD_CONFIGURATION "${SITE_BUILD_TYPE}" )
 set( CTEST_BUILD_COMMAND "${SITE_MAKE_COMMAND}" )
 
-set( CTEST_SOURCE_DIRECTORY "${TUBETK_SOURCE_DIR}" )
-set( CTEST_BINARY_DIRECTORY "${TUBETK_BINARY_DIR}/TubeTK-build" )
+set( CTEST_SOURCE_DIRECTORY "${TubeTK_SOURCE_DIR}" )
+set( CTEST_BINARY_DIRECTORY "${TubeTK_BINARY_DIR}/TubeTK-build" )
 
 set( CTEST_CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
 set( CTEST_TEST_TIMEOUT 1500 )
@@ -141,7 +141,7 @@ endif()
 set( SITE_MEMORYCHECK_COMMAND_OPTIONS
   "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+  "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
 if( SITE_NIGHTLY_MEMORY
@@ -164,17 +164,17 @@ set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
 
-if( NOT EXISTS "${TUBETK_SOURCE_DIR}/CMakeLists.txt" )
+if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
   execute_process( COMMAND
     "${SITE_GIT_COMMAND}"
-    clone "${TUBETK_GIT_REPOSITORY}" "${TUBETK_SOURCE_DIR}" )
+    clone "${TubeTK_GIT_REPOSITORY}" "${TubeTK_SOURCE_DIR}" )
   ctest_run_script()
 endif()
 
 if( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
-  include( "${TUBETK_SCRIPT_DIR}/run_experimental.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_experimental.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Continuous" )
-  include( "${TUBETK_SCRIPT_DIR}/run_continuous.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_continuous.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Nightly" )
-  include( "${TUBETK_SCRIPT_DIR}/run_nightly.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_nightly.cmake" )
 endif()

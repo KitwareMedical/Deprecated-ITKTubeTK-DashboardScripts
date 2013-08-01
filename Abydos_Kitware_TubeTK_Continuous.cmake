@@ -32,9 +32,9 @@ set( SITE_BUILD_TYPE "Release" )
 set( SITE_CTEST_MODE "Continuous" ) # one of Experimental, Continuous, Nightly
 set( SITE_CMAKE_GENERATOR "Visual Studio 10" )
 
-set( TUBETK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TUBETK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
-set( TUBETK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
+set( TubeTK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
+set( TubeTK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
@@ -84,7 +84,7 @@ set( SITE_NIGHTLY_CPPCHECK OFF )
 ###########################################################################
 # The following advanced variables should only be changed by experts
 #
-set( TUBETK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
+set( TubeTK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
@@ -95,8 +95,8 @@ set( CTEST_SITE "${SITE_NAME}" )
 set( CTEST_BUILD_CONFIGURATION "${SITE_BUILD_TYPE}" )
 set( CTEST_BUILD_COMMAND "${SITE_MAKE_COMMAND}" )
 
-set( CTEST_SOURCE_DIRECTORY "${TUBETK_SOURCE_DIR}" )
-set( CTEST_BINARY_DIRECTORY "${TUBETK_BINARY_DIR}/TubeTK-build" )
+set( CTEST_SOURCE_DIRECTORY "${TubeTK_SOURCE_DIR}" )
+set( CTEST_BINARY_DIRECTORY "${TubeTK_BINARY_DIR}/TubeTK-build" )
 
 set( CTEST_CMAKE_GENERATOR "${SITE_CMAKE_GENERATOR}" )
 set( CTEST_TEST_TIMEOUT 1500 )
@@ -112,7 +112,7 @@ set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE
   "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
-set( SITE_EXECUTABLE_DIRS "${TUBETK_BINARY_DIR}/SlicerExecutionModel-build/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/SlicerExecutionModel-build/GenerateCLP-build/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/Insight-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/JsonCpp-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/ParameterSerializer-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TUBETK_BINARY_DIR}/TubeTK-build/lib/TubeTK/${SITE_BUILD_TYPE}" )
+set( SITE_EXECUTABLE_DIRS "${TubeTK_BINARY_DIR}/SlicerExecutionModel-build/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/SlicerExecutionModel-build/GenerateCLP-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/Insight-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/JsonCpp-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/ParameterSerializer-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/lib/TubeTK/${SITE_BUILD_TYPE}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS};$ENV{PATH}" )
 
 set( SITE_CXX_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /GR /MP /EHsc" )
@@ -122,7 +122,7 @@ set( SITE_SHARED_LINKER_FLAGS "" )
 
 set( SITE_MEMORYCHECK_COMMAND_OPTIONS "" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${TUBETK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+  "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )
@@ -137,17 +137,17 @@ set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
 
-if( NOT EXISTS "${TUBETK_SOURCE_DIR}/CMakeLists.txt" )
+if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
   execute_process( COMMAND
     "${SITE_GIT_COMMAND}"
-    clone "${TUBETK_GIT_REPOSITORY}" "${TUBETK_SOURCE_DIR}" )
+    clone "${TubeTK_GIT_REPOSITORY}" "${TubeTK_SOURCE_DIR}" )
   ctest_run_script()
 endif()
 
 if( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
-  include( "${TUBETK_SCRIPT_DIR}/run_experimental.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_experimental.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Continuous" )
-  include( "${TUBETK_SCRIPT_DIR}/run_continuous.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_continuous.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Nightly" )
-  include( "${TUBETK_SCRIPT_DIR}/run_nightly.cmake" )
+  include( "${TubeTK_SCRIPT_DIR}/run_nightly.cmake" )
 endif()
