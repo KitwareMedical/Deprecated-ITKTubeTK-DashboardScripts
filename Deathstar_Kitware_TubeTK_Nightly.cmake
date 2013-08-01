@@ -22,10 +22,10 @@
 ##############################################################################
 
 ##############################################################################
-#
 # Configure the following variables and move this file to the directory above
-#   the tubetk source directory.
-#
+# the TubeTK source directory.
+##############################################################################
+
 set( SITE_NAME "Deathstar.Kitware" )
 set( SITE_PLATFORM "Debian-Stable-64-Boost" )
 set( SITE_BUILD_TYPE "RelWithDebInfo" )
@@ -36,12 +36,31 @@ set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TubeTK_SOURCE_DIR "/home/matt/dashboards/TubeTK" )
 set( TubeTK_BINARY_DIR "/home/matt/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
-set( TubeTK_USE_VTK ON )
-set( TubeTK_USE_QT OFF )
-set( TubeTK_USE_CTK OFF ) # requires TubeTK_USE_QT ON
 set( TubeTK_USE_BOOST OFF )
+set( TubeTK_USE_CPPCHECK OFF )
+set( TubeTK_USE_CTK OFF )
+set( TubeTK_USE_IMAGE_VIEWER OFF )
+set( TubeTK_USE_KWSTYLE OFF )
 set( TubeTK_USE_LIBSVM OFF )
+set( TubeTK_USE_NUMPY OFF )
+set( TubeTK_USE_QT OFF )
 set( TubeTK_USE_SIMPLEITK OFF )
+set( TubeTK_USE_SLICER OFF )
+set( TubeTK_USE_VTK ON )
+
+set( USE_SYSTEM_CTK OFF )
+set( USE_SYSTEM_IMAGE_VIEWER OFF )
+set( USE_SYSTEM_ITK OFF )
+set( USE_SYSTEM_JSONCPP OFF )
+set( USE_SYSTEM_LIBSVM OFF )
+set( USE_SYSTEM_PARAMETER_SERIALIZER OFF )
+set( USE_SYSTEM_SIMPLEITK OFF )
+set( USE_SYSTEM_SLICER OFF )
+set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
+set( USE_SYSTEM_VTK OFF )
+
+set( BUILD_DOCUMENTATION OFF )
+set( BUILD_SHARED_LIBS ON )
 
 set( ENV{DISPLAY} ":0" )
 
@@ -64,9 +83,6 @@ set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
-set( SITE_EXPERIMENTAL_DOCUMENTATION OFF )
-set( SITE_EXPERIMENTAL_STYLE OFF )
-set( SITE_EXPERIMENTAL_CPPCHECK ON )
 
 set( SITE_CONTINUOUS_BUILD ON ) # Must be ON for any Continuous to run
 set( SITE_CONTINUOUS_TEST ON ) # Must be ON for any Continuous to run
@@ -74,9 +90,6 @@ set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
 set( SITE_CONTINUOUS_UPLOAD OFF )
-set( SITE_CONTINUOUS_DOCUMENTATION OFF )
-set( SITE_CONTINUOUS_STYLE OFF )
-set( SITE_CONTINUOUS_CPPCHECK ON )
 
 set( SITE_NIGHTLY_BUILD ON ) # Must be on for any Nightly to run
 set( SITE_NIGHTLY_TEST ON )
@@ -84,16 +97,11 @@ set( SITE_NIGHTLY_COVERAGE ON )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
-set( SITE_NIGHTLY_DOCUMENTATION OFF )
-set( SITE_NIGHTLY_STYLE OFF )
-set( SITE_NIGHTLY_CPPCHECK ON )
 
 ##############################################################################
-
+# The following advanced variables should only be changed by experts.
 ##############################################################################
-#
-# The following advanced variables should only be changed by experts
-#
+
 set( TubeTK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )
 
 set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
@@ -174,7 +182,7 @@ if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
     "${SITE_GIT_COMMAND}"
     clone "${TubeTK_GIT_REPOSITORY}" "${TubeTK_SOURCE_DIR}" )
   ctest_run_script()
-endif()
+endif( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
 
 if( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
   include( "${TubeTK_SCRIPT_DIR}/run_experimental.cmake" )
@@ -182,4 +190,4 @@ elseif( "${SITE_CTEST_MODE}" STREQUAL "Continuous" )
   include( "${TubeTK_SCRIPT_DIR}/run_continuous.cmake" )
 elseif( "${SITE_CTEST_MODE}" STREQUAL "Nightly" )
   include( "${TubeTK_SCRIPT_DIR}/run_nightly.cmake" )
-endif()
+endif( "${SITE_CTEST_MODE}" STREQUAL "Experimental" )
