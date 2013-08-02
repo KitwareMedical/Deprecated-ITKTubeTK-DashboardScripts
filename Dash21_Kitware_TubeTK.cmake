@@ -21,26 +21,23 @@
 #
 ##############################################################################
 
-##############################################################################
-# Configure the following variables and move this file to the directory above
-# the TubeTK source directory.
-##############################################################################
-
-set( SITE_NAME "Ginger.Aylward.Org" )
-set( SITE_PLATFORM "Windows7-VS2010-64" )
-set( SITE_BUILD_TYPE "Release" )
-set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
-set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
+set( SITE_NAME "Dash21.Kitware" )
+set( SITE_PLATFORM "Debian-5.3-64" )
+if( NOT SITE_BUILD_TYPE )
+  set( SITE_BUILD_TYPE "Debug" )
+endif( NOT SITE_BUILD_TYPE )
+if( NOT SITE_CTEST_MODE )
+  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+endif( NOT SITE_CTEST_MODE )
+set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
-set( TubeTK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR "/home/kitware/Dashboards/TubeTK" )
+set( TubeTK_BINARY_DIR "/home/kitware/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
-set( TubeTK_USE_CPPCHECK OFF )
 set( TubeTK_USE_CTK OFF )
 set( TubeTK_USE_IMAGE_VIEWER OFF )
-set( TubeTK_USE_KWSTYLE OFF )
 set( TubeTK_USE_LIBSVM OFF )
 set( TubeTK_USE_NUMPY OFF )
 set( TubeTK_USE_QT OFF )
@@ -62,27 +59,36 @@ set( USE_SYSTEM_VTK OFF )
 set( BUILD_DOCUMENTATION OFF )
 set( BUILD_SHARED_LIBS ON )
 
-set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
-set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
-set( SITE_QMAKE_COMMAND "C:/Qt/qt-everywhere-opensource-src-4.8.2/bin/qmake" )
-set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
+set( ENV{DISPLAY} ":0" )
 
-set( SITE_MEMORYCHECK_COMMAND "" )
-set( SITE_COVERAGE_COMMAND "" )
-set( SITE_KWSTYLE_DIR "" )
+set( SITE_MAKE_COMMAND "make -j5" )
+set( SITE_CMAKE_COMMAND
+  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/cmake" )
+set( SITE_QMAKE_COMMAND
+  "/home/kitware/Dashboards/Support/qt-4.7.3/bin/qmake" )
+set( SITE_CTEST_COMMAND
+  "/home/kitware/Dashboards/Support/cmake-2.8.8/bin/ctest -j5" )
 
-set( SITE_GIT_COMMAND "C:/Program Files (x86)/Git/bin/git" )
-set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin/svn" )
+set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
+set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
+set( SITE_KWSTYLE_DIR "/usr/local/bin" )
+
+set( SITE_GIT_COMMAND "/usr/local/bin/git" )
+set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
-set( SITE_EXPERIMENTAL_COVERAGE OFF )
-set( SITE_EXPERIMENTAL_MEMORY OFF )
-set( SITE_EXPERIMENTAL_PACKAGE OFF )
-set( SITE_EXPERIMENTAL_UPLOAD OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_KWSTYLE OFF )
+set( SITE_EXPERIMENTAL_COVERAGE ON )
+set( SITE_EXPERIMENTAL_MEMORY ON )
+set( SITE_EXPERIMENTAL_PACKAGE ON )
+set( SITE_EXPERIMENTAL_UPLOAD ON )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_KWSTYLE OFF )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
@@ -90,6 +96,8 @@ set( SITE_CONTINUOUS_UPLOAD OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
+set( SITE_NIGHTLY_CPPCHECK OFF )
+set( SITE_NIGHTLY_KWSTYLE OFF )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
@@ -127,17 +135,39 @@ set( CTEST_MEMORYCHECK_SUPPRESSIONS_FILE
   "${SITE_MEMORYCHECK_SUPPRESSIONS_FILE}" )
 set( CTEST_COMMAND "${SITE_CTEST_COMMAND}" )
 
-set( SITE_EXECUTABLE_DIRS "${TubeTK_BINARY_DIR}/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/GenerateCLP-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/ITK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/lib/TubeTK/Plugins/${SITE_BUILD_TYPE}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS};$ENV{PATH}" )
+set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
+set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
-set( SITE_CXX_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /GR /MP /EHsc" )
-set( SITE_C_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /MP" )
+set( SITE_CXX_FLAGS
+  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
+set( SITE_C_FLAGS
+  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "" )
 
-set( SITE_MEMORYCHECK_COMMAND_OPTIONS "" )
+set( COVERAGE_FLAGS "-fprofile-arcs -ftest-coverage -lgcov" )
+if( SITE_NIGHTLY_COVERAGE
+    OR SITE_CONTINUOUS_COVERAGE
+    OR SITE_EXPERIMENTAL_COVERAGE )
+  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_EXE_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_SHARED_LINKER_FLAGS
+    "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
+endif()
+
+set( SITE_MEMORYCHECK_COMMAND_OPTIONS
+  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
   "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
+
+set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
+if( SITE_NIGHTLY_MEMORY
+    OR SITE_CONTINUOUS_MEMORY
+    OR SITE_EXPERIMENTAL_MEMORY )
+  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${MEMORYCHECK_FLAGS}" )
+  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${MEMORYCHECK_FLAGS}" )
+endif()
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )
