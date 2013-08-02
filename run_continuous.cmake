@@ -22,6 +22,7 @@
 ##############################################################################
 
 # Run some "inside-the-loop" continuous scripts for a while.
+
 while( ${CTEST_ELAPSED_TIME} LESS 68400 )
   set( START_TIME ${CTEST_ELAPSED_TIME} )
 
@@ -30,7 +31,19 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
   if( BUILD_DOCUMENTATION )
     set( TubeTK_USE_DOXYGEN ON )
   endif( BUILD_DOCUMENTATION )
-  
+
+  if( SITE_CONTINUOUS_CPPCHECK )
+    set( TubeTK_USE_CPPCHECK ON )
+  else
+    set( TubeTK_USE_CPPCHECK OFF )
+  endif( SITE_CONTINUOUS_CPPCHECK )
+
+  if( SITE_CONTINUOUS_KWSTYLE )
+    set( TubeTK_USE_KWSTYLE ON )
+  else
+    set( TubeTK_USE_KWSTYLE OFF )
+  endif( SITE_CONTINUOUS_KWSTYLE )
+
   set( BUILD_TESTING ON )
 
   configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
