@@ -27,6 +27,18 @@ if( BUILD_DOCUMENTATION )
   set( TubeTK_USE_DOXYGEN ON )
 endif( BUILD_DOCUMENTATION )
 
+if( SITE_NIGHTLY_CPPCHECK )
+  set( TubeTK_USE_CPPCHECK ON )
+else
+  set( TubeTK_USE_CPPCHECK OFF )
+endif( SITE_NIGHTLY_CPPCHECK )
+
+if( SITE_NIGHTLY_KWSTYLE )
+  set( TubeTK_USE_KWSTYLE ON )
+else
+  set( TubeTK_USE_KWSTYLE OFF )
+endif( SITE_NIGHTLY_KWSTYLE )
+
 set( BUILD_TESTING ON )
 
 configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
