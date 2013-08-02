@@ -1,7 +1,7 @@
 #!/bin/sh
 
-MachineName=Eternia_Kitware
-BuildType=Debug
+MachineName=Krull_Kitware
+BuildType=Release
 CTestCommand=/usr/local/bin/ctest
 DashboardDir=/home/aylward/src/dashboards
 

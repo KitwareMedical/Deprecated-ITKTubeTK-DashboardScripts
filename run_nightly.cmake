@@ -85,7 +85,7 @@ if( SITE_NIGHTLY_UPLOAD )
   ctest_submit( PARTS Upload )
 endif( SITE_NIGHTLY_UPLOAD )
 
-if( TubeTK_USE_KWSTYLE )
+if( SITE_NIGHTLY_KWSTYLE )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
   configure_file( ${TubeTK_SCRIPT_DIR}/InitCMakeCache.cmake.in
     ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
@@ -99,7 +99,7 @@ if( TubeTK_USE_KWSTYLE )
       --build ${TubeTK_BINARY_DIR}/TubeTK-build
       --target StyleCheck
     WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build )
-  ctest_submit( PARTS configure build )
-endif( TubeTK_USE_KWSTYLE )
+  ctest_submit()
+endif( SITE_NIGHTLY_KWSTYLE )
 
 set( CTEST_RUN_CURRENT_SCRIPT 0 )
