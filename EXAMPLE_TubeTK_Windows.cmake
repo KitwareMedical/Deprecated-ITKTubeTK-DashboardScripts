@@ -21,15 +21,14 @@
 #
 ##############################################################################
 
-##############################################################################
-# Configure the following variables and move this file to the directory above
-# the TubeTK source directory.
-##############################################################################
-
 set( SITE_NAME "Example_Windows_Site_Name" )
 set( SITE_PLATFORM "Windows7-VS2010-64" )
-set( SITE_BUILD_TYPE "Release" )
-set( SITE_CTEST_MODE "Nightly" ) # one of Experimental, Continuous, Nightly
+if( NOT SITE_BUILD_TYPE )
+  set( SITE_BUILD_TYPE "Release" )
+endif( NOT SITE_BUILD_TYPE )
+if( NOT SITE_CTEST_MODE )
+  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Visual Studio 10 Win64" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
@@ -37,10 +36,8 @@ set( TubeTK_SOURCE_DIR "C:/Users/aylward/src/TubeTK" )
 set( TubeTK_BINARY_DIR "C:/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
-set( TubeTK_USE_CPPCHECK OFF )
 set( TubeTK_USE_CTK OFF )
 set( TubeTK_USE_IMAGE_VIEWER OFF )
-set( TubeTK_USE_KWSTYLE OFF )
 set( TubeTK_USE_LIBSVM OFF )
 set( TubeTK_USE_NUMPY OFF )
 set( TubeTK_USE_QT OFF )
@@ -76,6 +73,8 @@ set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_KWSTYLE OFF )
 set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
@@ -83,6 +82,8 @@ set( SITE_EXPERIMENTAL_UPLOAD OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_KWSTYLE OFF )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE OFF )
@@ -90,6 +91,8 @@ set( SITE_CONTINUOUS_UPLOAD OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
+set( SITE_NIGHTLY_CPPCHECK OFF )
+set( SITE_NIGHTLY_KWSTYLE OFF )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_PACKAGE ON )

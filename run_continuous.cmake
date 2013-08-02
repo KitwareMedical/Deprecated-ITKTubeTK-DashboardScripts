@@ -91,12 +91,12 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
       ctest_submit( PARTS Upload )
     endif( SITE_CONTINUOUS_UPLOAD )
 
-    if( TubeTK_USE_KWSTYLE )
-      set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
+    if( SITE_CONTINUOUS_KWSTYLE )
+      set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Continuous" )
       configure_file( ${TubeTK_SCRIPT_DIR}/InitCMakeCache.cmake.in
         ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
       set( CTEST_NOTES_FILES "${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
-      ctest_start( "Nightly" )
+      ctest_start( "Continuous" )
       ctest_configure( BUILD "${TubeTK_BINARY_DIR}"
         SOURCE "${TubeTK_SOURCE_DIR}"
         OPTIONS "-C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
@@ -105,12 +105,14 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
           --build ${TubeTK_BINARY_DIR}/TubeTK-build
           --target StyleCheck
         WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build )
-      ctest_submit( PARTS configure build )
-    endif( TubeTK_USE_KWSTYLE )
+      ctest_submit()
+    endif( SITE_CONTINUOUS_KWSTYLE )
+
   endif( res GREATER 0 OR res LESS 0 )
 
   # Loop no faster than once every 2 minutes.
   ctest_sleep( ${START_TIME} 120 ${CTEST_ELAPSED_TIME} )
+
 endwhile( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
 set( CTEST_RUN_CURRENT_SCRIPT 0 )

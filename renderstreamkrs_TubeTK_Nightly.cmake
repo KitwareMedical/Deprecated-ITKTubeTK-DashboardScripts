@@ -21,15 +21,14 @@
 #
 ##############################################################################
 
-##############################################################################
-# Configure the following variables and move this file to the directory above
-# the TubeTK source directory.
-##############################################################################
-
 set( SITE_NAME "renderstreamkrs.Kitware" )
 set( SITE_PLATFORM "Ubuntu-10.04-64" )
-set( SITE_BUILD_TYPE "Debug" )
-set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+if( NOT SITE_BUILD_TYPE )
+  set( SITE_BUILD_TYPE "Debug" )
+endif( NOT SITE_BUILD_TYPE )
+if( NOT SITE_CTEST_MODE )
+  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
+endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
@@ -37,10 +36,8 @@ set( TubeTK_SOURCE_DIR "/home/andinet/src/Dashboards/TubeTK" )
 set( TubeTK_BINARY_DIR "/home/andinet/src/Dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
-set( TubeTK_USE_CPPCHECK OFF )
 set( TubeTK_USE_CTK OFF )
 set( TubeTK_USE_IMAGE_VIEWER OFF )
-set( TubeTK_USE_KWSTYLE OFF )
 set( TubeTK_USE_LIBSVM OFF )
 set( TubeTK_USE_NUMPY OFF )
 set( TubeTK_USE_QT OFF )
@@ -78,6 +75,8 @@ set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
+set( SITE_EXPERIMENTAL_CPPCHECK OFF )
+set( SITE_EXPERIMENTAL_KWSTYLE OFF )
 set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
@@ -85,6 +84,8 @@ set( SITE_EXPERIMENTAL_UPLOAD OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
+set( SITE_CONTINUOUS_CPPCHECK OFF )
+set( SITE_CONTINUOUS_KWSTYLE OFF )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_PACKAGE ON )
@@ -92,6 +93,8 @@ set( SITE_CONTINUOUS_UPLOAD ON )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
+set( SITE_NIGHTLY_CPPCHECK OFF )
+set( SITE_NIGHTLY_KWSTYLE OFF )
 set( SITE_NIGHTLY_COVERAGE ON )
 set( SITE_NIGHTLY_MEMORY ON )
 set( SITE_NIGHTLY_PACKAGE ON )
