@@ -24,7 +24,10 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 else
 
   # Run the nightly
-  /usr/local/bin/ctest -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D SITE_BUILD_TYPE:STRING=RelWithDebInfo -S TubeTK-DashboardScripts/${MachineName}_TubeTK.cmake -V -VV -O ${MachineName}_TubeTK_Nightly.log
+  /usr/local/bin/ctest -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D \
+    SITE_BUILD_TYPE:STRING=RelWithDebInfo \
+    -S TubeTK-DashboardScripts/${MachineName}_TubeTK_Nightly.cmake \
+    -V -VV -O ${MachineName}_TubeTK_Nightly.log
 
 fi
 
