@@ -114,6 +114,11 @@ set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
 set( SITE_UPDATE_COMMAND "${SITE_GIT_COMMAND}" )
 
+set( SITE_MEMORYCHECK_COMMAND_OPTIONS
+  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
+set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
+  "${TubeTK_SOURCE_DIR}/CMake/Valgrind/TubeTKValgrindSuppressions.txt" )
+
 set( CTEST_SITE "${SITE_NAME}" )
 
 set( CTEST_BUILD_CONFIGURATION "${SITE_BUILD_TYPE}" )
@@ -158,11 +163,6 @@ if( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVER
   set( SITE_SHARED_LINKER_FLAGS
     "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
 endif( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
-
-set( SITE_MEMORYCHECK_COMMAND_OPTIONS
-  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
-set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
-  "${TubeTK_SCRIPT_DIR}/valgrind_suppressions.txt" )
 
 set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
 if( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
