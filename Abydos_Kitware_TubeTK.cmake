@@ -70,7 +70,7 @@ set( SITE_COVERAGE_COMMAND "" )
 set( SITE_KWSTYLE_DIR "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files/Git/bin/git" )
-set( SITE_SVN_COMMAND "C:/Program Files/SlikSVN/bin/svn" )
+set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
