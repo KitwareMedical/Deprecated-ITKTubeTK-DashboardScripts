@@ -34,7 +34,7 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TubeTK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
 set( TubeTK_BINARY_DIR
-  "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+  "/home/aylward/src/dashboards/TubeTK-${SITE_CTEST_MODE}-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST ON )
 set( BOOST_ROOT "/home/aylward/src/boost_1_54_0" )
