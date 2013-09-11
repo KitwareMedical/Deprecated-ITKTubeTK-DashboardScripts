@@ -22,7 +22,7 @@
 ##############################################################################
 
 set( SITE_NAME "Hippo.Kitware" )
-set( SITE_PLATFORM "apple-darwin12.4.0-clang-x86_64-boost-cppcheck-libsvm-vtk" )
+set( SITE_PLATFORM "apple-darwin12.4.0-clang-x86_64-boost-cppcheck-libsvm" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "RelWithDebInfo" )
 endif( NOT SITE_BUILD_TYPE )
@@ -31,7 +31,7 @@ if( NOT SITE_CTEST_MODE )
 endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
+set( TubeTK_GIT_REPOSITORY "git://github.com/TubeTK/TubeTK.git" )
 set( TubeTK_ROOT_DIR "/Users/snape/Development/TubeTK" )
 set( TubeTK_DASHBOARDS_DIR "${TubeTK_ROOT_DIR}/DashboardScripts" )
 set( TubeTK_SOURCE_DIR "${TubeTK_ROOT_DIR}/TubeTK-${SITE_CTEST_MODE}" )
@@ -72,7 +72,7 @@ set( SITE_QMAKE_COMMAND "/usr/local/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "/usr/local/bin/llvm-cov" )
 set( SITE_KWSTYLE_DIR "/usr/local/bin" )
-set( SITE_MEMORYCHECK_COMMAND "" )
+set( SITE_MEMORYCHECK_COMMAND "/usr/local/bin/valgrind" )
 
 set( SITE_GIT_COMMAND "/usr/local/bin/git" )
 set( SITE_SVN_COMMAND "/usr/local/bin/svn" )
@@ -151,9 +151,9 @@ set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
 set( SITE_C_FLAGS
-  "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
+  "-fPIC -W -Wall -Wextra -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -fno-diagnostics-fixit-info-fno-caret-diagnostics -fno-color-diagnostics" )
 set( SITE_CXX_FLAGS
-  "-fPIC -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field -fno-diagnostics-fixit-info -fno-diagnostics-show-option -fno-show-column -fno-caret-diagnostics -fno-color-diagnostics" )
+  "-fPIC -W -Wall -Wextra -Wno-system-headers -Wwrite-strings -Wno-deprecated -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-invalid-source-encoding -Wno-sometimes-uninitialized -Woverloaded-virtual -Wno-unused-private-field -fno-diagnostics-fixit-info -fno-caret-diagnostics -fno-color-diagnostics" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS}" )
 
@@ -171,7 +171,7 @@ if( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVER
     "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_SHARED_LINKER_FLAGS}" )
 endif( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
 
-set( MEMORYCHECK_C_FLAGS "-g -O0 -ggdb" )
+set( MEMORYCHECK_C_FLAGS "-g" )
 set( MEMORYCHECK_CXX_FLAGS "${MEMORYCHECK_C_FLAGS}" )
 
 if( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
