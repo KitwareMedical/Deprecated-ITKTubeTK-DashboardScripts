@@ -90,7 +90,7 @@ if( SITE_EXPERIMENTAL_PACKAGE )
   execute_process( COMMAND ${CMAKE_COMMAND}
       --build ${TubeTK_BINARY_DIR}/TubeTK-build
       --target package
-      --config ${CTEST_BUILD_CONFIGURATION}
+      --config ${CTEST_CONFIGURATION_TYPE}
     WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build
     OUTPUT_STRIP_TRAILING_WHITESPACE
     OUTPUT_FILE CPackOutputFiles.txt )
@@ -122,7 +122,7 @@ if( SITE_EXPERIMENTAL_KWSTYLE )
   execute_process( COMMAND ${CMAKE_COMMAND}
       --build ${TubeTK_BINARY_DIR}/TubeTK-build
       --target StyleCheck
-      --config ${CTEST_BUILD_CONFIGURATION}
+      --config ${CTEST_CONFIGURATION_TYPE}
     WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build )
   ctest_submit()
 endif( SITE_EXPERIMENTAL_KWSTYLE )
