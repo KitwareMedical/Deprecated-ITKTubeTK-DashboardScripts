@@ -21,7 +21,7 @@
 #
 ##############################################################################
 
-set( SITE_NAME "Dante.iMac.Aylward" )
+set( SITE_NAME "Dante.Aylward" )
 set( SITE_PLATFORM "OSX-10.9" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Debug" )
