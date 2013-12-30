@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MachineName=Dante_iMac_Aylward
+MachineName=Dante_Aylward
 BuildType=Debug
 CTestCommand=/usr/bin/ctest
 DashboardDir=/Users/aylward/src
