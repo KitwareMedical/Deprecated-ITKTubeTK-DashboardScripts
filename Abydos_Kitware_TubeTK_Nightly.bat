@@ -5,6 +5,8 @@ REM Update the TubeTK Dashboard scripts
 cd C:\dashboard\src\TubeTK-DashboardScripts
 "C:\Program Files\Git\bin\git" reset --hard HEAD
 "C:\Program Files\Git\bin\git" pull
+rename C:\dashboard\src\Abydos_Kitware_TubeTK_Nightly.bat C:\dashboard\src\Abydos_Kitware_TubeTK_Nightly.bat.old
+copy Abydos_Kitware_TubeTK_Nightly.bat C:\dashboard\src\Abydos_Kitware_TubeTK_Nightly.bat
 cd ..
 
 REM Run the nightly CTest
