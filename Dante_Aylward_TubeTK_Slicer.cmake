@@ -21,7 +21,7 @@
 #
 ##############################################################################
 
-set( SITE_NAME "Dante.Aylward" )
+set( SITE_NAME "Dante.Aylward.Slicer" )
 set( SITE_PLATFORM "OSX-10.9" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Debug" )
@@ -32,19 +32,20 @@ endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK" )
-set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer" )
+set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )
-set( TubeTK_USE_IMAGE_VIEWER ON )
-set( TubeTK_USE_LIBSVM OFF )
+set( TubeTK_USE_IMAGE_VIEWER OFF )
+set( TubeTK_USE_LIBSVM ON )
 set( TubeTK_USE_NOTEBOOKS OFF )
 set( TubeTK_USE_NUMPY OFF )
-set( TubeTK_USE_PYTHON OFF )
+set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_PYQTGRAPH OFF )
 set( TubeTK_USE_QT ON )
-set( TubeTK_USE_SLICER OFF )
+set( TubeTK_USE_SLICER ON )
+set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
 set( TubeTK_USE_VTK ON )
 
 set( USE_SYSTEM_CTK OFF )
