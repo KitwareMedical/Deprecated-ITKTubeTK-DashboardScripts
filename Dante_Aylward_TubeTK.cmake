@@ -32,8 +32,8 @@ endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "/Users/aylward/src/TubeTK" )
-set( TubeTK_BINARY_DIR "/Users/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK" )
+set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )

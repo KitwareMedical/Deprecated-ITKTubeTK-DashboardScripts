@@ -3,7 +3,7 @@
 MachineName=Dante_Aylward
 BuildType=Debug
 CTestCommand=/usr/bin/ctest
-DashboardDir=/Users/aylward/src
+DashboardDir=/Users/aylward/src/dashboards
 
 echo "Running TubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
