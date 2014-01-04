@@ -21,23 +21,21 @@
 #
 ##############################################################################
 
-set( SITE_NAME "Eternia.Kitware.Slicer" )
-set( SITE_PLATFORM "Ubuntu-12.04-64" )
+set( SITE_NAME "Dante.Aylward.Slicer" )
+set( SITE_PLATFORM "OSX-10.9" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Debug" )
 endif( NOT SITE_BUILD_TYPE )
 if( NOT SITE_CTEST_MODE )
-  set( SITE_CTEST_MODE "Experimental" ) # Experimental, Continuous, or Nightly
+  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 endif( NOT SITE_CTEST_MODE )
 set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK-Slicer" )
-set( TubeTK_BINARY_DIR
-  "/home/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer" )
+set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
-set( TubeTK_USE_BOOST ON )
-set( BOOST_ROOT "/home/aylward/src/boost_1_54_0" )
+set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )
 set( TubeTK_USE_IMAGE_VIEWER OFF )
 set( TubeTK_USE_LIBSVM ON )
@@ -47,7 +45,7 @@ set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_PYQTGRAPH OFF )
 set( TubeTK_USE_QT ON )
 set( TubeTK_USE_SLICER ON )
-set( Slicer_DIR "/home/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
+set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
 set( TubeTK_USE_VTK ON )
 
 set( USE_SYSTEM_CTK OFF )
@@ -56,8 +54,8 @@ set( USE_SYSTEM_ITK OFF )
 set( USE_SYSTEM_JSONCPP OFF )
 set( USE_SYSTEM_LIBSVM OFF )
 set( USE_SYSTEM_PARAMETER_SERIALIZER OFF )
-set( USE_SYSTEM_SLICER ON )
-set( USE_SYSTEM_SLICER_EXECUTION_MODEL ON )
+set( USE_SYSTEM_SLICER OFF )
+set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
 set( USE_SYSTEM_VTK OFF )
 
 set( BUILD_DOCUMENTATION OFF )
@@ -66,13 +64,13 @@ set( BUILD_SHARED_LIBS ON )
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "make -j3" )
-set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
+set( SITE_CMAKE_COMMAND "/usr/bin/cmake" )
 set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
-set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
+set( SITE_CTEST_COMMAND "/usr/bin/ctest -j3" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
-set( SITE_KWSTYLE_DIR "/usr/local/bin" )
+set( SITE_KWSTYLE_DIR "/usr/bin" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
