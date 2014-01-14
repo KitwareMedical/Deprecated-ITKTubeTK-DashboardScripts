@@ -37,7 +37,7 @@ set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}"
 
 set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )
-set( TubeTK_USE_IMAGE_VIEWER ON )
+set( TubeTK_USE_IMAGE_VIEWER OFF )
 set( TubeTK_USE_LIBSVM OFF )
 set( TubeTK_USE_NOTEBOOKS OFF )
 set( TubeTK_USE_NUMPY OFF )
