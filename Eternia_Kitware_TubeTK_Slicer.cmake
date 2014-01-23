@@ -22,7 +22,7 @@
 ##############################################################################
 
 set( SITE_NAME "Eternia.Kitware.Slicer" )
-set( SITE_PLATFORM "Ubuntu-12.04-64" )
+set( SITE_PLATFORM "Ubuntu-13.04-64" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Debug" )
 endif( NOT SITE_BUILD_TYPE )
