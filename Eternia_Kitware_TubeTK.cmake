@@ -149,7 +149,7 @@ set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
 set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
 set( SITE_CXX_FLAGS
-  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
+  "-fPIC -Wunused-local-typedefs -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
 set( SITE_C_FLAGS
   "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings" )
 set( SITE_EXE_LINKER_FLAGS "" )
