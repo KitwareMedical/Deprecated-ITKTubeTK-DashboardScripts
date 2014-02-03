@@ -1,7 +1,7 @@
 #!/bin/sh
 
 MachineName=Dante_Aylward
-BuildType=Debug
+BuildType=Release
 CTestCommand=/usr/bin/ctest
 DashboardDir=/Users/aylward/src/dashboards
 

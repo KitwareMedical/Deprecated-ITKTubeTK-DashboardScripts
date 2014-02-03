@@ -24,7 +24,7 @@
 set( SITE_NAME "Dante.Aylward.Slicer" )
 set( SITE_PLATFORM "OSX-10.9" )
 if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Debug" )
+  set( SITE_BUILD_TYPE "Release" )
 endif( NOT SITE_BUILD_TYPE )
 if( NOT SITE_CTEST_MODE )
   set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
@@ -45,7 +45,7 @@ set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_PYQTGRAPH OFF )
 set( TubeTK_USE_QT ON )
 set( TubeTK_USE_SLICER ON )
-set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
+set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Release/Slicer-build" )
 set( TubeTK_USE_VTK ON )
 
 set( USE_SYSTEM_CTK OFF )
