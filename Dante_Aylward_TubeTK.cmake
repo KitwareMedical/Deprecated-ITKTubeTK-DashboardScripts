@@ -24,7 +24,7 @@
 set( SITE_NAME "Dante.Aylward" )
 set( SITE_PLATFORM "OSX-10.9" )
 if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Debug" )
+  set( SITE_BUILD_TYPE "Release" )
 endif( NOT SITE_BUILD_TYPE )
 if( NOT SITE_CTEST_MODE )
   set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
