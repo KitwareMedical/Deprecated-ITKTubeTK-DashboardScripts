@@ -33,20 +33,23 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
 set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer" )
-set( TubeTK_BINARY_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
+set( TubeTK_BINARY_DIR 
+  "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
+set( TubeTK_BUILD_APPLICATIONS ON )
+set( TubeTK_BUILD_IMAGE_VIEWER ON )
+set( TubeTK_BUILD_SLICER_MODULES ON )
 set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )
-set( TubeTK_USE_IMAGE_VIEWER OFF )
 set( TubeTK_USE_LIBSVM ON )
 set( TubeTK_USE_NOTEBOOKS OFF )
 set( TubeTK_USE_NUMPY OFF )
 set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_PYQTGRAPH OFF )
 set( TubeTK_USE_QT ON )
-set( TubeTK_USE_SLICER ON )
-set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Release/Slicer-build" )
 set( TubeTK_USE_VTK ON )
+
+set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Release/Slicer-build" )
 
 set( USE_SYSTEM_CTK OFF )
 set( USE_SYSTEM_IMAGE_VIEWER OFF )
