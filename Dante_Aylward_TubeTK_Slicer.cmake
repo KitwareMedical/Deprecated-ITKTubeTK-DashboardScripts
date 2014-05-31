@@ -37,7 +37,7 @@ set( TubeTK_BINARY_DIR
   "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_BUILD_APPLICATIONS ON )
-set( TubeTK_BUILD_IMAGE_VIEWER OFF )
+set( TubeTK_BUILD_IMAGE_VIEWER ON )
 set( TubeTK_BUILD_SLICER_MODULES ON )
 set( TubeTK_USE_BOOST OFF )
 set( TubeTK_USE_CTK ON )
