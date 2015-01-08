@@ -36,6 +36,8 @@ set( TubeTK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
 set( TubeTK_BINARY_DIR
   "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
 
+set( BOOST_ROOT /home/aylward/src/boost_1_57_0 )
+
 set( TubeTK_BUILD_APPLICATIONS ON )
 set( TubeTK_BUILD_IMAGE_VIEWER ON )
 set( TubeTK_BUILD_SLICER_MODULES OFF )
