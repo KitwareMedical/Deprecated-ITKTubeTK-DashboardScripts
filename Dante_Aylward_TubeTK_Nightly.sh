@@ -2,7 +2,7 @@
 
 MachineName=Dante_Aylward
 BuildType=Release
-CTestCommand=/usr/bin/ctest
+CTestCommand=/Applications/CMake.app/Contents/bin/ctest
 DashboardDir=/Users/aylward/src/dashboards
 
 echo "Running TubeTK Dashboard script"
