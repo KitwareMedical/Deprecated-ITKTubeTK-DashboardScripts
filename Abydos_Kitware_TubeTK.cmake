@@ -62,9 +62,9 @@ set( BUILD_DOCUMENTATION OFF )
 set( BUILD_SHARED_LIBS ON )
 
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
-set( SITE_CMAKE_COMMAND "C:/Program Files/CMake 2.8/bin/cmake" )
+set( SITE_CMAKE_COMMAND "C:/Program Files/CMake/bin/cmake" )
 set( SITE_QMAKE_COMMAND "C:/Qt/4.7.4/bin/qmake" )
-set( SITE_CTEST_COMMAND "C:/Program Files/CMake 2.8/bin/ctest" )
+set( SITE_CTEST_COMMAND "C:/Program Files/CMake/bin/ctest" )
 
 set( SITE_MEMORYCHECK_COMMAND "" )
 set( SITE_COVERAGE_COMMAND "" )
