@@ -38,33 +38,21 @@ set( TubeTK_BINARY_DIR
 
 set( BOOST_ROOT /home/aylward/src/boost_1_57_0 )
 
-set( TubeTK_BUILD_APPLICATIONS ON )
 set( TubeTK_BUILD_IMAGE_VIEWER ON )
-set( TubeTK_BUILD_SLICER_MODULES ON )
+set( TubeTK_BUILD_USING_SLICER ON )
 set( TubeTK_USE_BOOST ON )
-set( TubeTK_USE_CTK ON )
+# set( TubeTK_USE_CPPCHECK ON )  Set per ctest type, e.g., Experimental, Nightly
+set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
+# set( TubeTK_USE_KWSTYLE ON )   Set per ctest type, e.g., Experimental, Nightly
 set( TubeTK_USE_LIBSVM ON )
-set( TubeTK_USE_NOTEBOOKS OFF )
-set( TubeTK_USE_NUMPY OFF )
+set( TubeTK_USE_NUMPY ON )
+set( TubeTK_USE_PYQTGRAPH ON )
 set( TubeTK_USE_PYTHON ON )
-set( TubeTK_USE_PYQTGRAPH OFF )
-set( TubeTK_USE_QT ON )
-set( TubeTK_USE_VTK ON )
+# set( TubeTK_USE_VALGRIND OFF ) Set per ctest type, e.g., Experimental, Nightly
 
 set( Slicer_DIR "/home/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
 
-set( USE_SYSTEM_CTK OFF )
-set( USE_SYSTEM_IMAGE_VIEWER OFF )
-set( USE_SYSTEM_ITK OFF )
-set( USE_SYSTEM_JSONCPP OFF )
-set( USE_SYSTEM_LIBSVM OFF )
-set( USE_SYSTEM_PARAMETER_SERIALIZER OFF )
-set( USE_SYSTEM_SLICER ON )
-set( USE_SYSTEM_SLICER_EXECUTION_MODEL ON )
-set( USE_SYSTEM_VTK OFF )
-
 set( BUILD_DOCUMENTATION OFF )
-set( BUILD_SHARED_LIBS ON )
 
 set( ENV{DISPLAY} ":0" )
 
