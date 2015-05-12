@@ -42,6 +42,8 @@ set( TubeTK_BUILD_IMAGE_VIEWER ON )
 set( TubeTK_BUILD_USING_SLICER ON )
 set( TubeTK_USE_BOOST ON )
 # set( TubeTK_USE_CPPCHECK ON )  Set per ctest type, e.g., Experimental, Nightly
+set( TubeTK_USE_DOXYGEN OFF )
+set( TubeTK_USE_EXAMPLES_AS_TESTS OFF )
 set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
 # set( TubeTK_USE_KWSTYLE ON )   Set per ctest type, e.g., Experimental, Nightly
 set( TubeTK_USE_LIBSVM ON )
@@ -88,12 +90,12 @@ set( SITE_CONTINUOUS_UPLOAD OFF )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_CPPCHECK OFF )
-set( SITE_NIGHTLY_KWSTYLE OFF )
+set( SITE_NIGHTLY_CPPCHECK ON )
+set( SITE_NIGHTLY_KWSTYLE ON )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
-set( SITE_NIGHTLY_PACKAGE ON )
-set( SITE_NIGHTLY_UPLOAD ON )
+set( SITE_NIGHTLY_PACKAGE OFF )
+set( SITE_NIGHTLY_UPLOAD OFF )
 
 ##############################################################################
 # The following advanced variables should only be changed by experts.
