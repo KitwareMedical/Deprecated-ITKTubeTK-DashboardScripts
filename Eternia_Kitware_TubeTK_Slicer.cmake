@@ -37,7 +37,9 @@ set( TubeTK_BINARY_DIR
   "/home/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
 set( BOOST_ROOT /home/aylward/src/boost_1_57_0 )
+set( Slicer_DIR "/home/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
 
+set( BUILD_DOCUMENTATION OFF )
 set( TubeTK_BUILD_IMAGE_VIEWER ON )
 set( TubeTK_BUILD_USING_SLICER ON )
 set( TubeTK_USE_BOOST ON )
@@ -52,9 +54,16 @@ set( TubeTK_USE_PYQTGRAPH ON )
 set( TubeTK_USE_PYTHON ON )
 # set( TubeTK_USE_VALGRIND OFF ) Set per ctest type, e.g., Experimental, Nightly
 
-set( Slicer_DIR "/home/aylward/src/dashboards/Slicer-Debug/Slicer-build" )
+set( USE_SYSTEM_CPPCHECK OFF )
+set( USE_SYSTEM_CTK OFF )
+set( USE_SYSTEM_ITK OFF )
+set( USE_SYSTEM_JSONCPP OFF )
+set( USE_SYSTEM_KWSTYLE OFF )
+set( USE_SYSTEM_LIBSVM OFF )
+set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
+set( USE_SYSTEM_VTK OFF )
 
-set( BUILD_DOCUMENTATION OFF )
+set( SlicerExecutionModel_USE_SERIALIZER OFF )
 
 set( ENV{DISPLAY} ":0" )
 
