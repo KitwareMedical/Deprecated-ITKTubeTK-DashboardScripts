@@ -8,4 +8,4 @@ REM "C:\Program Files (x86)\Git\bin\git" reset --hard HEAD
 cd ..
 
 REM Run the nightly CTest
-"C:\Program Files (x86)\CMake 2.8\bin\ctest.exe" -S "C:\Dashboards\TubeTK\TubeTK-DashboardScripts\Deathstar_Win7VM_Kitware_TubeTK.cmake" -O "C:\Dashboards\TubeTK\TubeTK_CDashClient_Nightly_log.txt"
+"C:\Program Files (x86)\CMake\bin\ctest.exe" -S "C:\Dashboards\TubeTK\TubeTK-DashboardScripts\Deathstar_Win7VM_Kitware_TubeTK.cmake" -O "C:\Dashboards\TubeTK\TubeTK_CDashClient_Nightly_log.txt"
