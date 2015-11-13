@@ -22,7 +22,7 @@
 ##############################################################################
 
 set( SITE_NAME "Dante.Aylward" )
-set( SITE_PLATFORM "OSX-10.9" )
+set( SITE_PLATFORM "OSX-10.11" )
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Release" )
 endif( NOT SITE_BUILD_TYPE )
