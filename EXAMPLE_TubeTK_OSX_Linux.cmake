@@ -21,55 +21,90 @@
 #
 ##############################################################################
 
-set( SITE_NAME "Example_OSX_UNIX_Site_Name" )
-set( SITE_PLATFORM "Ubuntu-12.04-64" )
-if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Release" )
-endif( NOT SITE_BUILD_TYPE )
-if( NOT SITE_CTEST_MODE )
-  set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
-endif( NOT SITE_CTEST_MODE )
-set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
+# Follow format for caps and components as given on TubeTK dashboard
+set( SITE_NAME "Eden.Kitware" )   
 
-set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "/home/aylward/src/dashboards/TubeTK" )
-set( TubeTK_BINARY_DIR 
-  "/home/aylward/src/dashboards/TubeTK-${SITE_BUILD_TYPE}" )
+# Follow format for caps and components as given on TubeTK dashboard
+set( SITE_PLATFORM "OSX-10.10" )
+
+if( NOT SITE_BUILD_TYPE )
+  set( SITE_BUILD_TYPE "Release" ) # Release, Debug
+endif( NOT SITE_BUILD_TYPE )
+
+if( NOT SITE_CTEST_MODE )
+  set( SITE_CTEST_MODE "Experimental" ) # Experimental, Continuous, or Nightly
+endif( NOT SITE_CTEST_MODE )
+
+set( SITE_CMAKE_GENERATOR "Ninja" ) # Ninja or Unix Makefiles
+
+set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
+
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/TubeTK" )
+set( TubeTK_BINARY_DIR
+  "/Users/aylward/src/TubeTK-Dashboard-${SITE_BUILD_TYPE}" )
+
+#
+# Things not handled by Superbuild
+#
+
+# Boost
+set( TubeTK_USE_BOOST ON )
+#if TubeTK_USE_BOOST is ON, you need to fix the following line
+set( BOOST_ROOT "/usr/local" )
+
+# Slicer
+set( TubeTK_BUILD_USING_SLICER ON )
+#if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
+set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
+
+# ArrayFire
+set( TubeTK_USE_GPU_ARRAYFIRE ON )
+#if TubeTK_USE_GPU_ARRAYFIRE is ON, you need to fix the following line
+set( ArrayFire_DIR "/usr/local" )
 
 set( TubeTK_BUILD_APPLICATIONS ON )
-set( TubeTK_BUILD_IMAGE_VIEWER OFF )
-set( TubeTK_BUILD_SLICER_MODULES OFF )
-set( TubeTK_USE_BOOST OFF )
-set( TubeTK_USE_CTK OFF )
-set( TubeTK_USE_LIBSVM OFF )
-set( TubeTK_USE_NOTEBOOKS OFF )
-set( TubeTK_USE_NUMPY OFF )
-set( TubeTK_USE_PYTHON OFF )
-set( TubeTK_USE_PYQTGRAPH OFF )
-set( TubeTK_USE_QT OFF )
+
+set( TubeTK_BUILD_IMAGE_VIEWER ON )
+set( TubeTK_USE_CPPCHECK ON )
+set( TubeTK_USE_CTK ON )
+set( TubeTK_USE_EXAMPLES_AS_TESTS OFF )
+set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
+set( TubeTK_USE_KWSTYLE ON )
+set( TubeTK_USE_LIBSVM ON )
+set( TubeTK_USE_NUMPY ON )
+set( TubeTK_USE_PYQTGRAPH ON )
+set( TubeTK_USE_PYTHON ON )
+set( TubeTK_USE_QT ON )
+set( TubeTK_USE_VALGRIND OFF )
 set( TubeTK_USE_VTK ON )
 
-set( USE_SYSTEM_CTK OFF )
-set( USE_SYSTEM_IMAGE_VIEWER OFF )
-set( USE_SYSTEM_ITK OFF )
+set( USE_SYSTEM_CPPCHECK OFF )
 set( USE_SYSTEM_JSONCPP OFF )
+set( USE_SYSTEM_KWSTYLE OFF )
 set( USE_SYSTEM_LIBSVM OFF )
-set( USE_SYSTEM_PARAMETER_SERIALIZER OFF )
-set( USE_SYSTEM_SLICER OFF )
-set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
-set( USE_SYSTEM_VTK OFF )
 
-set( BUILD_DOCUMENTATION OFF )
+if( TubeTK_BUILD_USING_SLICER )
+  set( USE_SYSTEM_CTK ON )
+  set( USE_SYSTEM_ITK ON )
+  set( USE_SYSTEM_SLICER_EXECUTION_MODEL ON )
+  set( USE_SYSTEM_VTK ON )
+else( TubeTK_BUILD_USING_SLICER )
+  set( USE_SYSTEM_CTK OFF )
+  set( USE_SYSTEM_ITK OFF )
+  set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
+  set( USE_SYSTEM_VTK OFF )
+endif( TubeTK_BUILD_USING_SLICER )
+
 set( BUILD_SHARED_LIBS ON )
 
 set( ENV{DISPLAY} ":0" )
 
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
-set( SITE_MAKE_COMMAND "make -j3" )
+set( SITE_MAKE_COMMAND "ninja" )
 set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
-set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
+set( SITE_COVERAGE_COMMAND "" )
 set( SITE_KWSTYLE_DIR "/usr/local/bin" )
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 
@@ -78,10 +113,11 @@ set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
-set( SITE_EXPERIMENTAL_CPPCHECK OFF )
-set( SITE_EXPERIMENTAL_KWSTYLE OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK ON )
+set( SITE_EXPERIMENTAL_KWSTYLE ON )
 set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
+set( SITE_EXPERIMENTAL_BUILD_DOCUMENTATION ON )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
 
@@ -91,6 +127,7 @@ set( SITE_CONTINUOUS_CPPCHECK OFF )
 set( SITE_CONTINUOUS_KWSTYLE OFF )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
+set( SITE_CONTINUOUS_BUILD_DOCUMENTATION ON )
 set( SITE_CONTINUOUS_PACKAGE ON )
 set( SITE_CONTINUOUS_UPLOAD ON )
 
@@ -98,8 +135,9 @@ set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_CPPCHECK OFF )
 set( SITE_NIGHTLY_KWSTYLE OFF )
-set( SITE_NIGHTLY_COVERAGE ON )
+set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY ON )
+set( SITE_NIGHTLY_BUILD_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
 
