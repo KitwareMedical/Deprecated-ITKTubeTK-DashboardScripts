@@ -99,9 +99,11 @@ set( BUILD_SHARED_LIBS ON )
 
 set( ENV{DISPLAY} ":0" )
 
+set( SITE_MAKE_COMMAND "ninja" )
+
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
-set( SITE_MAKE_COMMAND "ninja" )
+
 set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "" )
