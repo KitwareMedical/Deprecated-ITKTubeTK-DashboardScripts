@@ -45,17 +45,17 @@ set( TubeTK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
 #
 
 # Boost
-set( TubeTK_USE_BOOST ON )
+set( TubeTK_USE_BOOST OFF )
 #if TubeTK_USE_BOOST is ON, you need to fix the following line
 set( BOOST_ROOT "/usr/local" )
 
 # Slicer
-set( TubeTK_BUILD_USING_SLICER ON )
+set( TubeTK_BUILD_USING_SLICER OFF )
 #if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
-set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
+#set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
 
 # ArrayFire
-set( TubeTK_USE_GPU_ARRAYFIRE ON )
+set( TubeTK_USE_GPU_ARRAYFIRE OFF )
 #if TubeTK_USE_GPU_ARRAYFIRE is ON, you need to fix the following line
 set( ArrayFire_DIR "/usr/local" )
 
