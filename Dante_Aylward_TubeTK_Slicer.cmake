@@ -69,7 +69,7 @@ set( ENV{DISPLAY} ":0" )
 set( SITE_MAKE_COMMAND "make -j3" )
 set( SITE_CMAKE_COMMAND "/Applications/CMake.app/Contents/bin/cmake" )
 set( SITE_CTEST_COMMAND "/Applications/CMake.app/Contents/bin/ctest -j3" )
-set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
+set( SITE_QMAKE_COMMAND "/usr/local/bin/qmake" )
 
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
