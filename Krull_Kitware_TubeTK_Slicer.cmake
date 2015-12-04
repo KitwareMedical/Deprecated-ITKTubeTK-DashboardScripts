@@ -94,7 +94,7 @@ set( USE_SYSTEM_JSONCPP OFF )
 #set( JSoncpp_DIR "" )
 
 set( USE_SYSTEM_KWSTYLE OFF )
-#set( KWSTYLE_EXECUTABLE "" )
+#set( KWStyle_DIR "" )
 
 set( USE_SYSTEM_LIBSVM OFF )
 #set( LIBSVM_DIR "" )
