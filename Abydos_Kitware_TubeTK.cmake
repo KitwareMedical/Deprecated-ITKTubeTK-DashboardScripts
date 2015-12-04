@@ -102,7 +102,6 @@ set( SITE_CTEST_COMMAND "C:/Program Files/CMake/bin/ctest" )
 set( SITE_QMAKE_COMMAND "C:/Qt/4.7.4/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "" )
-set( SITE_KWSTYLE_DIR "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files/Git/bin/git" )
