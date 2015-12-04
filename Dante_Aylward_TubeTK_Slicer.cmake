@@ -21,87 +21,153 @@
 #
 ##############################################################################
 
-set( SITE_NAME "Dante.Aylward.Slicer" )
+# Follow format for caps and components as given on TubeTK dashboard
+set( SITE_NAME "Dante.Kitware.Slicer" )
+# Follow format for caps and components as given on TubeTK dashboard
 set( SITE_PLATFORM "OSX-10.11" )
+
 if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Release" )
+  set( SITE_BUILD_TYPE "Release" ) # Release, Debug
 endif( NOT SITE_BUILD_TYPE )
+
 if( NOT SITE_CTEST_MODE )
   set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 endif( NOT SITE_CTEST_MODE )
-set( SITE_CMAKE_GENERATOR "Unix Makefiles" )
 
-set( TubeTK_GIT_REPOSITORY "https://github.com/TubeTK/TubeTK.git" )
-set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer" )
-set( TubeTK_BINARY_DIR 
+set( SITE_CMAKE_GENERATOR "Unix Makefiles" ) # Ninja or Unix Makefiles
+
+set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
+
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK" )
+set( TubeTK_BINARY_DIR
   "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
-set( TubeTK_BUILD_APPLICATIONS ON )
-set( TubeTK_BUILD_IMAGE_VIEWER ON )
-set( TubeTK_BUILD_SLICER_MODULES ON )
-set( TubeTK_USE_BOOST OFF )
-set( TubeTK_USE_CTK ON )
-set( TubeTK_USE_LIBSVM ON )
-set( TubeTK_USE_NOTEBOOKS OFF )
-set( TubeTK_USE_NUMPY OFF )
-set( TubeTK_USE_PYTHON ON )
-set( TubeTK_USE_PYQTGRAPH OFF )
-set( TubeTK_USE_QT ON )
-set( TubeTK_USE_VTK ON )
-
-set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Release/Slicer-build" )
-
-set( USE_SYSTEM_CTK OFF )
-set( USE_SYSTEM_IMAGE_VIEWER OFF )
-set( USE_SYSTEM_ITK OFF )
-set( USE_SYSTEM_JSONCPP OFF )
-set( USE_SYSTEM_LIBSVM OFF )
-set( USE_SYSTEM_PARAMETER_SERIALIZER OFF )
-set( USE_SYSTEM_SLICER OFF )
-set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
-set( USE_SYSTEM_VTK OFF )
-
-set( BUILD_DOCUMENTATION OFF )
+#
+# To work with Slicer and ITK, TubeTK must be built with shared libs
+#
 set( BUILD_SHARED_LIBS ON )
 
+#
+# If a linux machine, allow qt-based tests to open a window on the display
+#
 set( ENV{DISPLAY} ":0" )
 
+#
+# Machine-specific variables
+#
 set( SITE_MAKE_COMMAND "make -j3" )
+
 set( SITE_CMAKE_COMMAND "/Applications/CMake.app/Contents/bin/cmake" )
 set( SITE_CTEST_COMMAND "/Applications/CMake.app/Contents/bin/ctest -j3" )
+
 set( SITE_QMAKE_COMMAND "/usr/local/bin/qmake" )
 
-set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
-set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
-set( SITE_KWSTYLE_DIR "/usr/bin" )
+set( SITE_COVERAGE_COMMAND "" )
+set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
 set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
+#
+# The following libraries are not handled by Superbuild.
+#   If you wan tto use them, they must already be installed on your system.
+#
+set( TubeTK_BUILD_USING_SLICER ON )
+#if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
+set( Slicer_DIR "/Users/aylward/src/dashboards/Slicer-Release/Slicer-build" )
+
+set( TubeTK_USE_BOOST OFF )
+#if TubeTK_USE_BOOST is ON, you need to fix the following line
+#set( BOOST_ROOT "/usr/local" )
+
+set( TubeTK_USE_GPU_ARRAYFIRE OFF )
+#if TubeTK_USE_GPU_ARRAYFIRE is ON, you need to fix the following line
+#set( ArrayFire_DIR "/usr/local" )
+
+#
+# The following will be built using Superbuild, unless otherwise specified
+#
+set( USE_SYSTEM_CPPCHECK OFF )
+#set( Cppcheck_DIR "" )
+
+set( USE_SYSTEM_JSONCPP OFF )
+#set( JSoncpp_DIR "" )
+
+set( USE_SYSTEM_KWSTYLE OFF )
+#set( KWSTYLE_EXECUTABLE "" )
+
+set( USE_SYSTEM_LIBSVM OFF )
+#set( LIBSVM_DIR "" )
+
+#
+# The default is to superbuild ITK, VTK, CTK, and SEM, unless Slicer is used.
+#
+if( TubeTK_BUILD_USING_SLICER )
+  set( USE_SYSTEM_CTK ON )
+  set( USE_SYSTEM_ITK ON )
+  set( USE_SYSTEM_SlicerExecutionModel ON )
+  set( USE_SYSTEM_VTK ON )
+else( TubeTK_BUILD_USING_SLICER )
+  #
+  # the following will be built using Superbuild, unless otherwise specified
+  #
+  set( USE_SYSTEM_CTK OFF )
+  #set( CTK_DIR "" )
+  set( USE_SYSTEM_ITK OFF )
+  #set( ITK_DIR "" )
+  set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
+  #set( SlicerExecutionModel_DIR "" )
+  set( USE_SYSTEM_VTK OFF )
+  #set( VTK_DIR "" )
+endif( TubeTK_BUILD_USING_SLICER )
+
+#
+#  Define common build settings
+#
+set( TubeTK_BUILD_APPLICATIONS ON )
+set( TubeTK_BUILD_IMAGE_VIEWER ON )
+set( TubeTK_USE_CTK ON )
+set( TubeTK_USE_EXAMPLES_AS_TESTS OFF )
+set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
+set( TubeTK_USE_LIBSVM ON )
+set( TubeTK_USE_NUMPY ON )
+set( TubeTK_USE_PYQTGRAPH ON )
+set( TubeTK_USE_PYTHON ON )
+set( TubeTK_USE_QT ON )
+set( TubeTK_USE_VALGRIND OFF )
+set( TubeTK_USE_VTK ON )
+
+#
+# Configure what is run on this machine for experimental, continuous, and 
+#   nightly builds
+#
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
-set( SITE_EXPERIMENTAL_CPPCHECK OFF )
-set( SITE_EXPERIMENTAL_KWSTYLE OFF )
+set( SITE_EXPERIMENTAL_CPPCHECK ON )
+set( SITE_EXPERIMENTAL_KWSTYLE ON )
 set( SITE_EXPERIMENTAL_COVERAGE OFF )
 set( SITE_EXPERIMENTAL_MEMORY OFF )
+set( SITE_EXPERIMENTAL_BUILD_DOCUMENTATION ON )
 set( SITE_EXPERIMENTAL_PACKAGE OFF )
 set( SITE_EXPERIMENTAL_UPLOAD OFF )
 
 set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
-set( SITE_CONTINUOUS_CPPCHECK OFF )
-set( SITE_CONTINUOUS_KWSTYLE OFF )
+set( SITE_CONTINUOUS_CPPCHECK ON )
+set( SITE_CONTINUOUS_KWSTYLE ON )
 set( SITE_CONTINUOUS_COVERAGE OFF )
 set( SITE_CONTINUOUS_MEMORY OFF )
-set( SITE_CONTINUOUS_PACKAGE OFF )
-set( SITE_CONTINUOUS_UPLOAD OFF )
+set( SITE_CONTINUOUS_BUILD_DOCUMENTATION ON )
+set( SITE_CONTINUOUS_PACKAGE ON )
+set( SITE_CONTINUOUS_UPLOAD ON )
 
 set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
-set( SITE_NIGHTLY_CPPCHECK OFF )
-set( SITE_NIGHTLY_KWSTYLE OFF )
+set( SITE_NIGHTLY_CPPCHECK ON )
+set( SITE_NIGHTLY_KWSTYLE ON )
 set( SITE_NIGHTLY_COVERAGE OFF )
 set( SITE_NIGHTLY_MEMORY OFF )
+set( SITE_NIGHTLY_BUILD_DOCUMENTATION ON )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
 
@@ -146,9 +212,6 @@ if( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
 else( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
   set( CTEST_TEST_TIMEOUT 360 )
 endif( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
-
-set( SITE_EXECUTABLE_DIRS "${SITE_KWSTYLE_DIR}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS}:$ENV{PATH}" )
 
 set( SITE_CXX_FLAGS
   "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
