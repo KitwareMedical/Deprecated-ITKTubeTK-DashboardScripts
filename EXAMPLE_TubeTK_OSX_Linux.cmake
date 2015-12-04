@@ -88,7 +88,7 @@ set( ArrayFire_DIR "/usr/local" )
 # The following will be built using Superbuild, unless otherwise specified
 #
 set( USE_SYSTEM_CPPCHECK OFF )
-#set( CPPCHECK_DIR "" )
+#set( Cppcheck_DIR "" )
 
 set( USE_SYSTEM_JSONCPP OFF )
 #set( JSoncpp_DIR "" )
@@ -103,14 +103,11 @@ set( USE_SYSTEM_LIBSVM OFF )
 # The default is to superbuild ITK, VTK, CTK, and SEM, unless Slicer is used.
 #
 if( TubeTK_BUILD_USING_SLICER )
-
   set( USE_SYSTEM_CTK ON )
   set( USE_SYSTEM_ITK ON )
-  set( USE_SYSTEM_SLICER_EXECUTION_MODEL ON )
+  set( USE_SYSTEM_SlicerExecutionModel ON )
   set( USE_SYSTEM_VTK ON )
-
 else( TubeTK_BUILD_USING_SLICER )
-
   #
   # the following will be built using Superbuild, unless otherwise specified
   #
@@ -119,10 +116,9 @@ else( TubeTK_BUILD_USING_SLICER )
   set( USE_SYSTEM_ITK OFF )
   #set( ITK_DIR "" )
   set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
-  #set( SLICER_EXECUTION_MODEL_DIR "" )
+  #set( SlicerExecutionModel_DIR "" )
   set( USE_SYSTEM_VTK OFF )
   #set( VTK_DIR "" )
-
 endif( TubeTK_BUILD_USING_SLICER )
 
 #
