@@ -66,9 +66,9 @@ set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn" )
 # The following libraries are not handled by Superbuild.
 #   If you wan tto use them, they must already be installed on your system.
 #
-set( TubeTK_BUILD_USING_SLICER OFF )
+set( TubeTK_BUILD_USING_SLICER ON )
 #if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
-#set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
+set( Slicer_DIR "C:/dashboard/src/Slicer-${SITE_BUILD_TYPE}" )
 
 set( TubeTK_USE_BOOST OFF )
 #if TubeTK_USE_BOOST is ON, you need to fix the following line
