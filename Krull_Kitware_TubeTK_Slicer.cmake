@@ -22,7 +22,7 @@
 ##############################################################################
 
 # Follow format for caps and components as given on TubeTK dashboard
-set( SITE_NAME "Krull.Kitware" )   
+set( SITE_NAME "Krull.Kitware.Slicer" )   
 # Follow format for caps and components as given on TubeTK dashboard
 set( SITE_PLATFORM "Ubuntu-12.04-64" )
 
@@ -72,9 +72,9 @@ set( SITE_SVN_COMMAND "/usr/bin/svn" )
 # The following libraries are not handled by Superbuild.
 #   If you wan tto use them, they must already be installed on your system.
 #
-set( TubeTK_BUILD_USING_SLICER OFF )
+set( TubeTK_BUILD_USING_SLICER ON )
 #if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
-#set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
+set( Slicer_DIR "/home/aylward/src/dashboards/Slicer-Release/Slicer-build" )
 
 set( TubeTK_USE_BOOST OFF )
 #if TubeTK_USE_BOOST is ON, you need to fix the following line
@@ -134,7 +134,7 @@ set( TubeTK_USE_NUMPY ON )
 set( TubeTK_USE_PYQTGRAPH ON )
 set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_QT ON )
-set( TubeTK_USE_VALGRIND ON )
+set( TubeTK_USE_VALGRIND OFF )
 set( TubeTK_USE_VTK ON )
 
 #
@@ -165,8 +165,8 @@ set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_CPPCHECK ON )
 set( SITE_NIGHTLY_KWSTYLE ON )
-set( SITE_NIGHTLY_COVERAGE ON )
-set( SITE_NIGHTLY_MEMORY ON )
+set( SITE_NIGHTLY_COVERAGE OFF )
+set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_BUILD_DOCUMENTATION ON )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
