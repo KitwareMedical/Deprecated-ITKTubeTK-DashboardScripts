@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MachineName=Krull_Kitware_Slicer
+MachineName=Krull_Kitware
 BuildType=Release
 CTestCommand=/usr/local/bin/ctest
 DashboardDir=/home/aylward/src/dashboards
