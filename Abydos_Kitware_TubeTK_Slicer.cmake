@@ -22,7 +22,7 @@
 ##############################################################################
 
 # Follow format for caps and components as given on TubeTK dashboard
-set( SITE_NAME "Abydos.Kitware" )
+set( SITE_NAME "Abydos.Kitware.Slicer" )
 # Follow format for caps and components as given on TubeTK dashboard
 set( SITE_PLATFORM "WindowsXP-VS2010Exp-32" )
 
