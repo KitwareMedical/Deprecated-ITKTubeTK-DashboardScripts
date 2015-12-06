@@ -38,7 +38,7 @@ set( SITE_CMAKE_GENERATOR "Visual Studio 10 2010" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
 
-set( TubeTK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
+set( TubeTK_SOURCE_DIR "C:/dashboard/src/TubeTK-Slicer" )
 set( TubeTK_BINARY_DIR "C:/dashboard/src/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
 #
