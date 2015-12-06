@@ -38,7 +38,7 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" ) # Ninja or Unix Makefiles
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
 
-set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK" )
+set( TubeTK_SOURCE_DIR "/Users/aylward/src/dashboards/TubeTK-Slicer" )
 set( TubeTK_BINARY_DIR
   "/Users/aylward/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
 
