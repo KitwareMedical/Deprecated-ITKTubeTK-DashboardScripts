@@ -34,7 +34,7 @@ if( NOT SITE_CTEST_MODE )
   set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 endif( NOT SITE_CTEST_MODE )
 
-set( SITE_CMAKE_GENERATOR "Visual Studio 10" )
+set( SITE_CMAKE_GENERATOR "Visual Studio 10 2010" )
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
 
