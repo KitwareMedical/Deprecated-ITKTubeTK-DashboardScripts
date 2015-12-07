@@ -61,8 +61,9 @@ if( SITE_NIGHTLY_BUILD )
   ctest_update( SOURCE "${TubeTK_SOURCE_DIR}" )
   ctest_configure( BUILD "${TubeTK_BINARY_DIR}"
     SOURCE "${TubeTK_SOURCE_DIR}"
-    OPTIONS "-C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" 
-      "-G${CMAKE_GENERATOR}" )
+    OPTIONS
+      " -C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake
+      -G\"${CMAKE_GENERATOR}\" " )
   ctest_read_custom_files( "${TubeTK_BINARY_DIR}" )
   ctest_build( BUILD "${TubeTK_BINARY_DIR}" )
   ctest_submit( PARTS Notes Update Configure Build )
