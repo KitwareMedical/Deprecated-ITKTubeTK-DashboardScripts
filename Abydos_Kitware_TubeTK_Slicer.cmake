@@ -51,16 +51,16 @@ set( BUILD_SHARED_LIBS ON )
 #
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 
-set( SITE_CMAKE_COMMAND "C:/Program Files/CMake/bin/cmake" )
-set( SITE_CTEST_COMMAND "C:/Program Files/CMake/bin/ctest" )
+set( SITE_CMAKE_COMMAND "C:/Program Files/CMake/bin/cmake.exe" )
+set( SITE_CTEST_COMMAND "C:/Program Files/CMake/bin/ctest.exe" )
 
 set( SITE_QMAKE_COMMAND "C:/Qt/4.7.4/bin/qmake.exe" )
 
 set( SITE_COVERAGE_COMMAND "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
-set( SITE_GIT_COMMAND "C:/Program Files/Git/bin/git" )
-set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn" )
+set( SITE_GIT_COMMAND "C:/Program Files/Git/bin/git.exe" )
+set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn.exe" )
 
 #
 # The following libraries are not handled by Superbuild.
