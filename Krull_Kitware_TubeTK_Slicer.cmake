@@ -60,7 +60,7 @@ set( SITE_MAKE_COMMAND "make -j5" )
 set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
 set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
 
-set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.7.4/bin/qmake" )
+set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
