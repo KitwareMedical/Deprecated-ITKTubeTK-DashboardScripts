@@ -108,7 +108,7 @@ endif( SITE_EXPERIMENTAL_UPLOAD )
 
 if( SITE_EXPERIMENTAL_KWSTYLE )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Experimental" )
-  configure_file( ${TubeTK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+  configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
     ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_start( "Experimental" )
@@ -116,11 +116,10 @@ if( SITE_EXPERIMENTAL_KWSTYLE )
     SOURCE "${TubeTK_SOURCE_DIR}"
     OPTIONS "-C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TubeTK_BINARY_DIR}" )
+  set( CTEST_BUILD_TARGET "StyleCheck" )
   execute_process( COMMAND ${CMAKE_COMMAND}
-      -D KWSTYLE_DASHBOARD_SUBMISSION=ON
-      --build ${TubeTK_BINARY_DIR}/TubeTK-build
-      --target StyleCheck
-    WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build )
+    --build ${TubeTK_BINARY_DIR}/TubeTK-build
+    --target StyleCheck )
   ctest_submit()
 endif( SITE_EXPERIMENTAL_KWSTYLE )
 

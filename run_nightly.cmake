@@ -118,9 +118,8 @@ if( SITE_NIGHTLY_KWSTYLE )
     OPTIONS "-C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TubeTK_BINARY_DIR}" )
   execute_process( COMMAND ${CMAKE_COMMAND}
-      --build ${TubeTK_BINARY_DIR}/TubeTK-build
-      --target StyleCheck
-    WORKING_DIRECTORY ${TubeTK_BINARY_DIR}/TubeTK-build )
+    --build ${TubeTK_BINARY_DIR}/TubeTK-build
+    --target StyleCheck )
   ctest_submit()
 endif( SITE_NIGHTLY_KWSTYLE )
 
