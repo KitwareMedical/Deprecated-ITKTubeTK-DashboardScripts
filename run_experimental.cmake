@@ -116,10 +116,9 @@ if( SITE_EXPERIMENTAL_KWSTYLE )
     SOURCE "${TubeTK_SOURCE_DIR}"
     OPTIONS "-C${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_read_custom_files( "${TubeTK_BINARY_DIR}" )
-  set( CTEST_BUILD_TARGET "StyleCheck" )
   execute_process( COMMAND ${CMAKE_COMMAND}
     --build ${TubeTK_BINARY_DIR}/TubeTK-build
-    --target StyleCheck )
+    --target StyleCheckDashboard )
   ctest_submit()
 endif( SITE_EXPERIMENTAL_KWSTYLE )
 
