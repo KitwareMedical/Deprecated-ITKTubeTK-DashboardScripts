@@ -119,7 +119,7 @@ if( SITE_NIGHTLY_KWSTYLE )
   ctest_read_custom_files( "${TubeTK_BINARY_DIR}" )
   execute_process( COMMAND ${CMAKE_COMMAND}
     --build ${TubeTK_BINARY_DIR}/TubeTK-build
-    --target StyleCheck )
+    --target StyleCheckDashboard )
   ctest_submit()
 endif( SITE_NIGHTLY_KWSTYLE )
 
