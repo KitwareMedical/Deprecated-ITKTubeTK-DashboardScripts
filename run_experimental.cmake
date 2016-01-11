@@ -119,7 +119,7 @@ if( SITE_EXPERIMENTAL_KWSTYLE )
   execute_process( COMMAND ${CMAKE_COMMAND}
     --build ${TubeTK_BINARY_DIR}/TubeTK-build
     --target StyleCheckDashboard )
-  ctest_submit()
+  ctest_submit( PARTS configure build )
 endif( SITE_EXPERIMENTAL_KWSTYLE )
 
 set( CTEST_RUN_CURRENT_SCRIPT 0 )
