@@ -127,7 +127,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
       execute_process( COMMAND ${CMAKE_COMMAND}
         --build ${TubeTK_BINARY_DIR}/TubeTK-build
         --target StyleCheck )
-      ctest_submit()
+      ctest_submit( PARTS Configure Build )
     endif( SITE_CONTINUOUS_KWSTYLE )
 
   endif( res GREATER 0 OR res LESS 0 )

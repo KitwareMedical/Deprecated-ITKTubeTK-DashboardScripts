@@ -120,7 +120,7 @@ if( SITE_NIGHTLY_KWSTYLE )
   execute_process( COMMAND ${CMAKE_COMMAND}
     --build ${TubeTK_BINARY_DIR}/TubeTK-build
     --target StyleCheck )
-  ctest_submit()
+  ctest_submit( PARTS Configure Build )
 endif( SITE_NIGHTLY_KWSTYLE )
 
 set( CTEST_RUN_CURRENT_SCRIPT 0 )
