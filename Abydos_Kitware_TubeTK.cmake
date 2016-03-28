@@ -24,7 +24,7 @@
 # Follow format for caps and components as given on TubeTK dashboard
 set( SITE_NAME "Abydos.Kitware" )
 # Follow format for caps and components as given on TubeTK dashboard
-set( SITE_PLATFORM "WindowsXP-VS2010Exp-32" )
+set( SITE_PLATFORM "Ubuntu-15.10-64" )
 
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Release" ) # Release, Debug
@@ -34,12 +34,13 @@ if( NOT SITE_CTEST_MODE )
   set( SITE_CTEST_MODE "Nightly" ) # Experimental, Continuous, or Nightly
 endif( NOT SITE_CTEST_MODE )
 
-set( SITE_CMAKE_GENERATOR "Visual Studio 10 2010" )
+set( SITE_CMAKE_GENERATOR "Unix Makefiles" ) # Ninja or Unix Makefiles
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
 
-set( TubeTK_SOURCE_DIR "C:/dashboard/src/TubeTK" )
-set( TubeTK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR "/home/aylward/src/TubeTK" )
+set( TubeTK_BINARY_DIR
+  "/home/aylward/src/TubeTK-${SITE_BUILD_TYPE}" )
 
 #
 # To work with Slicer and ITK, TubeTK must be built with shared libs
@@ -47,20 +48,25 @@ set( TubeTK_BINARY_DIR "C:/dashboard/src/TubeTK-${SITE_BUILD_TYPE}" )
 set( BUILD_SHARED_LIBS ON )
 
 #
+# If a linux machine, allow qt-based tests to open a window on the display
+#
+set( ENV{DISPLAY} ":0" )
+
+#
 # Machine-specific variables
 #
-set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
+set( SITE_MAKE_COMMAND "make -j5" )
 
-set( SITE_CMAKE_COMMAND "C:/Program Files/CMake/bin/cmake.exe" )
-set( SITE_CTEST_COMMAND "C:/Program Files/CMake/bin/ctest.exe" )
+set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
+set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
 
-set( SITE_QMAKE_COMMAND "C:/Qt/4.7.4/bin/qmake.exe" )
+set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.8.6/bin/qmake" )
 
-set( SITE_COVERAGE_COMMAND "" )
-set( SITE_MEMORYCHECK_COMMAND "" )
+set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
+set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 
-set( SITE_GIT_COMMAND "C:/Program Files/Git/bin/git.exe" )
-set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn.exe" )
+set( SITE_GIT_COMMAND "/usr/bin/git" )
+set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
 #
 # The following libraries are not handled by Superbuild.
@@ -128,11 +134,11 @@ set( TubeTK_USE_NUMPY ON )
 set( TubeTK_USE_PYQTGRAPH ON )
 set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_QT ON )
-set( TubeTK_USE_VALGRIND OFF )
+set( TubeTK_USE_VALGRIND ON )
 set( TubeTK_USE_VTK ON )
 
 #
-# Configure what is run on this machine for experimental, continuous, and 
+# Configure what is run on this machine for experimental, continuous, and
 #   nightly builds
 #
 set( SITE_EXPERIMENTAL_BUILD ON )
@@ -159,8 +165,8 @@ set( SITE_NIGHTLY_BUILD ON )
 set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_CPPCHECK ON )
 set( SITE_NIGHTLY_KWSTYLE ON )
-set( SITE_NIGHTLY_COVERAGE OFF )
-set( SITE_NIGHTLY_MEMORY OFF )
+set( SITE_NIGHTLY_COVERAGE ON )
+set( SITE_NIGHTLY_MEMORY ON )
 set( SITE_NIGHTLY_BUILD_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
@@ -175,7 +181,8 @@ set( SITE_BUILD_NAME "${SITE_PLATFORM}-${SITE_BUILD_TYPE}" )
 
 set( SITE_UPDATE_COMMAND "${SITE_GIT_COMMAND}" )
 
-set( SITE_MEMORYCHECK_COMMAND_OPTIONS "" )
+set( SITE_MEMORYCHECK_COMMAND_OPTIONS
+  "--gen-suppressions=all --trace-children=yes -q --leak-check=yes --show-reachable=yes --num-callers=50" )
 set( SITE_MEMORYCHECK_SUPPRESSIONS_FILE
   "${TubeTK_SOURCE_DIR}/CMake/Valgrind/TubeTKValgrindSuppressions.txt" )
 
@@ -206,13 +213,27 @@ else( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY 
   set( CTEST_TEST_TIMEOUT 360 )
 endif( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
 
-set( SITE_EXECUTABLE_DIRS "${TubeTK_BINARY_DIR}/SlicerExecutionModel-build/ModuleDescriptionParser-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/SlicerExecutionModel-build/GenerateCLP-build/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/ITK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/JsonCpp-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/VTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/bin/${SITE_BUILD_TYPE};${TubeTK_BINARY_DIR}/TubeTK-build/lib/TubeTK/${SITE_BUILD_TYPE}" )
-set( ENV{PATH} "${SITE_EXECUTABLE_DIRS};$ENV{PATH}" )
-
-set( SITE_CXX_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /GR /MP /EHsc" )
-set( SITE_C_FLAGS "/DWIN32 /D_WINDOWS /W3 /Zm1000 /MP" )
+set( SITE_CXX_FLAGS
+  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings -Wno-deprecated -Woverloaded-virtual" )
+set( SITE_C_FLAGS
+  "-fPIC -fdiagnostics-show-option -W -Wall -Wextra -Wshadow -Wno-system-headers -Wwrite-strings" )
 set( SITE_EXE_LINKER_FLAGS "" )
 set( SITE_SHARED_LINKER_FLAGS "" )
+
+set( COVERAGE_FLAGS "-fprofile-arcs -ftest-coverage -lgcov" )
+if( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
+  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_EXE_LINKER_FLAGS "${SITE_EXE_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
+  set( SITE_SHARED_LINKER_FLAGS
+    "${SITE_SHARED_LINKER_FLAGS} ${COVERAGE_FLAGS}" )
+endif( SITE_NIGHTLY_COVERAGE OR SITE_CONTINUOUS_COVERAGE OR SITE_EXPERIMENTAL_COVERAGE )
+
+set( MEMORYCHECK_FLAGS "-g -O0 -ggdb" )
+if( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
+  set( SITE_C_FLAGS "${SITE_C_FLAGS} ${MEMORYCHECK_FLAGS}" )
+  set( SITE_CXX_FLAGS "${SITE_CXX_FLAGS} ${MEMORYCHECK_FLAGS}" )
+endif( SITE_NIGHTLY_MEMORY OR SITE_CONTINUOUS_MEMORY OR SITE_EXPERIMENTAL_MEMORY )
 
 set( CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${SITE_C_FLAGS}" )
 set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SITE_CXX_FLAGS}" )
