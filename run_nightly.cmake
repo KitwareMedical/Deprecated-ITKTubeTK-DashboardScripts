@@ -109,7 +109,7 @@ endif( SITE_NIGHTLY_UPLOAD )
 
 if( SITE_NIGHTLY_KWSTYLE )
   set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Nightly" )
-  configure_file( ${TubeTK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+  configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
     ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
   ctest_start( "Nightly" )
