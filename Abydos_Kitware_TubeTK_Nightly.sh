@@ -1,8 +1,8 @@
 #!/bin/sh
 
-MachineName=Krull_Kitware
+MachineName=Abydos_Kitware
 BuildType=Release
-CTestCommand=/usr/local/bin/ctest
+CTestCommand=/usr/bin/ctest
 DashboardDir=/home/aylward/src
 
 echo "Running TubeTK Dashboard script"

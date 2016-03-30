@@ -24,7 +24,7 @@
 # Follow format for caps and components as given on TubeTK dashboard
 set( SITE_NAME "Abydos.Kitware" )
 # Follow format for caps and components as given on TubeTK dashboard
-set( SITE_PLATFORM "Ubuntu-15.10-64" )
+set( SITE_PLATFORM "Ubuntu-14.10-64" )
 
 if( NOT SITE_BUILD_TYPE )
   set( SITE_BUILD_TYPE "Release" ) # Release, Debug
@@ -55,12 +55,12 @@ set( ENV{DISPLAY} ":0" )
 #
 # Machine-specific variables
 #
-set( SITE_MAKE_COMMAND "make -j5" )
+set( SITE_MAKE_COMMAND "make -j8" )
 
-set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j5" )
+set( SITE_CMAKE_COMMAND "/usr/bin/cmake" )
+set( SITE_CTEST_COMMAND "/usr/bin/ctest -j8" )
 
-set( SITE_QMAKE_COMMAND "/usr/local/Trolltech/Qt-4.8.6/bin/qmake" )
+set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
@@ -155,7 +155,7 @@ set( SITE_CONTINUOUS_BUILD ON )
 set( SITE_CONTINUOUS_TEST ON )
 set( SITE_CONTINUOUS_CPPCHECK ON )
 set( SITE_CONTINUOUS_KWSTYLE ON )
-set( SITE_CONTINUOUS_COVERAGE OFF )
+set( SITE_CONTINUOUS_COVERAGE ON )
 set( SITE_CONTINUOUS_MEMORY OFF )
 set( SITE_CONTINUOUS_BUILD_DOCUMENTATION OFF )
 set( SITE_CONTINUOUS_PACKAGE ON )
@@ -166,7 +166,7 @@ set( SITE_NIGHTLY_TEST ON )
 set( SITE_NIGHTLY_CPPCHECK ON )
 set( SITE_NIGHTLY_KWSTYLE ON )
 set( SITE_NIGHTLY_COVERAGE ON )
-set( SITE_NIGHTLY_MEMORY ON )
+set( SITE_NIGHTLY_MEMORY OFF )
 set( SITE_NIGHTLY_BUILD_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_PACKAGE ON )
 set( SITE_NIGHTLY_UPLOAD ON )
