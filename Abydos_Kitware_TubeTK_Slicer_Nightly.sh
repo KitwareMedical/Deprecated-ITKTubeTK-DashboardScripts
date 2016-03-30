@@ -2,7 +2,7 @@
 
 MachineName=Abydos_Kitware
 BuildType=Release
-CTestCommand=/usr/bin/ctest
+CTestCommand=/home/aylward/src/CMake-Release/bin/ctest
 DashboardDir=/home/aylward/src
 
 echo "Running TubeTK_Slicer Dashboard script"
