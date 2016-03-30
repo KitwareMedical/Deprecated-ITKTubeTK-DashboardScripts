@@ -57,8 +57,8 @@ set( ENV{DISPLAY} ":0" )
 #
 set( SITE_MAKE_COMMAND "make -j8" )
 
-set( SITE_CMAKE_COMMAND "/usr/bin/cmake" )
-set( SITE_CTEST_COMMAND "/usr/bin/ctest -j8" )
+set( SITE_CMAKE_COMMAND "/home/aylward/src/CMake-Release/bin/cmake" )
+set( SITE_CTEST_COMMAND "/home/aylward/src/CMake-Release/bin/ctest -j8" )
 
 set( SITE_QMAKE_COMMAND "/usr/bin/qmake" )
 
