@@ -116,7 +116,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
     if( SITE_CONTINUOUS_KWSTYLE )
       set( CTEST_BUILD_NAME "${SITE_BUILD_NAME}-Style-Continuous" )
-      configure_file( ${TubeTK_SCRIPT_DIR}/InitCMakeCache.cmake.in
+      configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
         ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
       set( CTEST_NOTES_FILES "${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
       ctest_start( "Continuous" )
