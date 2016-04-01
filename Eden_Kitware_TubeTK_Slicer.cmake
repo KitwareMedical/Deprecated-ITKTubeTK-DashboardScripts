@@ -68,7 +68,7 @@ set( SITE_SVN_COMMAND "C:/Program Files/TortoiseSVN/bin" )
 #
 set( TubeTK_BUILD_USING_SLICER ON )
 #if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
-set( Slicer_DIR "C:/src/Slicer-${SITE_BUILD_TYPE}" )
+set( Slicer_DIR "C:/src/Slicer-${SITE_BUILD_TYPE}/Slicer-build" )
 
 set( TubeTK_USE_BOOST OFF )
 #if TubeTK_USE_BOOST is ON, you need to fix the following line
