@@ -27,7 +27,7 @@ set( SITE_NAME "Krull.Kitware" )
 set( SITE_PLATFORM "Ubuntu-12.04-64" )
 
 if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Release" ) # Release, Debug
+  set( SITE_BUILD_TYPE "Debug" ) # Release, Debug
 endif( NOT SITE_BUILD_TYPE )
 
 if( NOT SITE_CTEST_MODE )
