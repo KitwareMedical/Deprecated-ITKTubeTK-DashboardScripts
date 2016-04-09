@@ -1,7 +1,7 @@
 #!/bin/sh
 
 MachineName=Krull_Kitware
-BuildType=Release
+BuildType=Debug
 CTestCommand=/usr/local/bin/ctest
 DashboardDir=/home/aylward/src/dashboards
 
