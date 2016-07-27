@@ -66,7 +66,6 @@ set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
 
 set( SITE_GIT_COMMAND "/usr/bin/git" )
-set( SITE_SVN_COMMAND "/usr/bin/svn" )
 
 #
 # The following libraries are not handled by Superbuild.
@@ -245,7 +244,6 @@ set( CMAKE_SHARED_LINKER_FLAGS
 
 set( GITCOMMAND "${SITE_GIT_COMMAND}" )
 set( GIT_EXECUTABLE "${SITE_GIT_COMMAND}" )
-set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
 
