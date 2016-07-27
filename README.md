@@ -22,7 +22,8 @@ Get a copy of all the dashboard scripts from the Git repository, including some 
 
 This is the script that will update and launch your dashboard client every night. Use the `.bat` file if you are doing this on Microsoft Windows.
 
-    $ cp TubeTK-DashboardScripts/EXAMPLE_TubeTK_Nightly.sh MyMachine_TubeTK_Nightly.sh
+    $ cd TubeTK-DashboardScripts
+    $ cp EXAMPLE_TubeTK_Nightly.sh MyMachine_TubeTK_Nightly.sh
 
 Setup your machine's parameters as described in the file.
 
