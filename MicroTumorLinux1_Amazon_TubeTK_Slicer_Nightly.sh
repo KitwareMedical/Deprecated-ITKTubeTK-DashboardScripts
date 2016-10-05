@@ -1,6 +1,8 @@
 #!/bin/sh
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Trolltech/Qt-4.8.7/lib
+export ITK_BUILD_DIR=$HOME/src/Slicer-SuperBuild-Release/ITKv4-build
+export TubeTK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Slicer-Release/TubeTK-build
 
 MachineName=MicroTumorLinux1_Amazon
 BuildType=Release
