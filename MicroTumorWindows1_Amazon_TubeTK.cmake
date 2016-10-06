@@ -130,7 +130,7 @@ set( TubeTK_USE_PYTHON ON )
 set( TubeTK_USE_QT ON )
 set( TubeTK_USE_VALGRIND OFF )
 set( TubeTK_USE_VTK ON )
-set( TubeTK_TEST_ENVIRONMENT OFF)
+set( TubeTK_TEST_ENVIRONMENT ON)
 
 #
 # Configure what is run on this machine for experimental, continuous, and 
