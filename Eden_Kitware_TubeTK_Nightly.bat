@@ -2,16 +2,17 @@ REM Start from a clean build directory
 rmdir /Q /S C:\src\TubeTK-Release
 
 REM Update the TubeTK Dashboard scripts
-cd C:\src\TubeTK-DashboardScripts
-"C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" reset --hard HEAD
-"C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" pull
-
+SETLOCAL
 IF /i NOT "%~dp0"=="%temp%\" (
+cd C:\src\TubeTK-DashboardScripts
+  "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" reset --hard HEAD
+  "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" pull
   COPY /y "Eden_Kitware_TubeTK_Nightly.bat" "%temp%\Eden_Kitware_TubeTK_Nightly.bat" >nul
   "%temp%\Eden_Kitware_TubeTK_Nightly.bat"
   del "%temp%\Eden_Kitware_TubeTK_Nightly.bat"
   exit /B
 )
+ENDLOCAL
 
 del C:\src\Eden_Kitware_TubeTK_Nightly.bat.old
 rename C:\src\Eden_Kitware_TubeTK_Nightly.bat Eden_Kitware_TubeTK_Nightly.bat.old
