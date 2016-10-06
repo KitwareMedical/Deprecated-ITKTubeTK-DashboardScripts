@@ -3,9 +3,19 @@ rmdir /Q /S C:\src\TubeTK-Slicer-Release
 
 REM Update the TubeTK Dashboard scripts
 cd C:\src\TubeTK-DashboardScripts
-"C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" reset --hard HEAD
-"C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" pull
-rename C:\src\Eden_Kitware_TubeTK_Slicer_Nightly.bat C:\src\Eden_Kitware_TubeTK_Slicer_Nightly.bat.old
+SETLOCAL
+IF /i NOT "%~dp0"=="%temp%\" (
+  "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" reset --hard HEAD
+  "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" pull
+  COPY /y "Eden_Kitware_TubeTK_Slicer_Nightly.bat" "%temp%\Eden_Kitware_TubeTK_Slicer_Nightly.bat" >nul
+  "%temp%\Eden_Kitware_TubeTK_Slicer_Nightly.bat"
+  del "%temp%\Eden_Kitware_TubeTK_Slicer_Nightly.bat"
+  exit /B
+)
+ENDLOCAL
+
+del C:\src\Eden_Kitware_TubeTK_Slicer_Nightly.bat.old
+rename C:\src\Eden_Kitware_TubeTK_Slicer_Nightly.bat Eden_Kitware_TubeTK_Slicer_Nightly.bat.old
 copy Eden_Kitware_TubeTK_Slicer_Nightly.bat C:\src\Eden_Kitware_TubeTK_Slicer_Nightly.bat
 cd ..
 
