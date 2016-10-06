@@ -1,6 +1,10 @@
 REM Start from a clean build directory
 rmdir /Q /S C:\src\dashboards\TubeTK-Release
 
+REM Set environment variables
+set ITK_BUILD_DIR=C:\src\dashboards\TubeTK-Release\ITK-build
+set TubeTK_BUILD_DIR=C:\src\dashboards\TubeTK-Release\TubeTK-build
+
 REM Update the TubeTK Dashboard scripts
 cd C:\src\dashboards\TubeTK-DashboardScripts
 "C:\Program Files\Git\cmd\git" reset --hard HEAD
