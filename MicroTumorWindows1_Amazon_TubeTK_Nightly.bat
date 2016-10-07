@@ -7,9 +7,19 @@ set TubeTK_BUILD_DIR=C:\src\dashboards\TubeTK-Release\TubeTK-build
 
 REM Update the TubeTK Dashboard scripts
 cd C:\src\dashboards\TubeTK-DashboardScripts
-"C:\Program Files\Git\cmd\git" reset --hard HEAD
-"C:\Program Files\Git\cmd\git" pull
-rename C:\src\dashboards\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat C:\src\dashboards\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat.old
+SETLOCAL
+IF /i NOT "%~dp0"=="%temp%\" (
+  "C:\Program Files\Git\cmd\git" reset --hard HEAD
+  "C:\Program Files\Git\cmd\git" pull
+  COPY /y "MicroTumorWindows1_Amazon_TubeTK_Nightly.bat" "%temp%\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat" >nul
+  "%temp%\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat"
+  del "%temp%\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat"
+  exit /B
+)
+ENDLOCAL
+
+del C:\src\dashboards\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat.old
+rename C:\src\dashboards\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat MicroTumorWindows1_Amazon_TubeTK_Nightly.bat.old
 copy MicroTumorWindows1_Amazon_TubeTK_Nightly.bat C:\src\dashboards\MicroTumorWindows1_Amazon_TubeTK_Nightly.bat
 cd ..
 
