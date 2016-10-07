@@ -1,10 +1,11 @@
 REM Start from a clean build directory
 rmdir /Q /S C:\src\TubeTK-Release
 
+cd C:\src\TubeTK-DashboardScripts
+
 REM Update the TubeTK Dashboard scripts
 SETLOCAL
 IF /i NOT "%~dp0"=="%temp%\" (
-cd C:\src\TubeTK-DashboardScripts
   "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" reset --hard HEAD
   "C:\Users\aylward\AppData\Local\Programs\Git\cmd\git" pull
   COPY /y "Eden_Kitware_TubeTK_Nightly.bat" "%temp%\Eden_Kitware_TubeTK_Nightly.bat" >nul
