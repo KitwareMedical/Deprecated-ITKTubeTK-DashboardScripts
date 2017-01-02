@@ -21,12 +21,12 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Bootstrapping"
   # Get new nightly script
-  cp -f ${MachineName}_TubeTK_Slicer_Nightly.sh ..
+  cp -f ${MachineName}_TubeTK_Slicer_Nightly-${BuildType}.sh ..
   cd ..
-  chmod +x ${MachineName}_TubeTK_Slicer_Nightly.sh
+  chmod +x ${MachineName}_TubeTK_Slicer_Nightly-${BuildType}.sh
 
   # Run new nightly script without updating again
-  ./${MachineName}_TubeTK_Slicer_Nightly.sh NoUpdate
+  ./${MachineName}_TubeTK_Slicer_Nightly-${BuildType}.sh NoUpdate
 
 else
 
