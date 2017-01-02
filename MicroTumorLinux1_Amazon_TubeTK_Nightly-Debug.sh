@@ -13,7 +13,7 @@ echo "Running TubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/TubeTK-${BuildType}
+  rm -rf ${DashboardDir}/TubeTK-${BuildType}-build
 
   # Update Dashboard repository
   cd ${DashboardDir}/TubeTK-DashboardScripts

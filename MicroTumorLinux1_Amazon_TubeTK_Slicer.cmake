@@ -38,9 +38,10 @@ set( SITE_CMAKE_GENERATOR "Unix Makefiles" ) # Ninja or Unix Makefiles
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
 
-set( TubeTK_SOURCE_DIR "/home/ubuntu/src/dashboards/TubeTK-Slicer" )
-set( TubeTK_BINARY_DIR
+set( TubeTK_SOURCE_DIR
   "/home/ubuntu/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
+set( TubeTK_BINARY_DIR
+  "/home/ubuntu/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}-build" )
 
 #
 # To work with Slicer and ITK, TubeTK must be built with shared libs

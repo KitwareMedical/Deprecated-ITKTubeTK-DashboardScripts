@@ -2,7 +2,7 @@
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Trolltech/Qt-4.8.7/lib
 export ITK_BUILD_DIR=$HOME/src/Slicer-SuperBuild-Release/ITKv4-build
-export TubeTK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Slicer-Release/TubeTK-build
+export TubeTK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Slicer-Release-build/TubeTK-build
 
 MachineName=MicroTumorLinux1_Amazon
 BuildType=Release
@@ -13,7 +13,7 @@ echo "Running TubeTK_Slicer Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/TubeTK-Slicer-${BuildType}
+  rm -rf ${DashboardDir}/TubeTK-Slicer-${BuildType}-build
 
   # Update Dashboard repository
   cd ${DashboardDir}/TubeTK-DashboardScripts
