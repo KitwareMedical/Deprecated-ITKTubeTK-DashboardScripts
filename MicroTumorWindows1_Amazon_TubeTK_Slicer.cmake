@@ -60,6 +60,8 @@ set( SITE_COVERAGE_COMMAND "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
 set( SITE_GIT_COMMAND "C:/Program Files/Git/cmd/git.exe" )
+
+# SVN is required by Slicer
 set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn.exe" )
 
 #
@@ -224,9 +226,12 @@ set( CMAKE_SHARED_LINKER_FLAGS
 
 set( GITCOMMAND "${SITE_GIT_COMMAND}" )
 set( GIT_EXECUTABLE "${SITE_GIT_COMMAND}" )
-set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
 set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
+if( TubeTK_BUILD_USING_SLICER )
+  set( SVNCOMMAND "${SITE_SVN_COMMAND}" )
+  set( Subversion_SVN_EXECUTABLE "${SITE_SVN_COMMAND}" )
+endif( TubeTK_BUILD_USING_SLICER )
 
 if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
   execute_process( COMMAND
