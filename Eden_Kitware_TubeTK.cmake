@@ -54,8 +54,6 @@ set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 set( SITE_CMAKE_COMMAND "C:/Program Files (x86)/CMake/bin/cmake.exe" )
 set( SITE_CTEST_COMMAND "C:/Program Files (x86)/CMake/bin/ctest.exe" )
 
-set( SITE_QMAKE_COMMAND "C:/src/qt-4.8.7-64-vs2012-rel/bin/qmake.exe" )
-
 set( SITE_COVERAGE_COMMAND "" )
 set( SITE_MEMORYCHECK_COMMAND "" )
 
@@ -68,6 +66,7 @@ set( SITE_GIT_COMMAND "C:/Users/aylward/AppData/Local/Programs/Git/cmd/git.exe" 
 set( TubeTK_BUILD_USING_SLICER OFF )
 #if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
 #set( Slicer_DIR "/Users/aylward/src/Slicer-Release/Slicer-build" )
+#set( SITE_SVN_COMMAND )
 
 set( TubeTK_USE_BOOST OFF )
 #if TubeTK_USE_BOOST is ON, you need to fix the following line
@@ -95,38 +94,28 @@ set( USE_SYSTEM_LIBSVM OFF )
 #
 # The default is to superbuild ITK, VTK, CTK, and SEM, unless Slicer is used.
 #
-if( TubeTK_BUILD_USING_SLICER )
-  set( USE_SYSTEM_CTK ON )
-  set( USE_SYSTEM_ITK ON )
-  set( USE_SYSTEM_SlicerExecutionModel ON )
-  set( USE_SYSTEM_VTK ON )
-else( TubeTK_BUILD_USING_SLICER )
+if( NOT TubeTK_BUILD_USING_SLICER )
   #
   # the following will be built using Superbuild, unless otherwise specified
   #
-  set( USE_SYSTEM_CTK OFF )
-  #set( CTK_DIR "" )
   set( USE_SYSTEM_ITK OFF )
   #set( ITK_DIR "" )
   set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
   #set( SlicerExecutionModel_DIR "" )
   set( USE_SYSTEM_VTK OFF )
   #set( VTK_DIR "" )
-endif( TubeTK_BUILD_USING_SLICER )
+endif( NOT TubeTK_BUILD_USING_SLICER )
 
 #
 #  Define common build settings
 #
 set( TubeTK_BUILD_APPLICATIONS ON )
-set( TubeTK_BUILD_IMAGE_VIEWER ON )
-set( TubeTK_USE_CTK ON )
 set( TubeTK_USE_EXAMPLES_AS_TESTS OFF )
 set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
 set( TubeTK_USE_LIBSVM ON )
 set( TubeTK_USE_NUMPY_STACK ON )
 set( TubeTK_USE_PYQTGRAPH ON )
 set( TubeTK_USE_PYTHON ON )
-set( TubeTK_USE_QT ON )
 set( TubeTK_USE_VALGRIND OFF )
 set( TubeTK_USE_VTK ON )
 set( TubeTK_TEST_ENVIRONMENT OFF)
@@ -224,7 +213,9 @@ set( CMAKE_SHARED_LINKER_FLAGS
 set( GITCOMMAND "${SITE_GIT_COMMAND}" )
 set( GIT_EXECUTABLE "${SITE_GIT_COMMAND}" )
 set( CMAKE_GENERATOR ${SITE_CMAKE_GENERATOR} )
-set( QT_QMAKE_EXECUTABLE "${SITE_QMAKE_COMMAND}" )
+if( TubeTK_BUILD_USING_SLICER )
+  set( Subversion_SVN_EXECUTABLE "${SITE_SVN_COMMAND}" )
+endif( TubeTK_BUILD_USING_SLICER )
 
 if( NOT EXISTS "${TubeTK_SOURCE_DIR}/CMakeLists.txt" )
   execute_process( COMMAND
