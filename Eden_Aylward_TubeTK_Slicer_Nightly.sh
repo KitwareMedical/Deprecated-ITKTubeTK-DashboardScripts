@@ -1,22 +1,22 @@
 #!/bin/sh
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Users/aylward/src/Qt/lib
-export ITK_BUILD_DIR=$HOME/src/TubeTK-Debug-Build/ITK-build
-export TubeTK_BUILD_DIR=$HOME/src/TubeTK-Debug-Build/TubeTK-build
+export ITK_BUILD_DIR=$HOME/src/ITKTubeTK-Build-Debug/ITK-build
+export TubeTK_BUILD_DIR=$HOME/src/ITKTubeTK-Build-Debug/TubeTK-build
 
 MachineName=Eden_Aylward
 BuildType=Release
 CTestCommand=/Applications/CMake.app/Contents/bin/ctest
 DashboardDir=/Users/aylward/src
 
-echo "Running TubeTK Dashboard script"
+echo "Running ITKTubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/TubeTK-Slicer-${BuildType}-Build
+  rm -rf ${DashboardDir}/ITKTubeTK-Slicer-Build-${BuildType}
 
   # Update Dashboard repository
-  cd ${DashboardDir}/TubeTK-DashboardScripts
+  cd ${DashboardDir}/ITKTubeTK-DashboardScripts
   git pull -f
 
   echo "Bootstrapping"
@@ -32,11 +32,11 @@ else
 
 # Run the nightly
 echo "Running nightly ctest"
-${CTestCommand} -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D SITE_BUILD_TYPE:STRING=${BuildType} -S TubeTK-DashboardScripts/${MachineName}_TubeTK_Slicer.cmake -V -VV -O ${MachineName}_TubeTK_Slicer_Nightly.log
+${CTestCommand} -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK_Slicer.cmake -V -VV -O ${MachineName}_TubeTK_Slicer_Nightly.log
 
 echo "Running continuous ctest"
-${CTestCommand} -D Continuous -D SITE_CTEST_MODE:STRING=Continuous -D SITE_BUILD_TYPE:STRING=${BuildType} -S TubeTK-DashboardScripts/${MachineName}_TubeTK_Slicer.cmake -V -VV -O ${MachineName}_TubeTK_Slicer_Continuous.log
+${CTestCommand} -D Continuous -D SITE_CTEST_MODE:STRING=Continuous -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK_Slicer.cmake -V -VV -O ${MachineName}_TubeTK_Slicer_Continuous.log
 
 fi
 
-echo "Ending TubeTK dashboard script"
+echo "Ending ITKTubeTK dashboard script"
