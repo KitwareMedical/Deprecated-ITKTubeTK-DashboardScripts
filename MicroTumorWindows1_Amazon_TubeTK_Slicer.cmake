@@ -1,9 +1,8 @@
 ##############################################################################
 #
-# Library:   TubeTK
+# Library:   ITKTubeTK
 #
-# Copyright 2010 Kitware Inc. 28 Corporate Drive,
-# Clifton Park, NY, 12065, USA.
+# Copyright Kitware Inc.
 #
 # All rights reserved.
 #
@@ -21,9 +20,15 @@
 #
 ##############################################################################
 
-# Follow format for caps and components as given on TubeTK dashboard
+
+##############################################################################
+#
+# Dashboard configuration
+#
+##############################################################################
+
+# Follow format for caps and components as given on ITKTubeTK dashboard
 set( SITE_NAME "MicroTumorWindows1.Amazon.Slicer" )
-# Follow format for caps and components as given on TubeTK dashboard
 set( SITE_PLATFORM "WindowServer2012R2-VS2013Exp-64" )
 
 if( NOT SITE_BUILD_TYPE )
@@ -36,19 +41,20 @@ endif( NOT SITE_CTEST_MODE )
 
 set( SITE_CMAKE_GENERATOR "Visual Studio 12 2013 Win64" )
 
-set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/TubeTK.git" )
+set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/ITKTubeTK.git" )
 
-set( TubeTK_SOURCE_DIR "C:/src/dashboards/TubeTK-Slicer" )
-set( TubeTK_BINARY_DIR "C:/src/dashboards/TubeTK-Slicer-${SITE_BUILD_TYPE}" )
+set( TubeTK_SOURCE_DIR
+  "C:/src/dashboards/ITKTubeTK-Slicer-Src-${SITE_BUILD_TYPE}" )
+set( TubeTK_BINARY_DIR
+  "C:/src/dashboards/ITKTubeTK-Slicer-Build-${SITE_BUILD_TYPE}" )
 
-#
-# To work with Slicer and ITK, TubeTK must be built with shared libs
-#
-set( BUILD_SHARED_LIBS ON )
 
+##############################################################################
 #
-# Machine-specific variables
+# Machine-specific command paths
 #
+##############################################################################
+
 set( SITE_MAKE_COMMAND "${CTEST_BUILD_COMMAND}" )
 
 set( SITE_CMAKE_COMMAND "C:/Program Files/CMake/bin/cmake" )
@@ -60,71 +66,100 @@ set( SITE_MEMORYCHECK_COMMAND "" )
 set( SITE_GIT_COMMAND "C:/Program Files/Git/cmd/git.exe" )
 
 
+###########################################################################
 #
 # The following libraries are not handled by Superbuild.
-#   If you wan tto use them, they must already be installed on your system.
+#   If you want to use them, they must already be installed on your system.
 #
+###########################################################################
+
 set( TubeTK_BUILD_USING_SLICER ON )
-#if TubeTK_BUILD_USING_SLICER is ON, you need to fix the following line
 set( Slicer_DIR "C:/src/Slicer-SuperBuild-Release/Slicer-build" )
 set( SITE_SVN_COMMAND "C:/Program Files/SlikSvn/bin/svn.exe" )
 
 set( TubeTK_USE_BOOST OFF )
-#if TubeTK_USE_BOOST is ON, you need to fix the following line
 #set( BOOST_ROOT "/usr/local" )
 
-set( TubeTK_USE_GPU_ARRAYFIRE OFF )
-#if TubeTK_USE_GPU_ARRAYFIRE is ON, you need to fix the following line
+set( TubeTK_USE_ARRAYFIRE OFF )
 #set( ArrayFire_DIR "/usr/local" )
 
+set( TubeTK_USE_VALGRIND OFF )
+
+set( TubeTK_USE_PYTHON ON )
+set( TubeTK_USE_NUMPY_STACK ON )
+set( TubeTK_USE_PYQTGRAPH ON )
+
+
+###########################################################################
 #
-# The following will be built using Superbuild, unless otherwise specified
+# The following will be built using Superbuild, unless otherwise specified.
 #
+###########################################################################
+
+set( TubeTK_USE_CPPCHECK ON )
 set( USE_SYSTEM_CPPCHECK OFF )
 #set( Cppcheck_DIR "" )
 
-set( USE_SYSTEM_JSONCPP OFF )
-#set( JSoncpp_DIR "" )
+set( TubeTK_USE_JSONCPP ON )
+set( USE_SYSTEM_JSONCPP ON )  # From Slicer
+#set( JsonCpp_DIR "" )
+
+set( TubeTK_USE_KWSTYLE ON )
+set( USE_SYSTEM_KWSTYLE OFF )
+#set( KWStyle_DIR "" )
+
+set( TubeTK_USE_LIBSVM OFF )
+set( USE_SYSTEM_LIBSVM OFF )
+#set( LIBSVM_DIR "" )
+
+set( TubeTK_USE_RANDOMFOREST OFF )
+set( USE_SYSTEM_RANDOMFOREST OFF )
+#set( RandomForest_DIR "" )
+
+set( TubeTK_USE_VTK ON )
+set( USE_SYSTEM_VTK OFF )
+#set( VTK_DIR "" )
+
+set( USE_SYSTEM_ITK OFF )  # From Slicer
+#set( ITK_DIR "" )
 
 set( USE_SYSTEM_KWSTYLE OFF )
 #set( KWStyle_DIR "" )
 
-set( USE_SYSTEM_LIBSVM OFF )
-#set( LIBSVM_DIR "" )
+set( USE_SYSTEM_CPPCHECK OFF )
+#set( Cppcheck_DIR "" )
 
-#
-# The default is to superbuild ITK, VTK, and SEM, unless Slicer is used.
-#
-if( NOT TubeTK_BUILD_USING_SLICER )
-  #
-  # the following will be built using Superbuild, unless otherwise specified
-  #
-  set( USE_SYSTEM_ITK OFF )
-  #set( ITK_DIR "" )
-  set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )
-  #set( SlicerExecutionModel_DIR "" )
-  set( USE_SYSTEM_VTK OFF )
-  #set( VTK_DIR "" )
-endif( NOT TubeTK_BUILD_USING_SLICER )
+set( USE_SYSTEM_SLICER_EXECUTION_MODEL OFF )  # From Slicer
+#set( SlicerExecutionModel_DIR "" )
 
-#
-#  Define common build settings
-#
-set( TubeTK_BUILD_APPLICATIONS ON )
-set( TubeTK_USE_EXAMPLES_AS_TESTS OFF )
-set( TubeTK_USE_IPYTHON_NOTEBOOKS ON )
-set( TubeTK_USE_LIBSVM ON )
-set( TubeTK_USE_NUMPY ON )
-set( TubeTK_USE_PYQTGRAPH ON )
-set( TubeTK_USE_PYTHON ON )
-set( TubeTK_USE_VALGRIND OFF )
-set( TubeTK_USE_VTK ON )
-set( TubeTK_TEST_ENVIRONMENT ON)
 
+###########################################################################
+#
+# Standard configuration variables
+#
+###########################################################################
+
+# To work with Slicer and ITK, TubeTK must be built with shared libs
+set( BUILD_SHARED_LIBS ON )
+
+# If build testing is on, some test data will download during building, and
+#   some will download during testing.
+set( BUILD_TESTING ON )
+
+# Tests are run in a python virtual environment, if this variable on
+set( BUILD_TESTING_VIRTUAL_ENV ON )
+
+# Extends the time required for testing.
+set( TubeTK_USE_EXAMPLES_AS_TESTS ON )
+
+
+###########################################################################
 #
 # Configure what is run on this machine for experimental, continuous, and 
 #   nightly builds
 #
+###########################################################################
+
 set( SITE_EXPERIMENTAL_BUILD ON )
 set( SITE_EXPERIMENTAL_TEST ON )
 set( SITE_EXPERIMENTAL_CPPCHECK ON )
@@ -155,8 +190,14 @@ set( SITE_NIGHTLY_BUILD_DOCUMENTATION OFF )
 set( SITE_NIGHTLY_PACKAGE OFF )
 set( SITE_NIGHTLY_UPLOAD OFF )
 
+
 ##############################################################################
-# The following advanced variables should only be changed by experts.
+##############################################################################
+#
+# The following variables should never be changed, unless your system has a
+#   very unusual configuration.
+#
+##############################################################################
 ##############################################################################
 
 set( TubeTK_SCRIPT_DIR "${CTEST_SCRIPT_DIRECTORY}" )

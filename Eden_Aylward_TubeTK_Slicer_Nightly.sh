@@ -1,15 +1,19 @@
 #!/bin/sh
 
-MachineName=Dante_Aylward
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/Users/aylward/src/Qt/lib
+export ITK_BUILD_DIR=$HOME/src/TubeTK-Debug-Build/ITK-build
+export TubeTK_BUILD_DIR=$HOME/src/TubeTK-Debug-Build/TubeTK-build
+
+MachineName=Eden_Aylward
 BuildType=Release
 CTestCommand=/Applications/CMake.app/Contents/bin/ctest
-DashboardDir=/Users/aylward/src/dashboards
+DashboardDir=/Users/aylward/src
 
 echo "Running TubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/TubeTK-Slicer-${BuildType}
+  rm -rf ${DashboardDir}/TubeTK-Slicer-${BuildType}-Build
 
   # Update Dashboard repository
   cd ${DashboardDir}/TubeTK-DashboardScripts

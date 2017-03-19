@@ -1,9 +1,9 @@
 REM Start from a clean build directory
-rmdir /Q /S C:\src\dashboards\TubeTK-Slicer-Release
+rmdir /Q /S C:\src\dashboards\TubeTK-Slicer-Release-Build
 
 REM Set environment variables
 set ITK_BUILD_DIR=C:\src\Slicer-SuperBuild-Release\ITKv4-build
-set TubeTK_BUILD_DIR=C:\src\dashboards\TubeTK-Slicer-Release\TubeTK-build
+set TubeTK_BUILD_DIR=C:\src\dashboards\TubeTK-Slicer-Release-Build\TubeTK-build
 
 REM Update the TubeTK Dashboard scripts
 cd C:\src\dashboards\TubeTK-DashboardScripts

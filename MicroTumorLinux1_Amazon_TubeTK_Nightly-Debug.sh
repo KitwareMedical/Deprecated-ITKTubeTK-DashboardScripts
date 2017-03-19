@@ -1,8 +1,8 @@
 #!/bin/sh
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Trolltech/Qt-4.8.7/lib
-export ITK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Debug-build/ITK-build
-export TubeTK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Debug-build/TubeTK-build
+export ITK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Debug-Build/ITK-build
+export TubeTK_BUILD_DIR=$HOME/src/dashboards/TubeTK-Debug-Build/TubeTK-build
 
 MachineName=MicroTumorLinux1_Amazon
 BuildType=Debug
@@ -13,7 +13,7 @@ echo "Running TubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/TubeTK-${BuildType}-build
+  rm -rf ${DashboardDir}/TubeTK-${BuildType}-Build
 
   # Update Dashboard repository
   cd ${DashboardDir}/TubeTK-DashboardScripts
