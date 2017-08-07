@@ -1,19 +1,18 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Trolltech/Qt-4.8.7/lib
-export ITK_BUILD_DIR=$HOME/src/dashboards/ITKTubeTK-Build-Debug/ITK-build
-export TubeTK_BUILD_DIR=$HOME/src/dashboards/ITKTubeTK-Build-Debug/TubeTK-build
+export ITK_BUILD_DIR=${HOME}/src/ITK-Debug
+export TubeTK_BUILD_DIR=${HOME}/src/ITKTubeTK-Debug/TubeTK-build
 
-MachineName=MicroTumorLinux1_Amazon
+MachineName=Mountain_Aylward
 BuildType=Debug
-CTestCommand=/usr/local/bin/ctest
-DashboardDir=/home/ubuntu/src/dashboards
+CTestCommand=/usr/bin/ctest
+DashboardDir=${HOME}/src/
 
-echo "Running ITKTubeTK Dashboard script"
+echo "Running ITKTubeTK Debug Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/ITKTubeTK-Build-${BuildType}
+  rm -rf ${DashboardDir}/ITKTubeTK-${BuildType}
 
   # Update Dashboard repository
   cd ${DashboardDir}/ITKTubeTK-DashboardScripts
@@ -30,13 +29,14 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
 else
 
+echo "BuildType = ${BuildType}"
 # Run the nightly
 echo "Running nightly ctest"
 ${CTestCommand} -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK.cmake -V -VV -O ${MachineName}_TubeTK_Nightly-${BuildType}.log
 
-echo "Running continuous ctest"
-${CTestCommand} -D Continuous -D SITE_CTEST_MODE:STRING=Continuous -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK.cmake -V -VV -O ${MachineName}_TubeTK_Continuous-${BuildType}.log
+#echo "Running continuous ctest"
+#${CTestCommand} -D Continuous -D SITE_CTEST_MODE:STRING=Continuous -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK.cmake -V -VV -O ${MachineName}_TubeTK_Continuous-${BuildType}.log
 
 fi
 
-echo "Ending ITKTubeTK dashboard script"
+echo "Ending ITKTubeTK Debug Dashboard script"

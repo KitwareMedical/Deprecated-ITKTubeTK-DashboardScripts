@@ -29,25 +29,25 @@
 ##############################################################################
 
 # Follow format for caps and components as given on ITKTubeTK dashboard
-set( SITE_NAME "MicroTumorLinux1.Amazon" )   
-set( SITE_PLATFORM "Ubuntu-14.04-64-EXAMPLES_AS_TESTS" )
+set( SITE_NAME "Mountain.Aylward" )   
+set( SITE_PLATFORM "Ubuntu-17.04-64-EXAMPLES_AS_TESTS" )
 
-if( NOT SITE_BUILD_TYPE )
-  set( SITE_BUILD_TYPE "Debug" ) # Release, Debug
-endif( NOT SITE_BUILD_TYPE )
+if( "${SITE_BUILD_TYPE}" STREQUAL "" )
+  set( SITE_BUILD_TYPE "Release" ) # Release, Debug
+endif( "${SITE_BUILD_TYPE}" STREQUAL "" )
 
-if( NOT SITE_CTEST_MODE )
+if( "${SITE_CTEST_MODE}" STREQUAL "" )
   set( SITE_CTEST_MODE "Experimental" ) # Experimental, Continuous, or Nightly
-endif( NOT SITE_CTEST_MODE )
+endif( "${SITE_CTEST_MODE}" STREQUAL "" )
 
 set( SITE_CMAKE_GENERATOR "Ninja" ) # Ninja or Unix Makefiles
 
 set( TubeTK_GIT_REPOSITORY "https://github.com/KitwareMedical/ITKTubeTK.git" )
 
 set( TubeTK_SOURCE_DIR
-  "/home/ubuntu/src/dashboards/ITKTubeTK-Src-${SITE_BUILD_TYPE}" )
+  "/home/aylward/src/ITKTubeTK" )
 set( TubeTK_BINARY_DIR
-  "/home/ubuntu/src/dashboards/ITKTubeTK-Build-${SITE_BUILD_TYPE}" )
+  "/home/aylward/src/ITKTubeTK-${SITE_BUILD_TYPE}" )
 
 # If a linux machine, allow qt-based tests to open a window on the display
 set( ENV{DISPLAY} ":0" )
@@ -61,8 +61,8 @@ set( ENV{DISPLAY} ":0" )
 
 set( SITE_MAKE_COMMAND "ninja" )
 
-set( SITE_CMAKE_COMMAND "/usr/local/bin/cmake" )
-set( SITE_CTEST_COMMAND "/usr/local/bin/ctest -j3" )
+set( SITE_CMAKE_COMMAND "/usr/bin/cmake" )
+set( SITE_CTEST_COMMAND "/usr/bin/ctest -j3" )
 
 set( SITE_COVERAGE_COMMAND "/usr/bin/gcov" )
 set( SITE_MEMORYCHECK_COMMAND "/usr/bin/valgrind" )
@@ -121,11 +121,12 @@ set( USE_SYSTEM_RANDOMFOREST OFF )
 #set( RandomForest_DIR "" )
 
 set( TubeTK_USE_VTK ON )
-set( USE_SYSTEM_VTK OFF )
-#set( VTK_DIR "" )
+set( USE_SYSTEM_VTK ON )
+set( VTK_DIR "/home/aylward/src/VTK-${SITE_BUILD_TYPE}" )
+message( "VTK_DIR = ${VTK_DIR}" )
 
-set( USE_SYSTEM_ITK OFF )
-#set( ITK_DIR "" )
+set( USE_SYSTEM_ITK ON )
+set( ITK_DIR "/home/aylward/src/ITK-${SITE_BUILD_TYPE}" )
 
 set( USE_SYSTEM_KWSTYLE OFF )
 #set( KWStyle_DIR "" )

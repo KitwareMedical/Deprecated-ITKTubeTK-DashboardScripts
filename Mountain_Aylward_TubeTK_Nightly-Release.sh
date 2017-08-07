@@ -1,19 +1,18 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Trolltech/Qt-4.8.7/lib
-export ITK_BUILD_DIR=$HOME/src/dashboards/ITKTubeTK-Build-Release/ITK-build
-export TubeTK_BUILD_DIR=$HOME/src/dashboards/ITKTubeTK-Build-Release/TubeTK-build
+export ITK_BUILD_DIR=$HOME/src/ITK-Release
+export TubeTK_BUILD_DIR=$HOME/src/ITKTubeTK-Release/TubeTK-build
 
-MachineName=MicroTumorLinux1_Amazon
+MachineName=Mountain_Aylward
 BuildType=Release
-CTestCommand=/usr/local/bin/ctest
-DashboardDir=/home/ubuntu/src/dashboards
+CTestCommand=/usr/bin/ctest
+DashboardDir=/home/aylward/src/
 
 echo "Running ITKTubeTK Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"
-  rm -rf ${DashboardDir}/ITKTubeTK-Build-${BuildType}
+  rm -rf ${DashboardDir}/ITKTubeTK-${BuildType}
 
   # Update Dashboard repository
   cd ${DashboardDir}/ITKTubeTK-DashboardScripts
@@ -39,4 +38,4 @@ ${CTestCommand} -D Continuous -D SITE_CTEST_MODE:STRING=Continuous -D SITE_BUILD
 
 fi
 
-echo "Ending ITKTubeTK dashboard script"
+echo "Ending ITKTubeTK ${BuildType} dashboard script"
