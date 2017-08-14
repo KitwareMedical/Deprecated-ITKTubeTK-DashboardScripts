@@ -151,6 +151,9 @@ set( BUILD_SHARED_LIBS ON )
 #   some will download during testing.
 set( BUILD_TESTING ON )
 
+# If build applications is on, the applications will be built
+set( TubeTK_BUILD_APPLICATIONS ON )
+
 # Tests are run in a python virtual environment, if this variable on
 set( BUILD_TESTING_VIRTUAL_ENV ON )
 
