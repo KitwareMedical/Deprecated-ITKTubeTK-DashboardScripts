@@ -3,6 +3,8 @@
 export ITK_BUILD_DIR=${HOME}/src/ITK-Debug
 export TubeTK_BUILD_DIR=${HOME}/src/ITKTubeTK-Debug/TubeTK-build
 
+export QT_SELECT=qt5
+
 MachineName=Mountain_Aylward
 BuildType=Debug
 CTestCommand=/usr/bin/ctest
