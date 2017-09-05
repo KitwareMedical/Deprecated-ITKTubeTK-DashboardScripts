@@ -63,7 +63,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
   ctest_update( SOURCE "${CTEST_SOURCE_DIRECTORY}" RETURN_VALUE res )
 
-  if( res GREATER 0 OR res LESS 0 )
+  if( res GREATER 0 )
     if( SITE_CONTINUOUS_BUILD )
       ctest_configure( BUILD "${TubeTK_BINARY_DIR}"
         SOURCE "${TubeTK_SOURCE_DIR}"
@@ -129,7 +129,7 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
       ctest_submit( PARTS configure build )
     endif( SITE_CONTINUOUS_KWSTYLE )
 
-  endif( res GREATER 0 OR res LESS 0 )
+  endif( res GREATER 0 )
 
   # Loop no faster than once every 2 minutes.
   ctest_sleep( ${START_TIME} 120 ${CTEST_ELAPSED_TIME} )
