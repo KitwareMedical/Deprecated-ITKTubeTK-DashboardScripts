@@ -55,6 +55,16 @@ while( ${CTEST_ELAPSED_TIME} LESS 68400 )
 
   set( BUILD_TESTING ON )
 
+  if(NOT DEFINED ExternalData_OBJECT_STORES)
+  if(DEFINED "ENV{ExternalData_OBJECT_STORES}")
+    file(TO_CMAKE_PATH "$ENV{ExternalData_OBJECT_STORES}"
+      ExternalData_OBJECT_STORES)
+  else()
+    set(ExternalData_OBJECT_STORES ${TubeTK_BINARY_DIR}/../ExternalData)
+  endif()
+endif()
+
+
   configure_file( ${TubeTK_SOURCE_DIR}/CMake/InitCMakeCache.cmake.in
     ${TubeTK_BINARY_DIR}/InitCMakeCache.cmake IMMEDIATE @ONLY )
   set( CTEST_NOTES_FILES "${TubeTK_BINARY_DIR}/InitCMakeCache.cmake" )
