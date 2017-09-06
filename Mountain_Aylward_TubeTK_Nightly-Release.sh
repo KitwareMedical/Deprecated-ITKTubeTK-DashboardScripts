@@ -1,16 +1,18 @@
 #!/bin/sh
 
-export ITK_BUILD_DIR=$HOME/src/ITK-Release
-export TubeTK_BUILD_DIR=$HOME/src/ITKTubeTK-Release/TubeTK-build
+export ITK_BUILD_DIR=${HOME}/src/ITK-Release
+export TubeTK_BUILD_DIR=${HOME}/src/ITKTubeTK-Release/TubeTK-build
 
 export QT_SELECT=qt5
+
+export ExternalData_OBJECT_STORES=${HOME}/src/ExternalData
 
 MachineName=Mountain_Aylward
 BuildType=Release
 CTestCommand=/usr/bin/ctest
-DashboardDir=/home/aylward/src/
+DashboardDir=${HOME}/src/
 
-echo "Running ITKTubeTK Dashboard script"
+echo "Running ITKTubeTK Release Dashboard script"
 if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
   echo "Updating"

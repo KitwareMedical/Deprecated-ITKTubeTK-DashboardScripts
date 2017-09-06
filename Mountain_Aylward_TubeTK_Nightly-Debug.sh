@@ -5,6 +5,8 @@ export TubeTK_BUILD_DIR=${HOME}/src/ITKTubeTK-Debug/TubeTK-build
 
 export QT_SELECT=qt5
 
+export ExternalData_OBJECT_STORES=${HOME}/src/ExternalData
+
 MachineName=Mountain_Aylward
 BuildType=Debug
 CTestCommand=/usr/bin/ctest
@@ -31,7 +33,6 @@ if [ $# -eq 0 ] || [ "$1" != "NoUpdate" ]; then
 
 else
 
-echo "BuildType = ${BuildType}"
 # Run the nightly
 echo "Running nightly ctest"
 ${CTestCommand} -D Nightly -D SITE_CTEST_MODE:STRING=Nightly -D SITE_BUILD_TYPE:STRING=${BuildType} -S ITKTubeTK-DashboardScripts/${MachineName}_TubeTK.cmake -V -VV -O ${MachineName}_TubeTK_Nightly-${BuildType}.log
